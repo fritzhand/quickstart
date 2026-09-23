@@ -2,13 +2,52 @@
 {
   "title": "Make your own version",
   "eyebrow": "Step 4 · Make it yours",
-  "lede": "Turn a starter into a site about your own subject, one prompt at a time. The main example turns the Tampa history into a history of St. Petersburg, Florida, in a repo called history-of-st-pete. A second example builds a minisite with a sidebar.",
+  "lede": "Turn a starter into a site about your own subject. The fastest way is one big prompt, the way history-of-indigo was made. If you want more control, go step by step.",
   "time": "About 1 hour",
   "track": "all"
 }
 -->
-<p>Do the steps in order. Read what the agent says back after each one before you send the next.</p>
-<p>Your history doesn't have to be a city. The same steps work for a neighborhood, an industry, a company, a movement or a topic like indigo: wherever a prompt says <var>St. Petersburg, Florida</var>, put your subject. Researching and sourcing it is how you learn it. Building a multi-page guide instead, such as a directory, handbook or resource guide? Follow the <a href="#minisite">second example</a>.</p>
+<h2 id="one-prompt">The fastest way: one big prompt</h2>
+<p>This is how <a href="https://fritzhand.github.io/history-of-indigo/">history-of-indigo</a> was made. Its author created an empty repo and started a Claude Code session with that repo and the starter repos selected. Then they typed one message. The agent researched the subject, built the site in the same format as history-of-tampa and pushed it. The author checked the result. This is the message, exactly as typed:</p>
+<blockquote><p>working directory is history-of-indigo, we want to do a deep research and then publsih a similar format as the history of tampa in the history of indigo and publsih to a github page, this should encompas the origins of indigo dye how it prolifereated across the globe from ancient times to present times</p></blockquote>
+<p>The typos didn't matter. The message worked because it says four things: which repo to work in, which site to copy the format from, the job (research first, then build and publish), and what the site should cover.</p>
+
+<ol class="steps">
+  <li>
+    <h3>Make an empty repo for your subject</h3>
+    <p>Name it for your subject, in lowercase with hyphens, for example <code>history-of-coffee</code>. Make it public so GitHub Pages can publish it for free. <a href="repos.html">Repos: public or private</a> has the prompt, plus the button to use if the agent can't create it.</p>
+  </li>
+  <li>
+    <h3>Start a session with your repo and the starter</h3>
+    <div class="tabs" data-group="where">
+      <section data-tab="app" data-label="App path">
+        <p>In the repository selector, pick <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> and add <code>fritzhand/history-of-tampa</code>. For a topic that spans the world, add <code>fritzhand/history-of-indigo</code> as a second example. See <a href="multiple-repos.html">Many repos, one to work in</a>.</p>
+      </section>
+      <section data-tab="vscode" data-label="VS Code path">
+        <p>Open your projects folder in VS Code, then say:</p>
+        <pre class="say">Clone fritzhand/history-of-tampa and <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> into this folder.</pre>
+      </section>
+    </div>
+  </li>
+  <li>
+    <h3>Send one prompt</h3>
+    <p>Replace the highlighted subject with yours. Say what the site should cover, from where to where.</p>
+    <pre class="say" data-label="One prompt: a history site">Work only in <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>. Treat the other repos as read-only reference. We want to do deep research and then publish a site in the same format as fritzhand/history-of-tampa in my repo, and publish it to a GitHub Page. It should cover <var>the origins of indigo dye and how it spread across the globe, from ancient times to the present</var>. Give a working source link for every fact and mark anything you can't verify as TBD. Don't copy the original author's photo, name or analytics tag. Commit as <var data-k="name">Your Name</var> &lt;<var data-k="email">your-noreply-email</var>&gt;. Commit and push to main.</pre>
+    <p>It's a big job, so the agent may work for a while and ask you questions along the way. Answer them. If it says it can't open websites, use the tip in <a href="#research">Research first, then build</a> below.</p>
+  </li>
+  <li>
+    <h3>Check it, then publish</h3>
+    <pre class="say">Show me what you built in plain English, and list every source you used.</pre>
+    <p>Then <a href="github-pages.html">turn on GitHub Pages</a> from <code>main</code> and <code>/ (root)</code>.</p>
+  </li>
+</ol>
+<p>For a <a href="#minisite">minisite with a sidebar</a>, send the same kind of message, naming startup-india-guide instead:</p>
+<pre class="say" data-label="One prompt: a minisite">Work only in <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>. Treat the other repos as read-only reference. We want to do deep research and then publish a multi-page minisite in the same format as fritzhand/startup-india-guide in my repo, with the same sidebar, search and page layout, and publish it to a GitHub Page. It should cover <var>the programs, funders, coworking spaces and events for new founders in my city</var>. Give a working link for every entry and mark anything you can't verify as TBD. Don't copy the .github folder, the original author's photo and name, or the analytics ID. Commit as <var data-k="name">Your Name</var> &lt;<var data-k="email">your-noreply-email</var>&gt;. Commit and push to main.</pre>
+<p>That starter builds its pages into a <code>docs</code> folder, so publish from <code>main</code> and <code>/docs</code>.</p>
+
+<h2 id="step-by-step">Step by step, with more control</h2>
+<p>Do the steps in order. Read what the agent says back after each one before you send the next. The example turns the Tampa history into a history of St. Petersburg, Florida, in a repo called <code>history-of-st-pete</code>.</p>
+<p>Your history doesn't have to be a city. The same steps work for a neighborhood, an industry, a company, a movement or a topic like indigo: wherever a prompt says <var>St. Petersburg, Florida</var>, put your subject. Researching and sourcing it is how you learn it. Building a multi-page guide instead, such as a directory, handbook or resource guide? Follow the <a href="#minisite">minisite steps</a>.</p>
 
 <ol class="steps">
   <li>
@@ -39,7 +78,7 @@
     <pre class="say">In index.html, remove the Google Analytics tag. Delete assets/jeremy.jpg and the author photo and name blocks in the byline, the About section and the credit footer. Delete the files I won't use: ybor.html, js/ybor-data.js, the assets/linkedin and assets/linkedin-ybor folders, and the LinkedIn tools in tools/. Delete the planning files ARCHIVAL_RESEARCH_PROMPT.md, ARCHIVAL_RESEARCH_PROMPT_TAMPA.md and DOWNTOWN_TAMPA_PLAN.md, and replace PROGRESS.md with a fresh one for my project. Remove any links to the deleted pages. Replace every https://fritzhand.github.io/history-of-tampa/ address with https://<var data-k="user">your-username</var>.github.io/<var data-k="repo">your-repo</var>/ and point the Repository links to my repo. Then list what you removed, and commit and push to main.</pre>
   </li>
   <li>
-    <h3>Research first, then build</h3>
+    <h3 id="research">Research first, then build</h3>
     <p>Get the facts before the agent writes a word of your site. That keeps invented numbers out.</p>
     <pre class="say">Research the history of <var>St. Petersburg, Florida</var>, for this site. Use real sources, such as archives, libraries, universities, government records and newspapers, and give a working link for every fact, date and number. Wikipedia can point you to sources but isn't one. List images only if they're public domain or openly licensed, with a credit line. Write everything to research/notes.md and mark anything you couldn't verify as TBD. Never invent a number, date or link. Don't change the site yet.</pre>
     <p>Ask "Show me research/notes.md" and read it. You know your subject: tell the agent to delete anything that looks wrong.</p>
@@ -72,7 +111,7 @@
 
 <aside class="callout check" data-title="Check it worked">Open <code>https://github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var></code>. The README describes your subject, <code>CLAUDE.md</code> holds your rules, and the newest commit on <code>main</code> shows your name, not Claude's.</aside>
 
-<h2 id="minisite">Second example: a minisite with a sidebar</h2>
+<h2 id="minisite">Step by step: a minisite with a sidebar</h2>
 <p>Use startup-india-guide when your subject needs several pages that people browse and search, not one story: a directory, a handbook, a resource guide or a program catalog. The Florida ecosystem map and this guide were both built from it. The example is a resource guide for new founders in your city.</p>
 <ol class="steps">
   <li>
@@ -122,7 +161,7 @@
 </details>
 <details class="fix">
   <summary>The push fails with a message about "workflow"</summary>
-  <p>GitHub refused a change to the <code>.github/workflows</code> folder. If you meant to delete that folder, do it yourself on GitHub, as in <a href="#minisite">the second example</a>. Then say:</p>
+  <p>GitHub refused a change to the <code>.github/workflows</code> folder. If you meant to delete that folder, do it yourself on GitHub, as in <a href="#minisite">the minisite steps</a>. Then say:</p>
   <pre class="say">GitHub refused my push because it changes the .github/workflows folder. Pull the latest changes from GitHub, redo my unpushed work as one new commit that leaves that folder exactly as it is on GitHub, then commit and push to main.</pre>
 </details>
 

@@ -53,6 +53,7 @@ const decode = (s) => String(s).replace(/&(#x[0-9a-f]+|#\d+|[a-z][a-z0-9]*);/gi,
   return ENT[e] ?? ENT[e.toLowerCase()] ?? m;
 });
 const squash = (s) => s.replace(/\s+/g, " ").trim();
+const gist = (s, n) => { const w = squash(s).split(" "); return w.slice(0, n).join(" ") + (w.length > n ? "…" : ""); };
 const slugify = (s) => (s.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
   .replace(/&/g, " and ").replace(/['’]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "")
   .slice(0, 64).replace(/-+$/, "")) || "section";
@@ -110,6 +111,7 @@ const DG_CLASSES = new Set([
   "dg-text", "dg-text-sm", "dg-text-strong", "dg-label", "dg-text-on",
   "dg-fill-primary", "dg-fill-accent", "dg-fill-soft",
 ]);
+const DG_FILLED = new Set(["dg-box-primary", "dg-fill-primary", "dg-fill-accent"]); /* the shapes dg-text-on (white) can sit on */
 const HTML_TAGS = new Set(("a abbr aside b blockquote br caption cite code col colgroup dd del details dfn div dl dt em " +
   "figcaption figure h2 h3 h4 h5 h6 hr i img ins kbd li mark ol p pre q s samp section small span strong sub summary sup " +
   "table tbody td tfoot th thead time tr u ul var wbr").split(" "));
@@ -175,6 +177,7 @@ const ICONS = {
   link: I('<path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/>'),
   skip: I('<path d="m6 17 5-5-5-5m7 10 5-5-5-5"/>'),
   reset: I('<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/>'),
+  list: I('<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>'),
 };
 const icon = (name, cls = "") => (ICONS[name] || "").replace("<svg ", `<svg${cls ? ` class="${cls}"` : ""} `);
 
@@ -291,11 +294,16 @@ function dedent(s) {
 }
 
 /* ---------------- read nav + content ---------------- */
-const PAGES = [];          // nav order: { slug, nav, icon, group, groupIndex }
+const PAGES = [];          // nav order: { slug, nav, icon, group, groupIndex, ref }
 const BY_SLUG = new Map();
+/* A "reference" group (look-up pages, not steps) doesn't count toward progress.
+   Set "reference": true on the group; a group labeled "Reference" is one by default. */
+const isRefGroup = (g) => (typeof g.reference === "boolean" ? g.reference : /^reference$/i.test(String(g.label || "").trim()));
 if (!Array.isArray(NAV.groups) || !NAV.groups.length) fail("content/nav.json", `needs a non-empty "groups" array`);
 for (const [gi, g] of (NAV.groups || []).entries()) {
   if (typeof g.label !== "string" || !g.label.trim()) fail("content/nav.json", `group #${gi + 1} needs a "label"`);
+  for (const k of Object.keys(g)) if (!["label", "items", "reference"].includes(k)) fail("content/nav.json", `group "${g.label}" has unknown key "${k}" (allowed: label, items, reference)`);
+  if (g.reference !== undefined && typeof g.reference !== "boolean") fail("content/nav.json", `group "${g.label}": "reference" must be true or false`);
   if (!Array.isArray(g.items) || !g.items.length) { fail("content/nav.json", `group "${g.label}" needs a non-empty "items" array`); continue; }
   for (const it of g.items) {
     const where = `content/nav.json [${g.label}]`;
@@ -303,7 +311,8 @@ for (const [gi, g] of (NAV.groups || []).entries()) {
     if (BY_SLUG.has(it.slug)) { fail(where, `duplicate slug "${it.slug}"`); continue; }
     if (typeof it.nav !== "string" || !it.nav.trim()) fail(where, `"${it.slug}" needs a "nav" label`);
     if (!it.icon || !ICONS[it.icon]) fail(where, `"${it.slug}" uses unknown icon ${JSON.stringify(it.icon)} (known: ${Object.keys(ICONS).join(", ")})`);
-    const p = { slug: it.slug, nav: it.nav || it.slug, icon: it.icon, group: g.label, groupIndex: gi };
+    for (const k of Object.keys(it)) if (!["slug", "nav", "icon"].includes(k)) fail(where, `"${it.slug}" has unknown key "${k}" (allowed: slug, nav, icon)`);
+    const p = { slug: it.slug, nav: it.nav || it.slug, icon: it.icon, group: g.label, groupIndex: gi, ref: isRefGroup(g) };
     PAGES.push(p);
     BY_SLUG.set(p.slug, p);
   }
@@ -334,6 +343,13 @@ function processPage(p) {
   for (const k of ["title", "eyebrow", "lede", "time"]) {
     if (typeof meta[k] !== "string" || !meta[k].trim()) fail(file, `meta "${k}" is required (a non-empty string)`);
   }
+  /* meta values are printed as plain text (escaped), so markup or entities would show literally */
+  const plain = (v, label) => {
+    if (typeof v === "string" && /<\/?[a-z!]|&(?:#\d+|#x[0-9a-f]+|[a-z][a-z0-9]*);/i.test(v)) fail(file, `meta ${label} is plain text: write characters, not HTML tags or entities (found ${JSON.stringify(v.match(/<\/?[a-z!][^>]*>?|&[#a-z0-9]+;/i)[0])})`);
+  };
+  for (const k of ["title", "eyebrow", "lede", "time"]) plain(meta[k], `"${k}"`);
+  if (meta.jump && typeof meta.jump === "object") plain(meta.jump.text, `"jump.text"`);
+  if (Array.isArray(meta.cta)) meta.cta.forEach((c, i) => c && plain(c.text, `"cta"[${i}].text`));
   meta.track = meta.track ?? "all";
   if (!(meta.track in TRACKS)) fail(file, `unknown track ${JSON.stringify(meta.track)} (use ${Object.keys(TRACKS).join(", ")})`);
   if (meta.hero !== undefined && typeof meta.hero !== "boolean") fail(file, `meta "hero" must be true or false`);
@@ -389,8 +405,11 @@ function processPage(p) {
     }
   });
 
-  /* 2. heading ids (h2/h3 without one) */
-  const toc = [];
+  /* 2. heading ids (h2/h3 without one) + the "On this page" list:
+     top-level h2s, plus each numbered step's h3 when a page has fewer than 3 h2s */
+  const tocH2 = [], tocAll = [];
+  const isStepHead = (n) => n.name === "h3" && n.parent && n.parent.name === "li" && n.parent.parent && n.parent.parent.name === "ol" &&
+    hasClass(n.parent.parent, "steps") && elKids(n.parent)[0] === n && !hasAncestor(n.parent.parent, (a) => a.name === "section" || a.name === "li" || a.name === "details");
   walk(tree, (n) => {
     if (n.name !== "h2" && n.name !== "h3") return;
     const text = squash(textOf(n));
@@ -405,8 +424,10 @@ function processPage(p) {
     }
     n.headText = text;
     n.post += `<a class="h-anchor" href="#${attr(id)}" aria-label="Link to this section: ${attr(text)}">${icon("link")}</a>`;
-    if (n.name === "h2" && !hasAncestor(n, (a) => a.name === "section" || a.name === "li" || a.name === "details")) toc.push([id, text]);
+    if (n.name === "h2" && !hasAncestor(n, (a) => a.name === "section" || a.name === "li" || a.name === "details")) { tocH2.push([id, text, 2]); tocAll.push([id, text, 2]); }
+    else if (isStepHead(n)) tocAll.push([id, `${elKids(n.parent.parent).filter((k) => k.name === "li").indexOf(n.parent) + 1}. ${text}`, 3]);
   });
+  const toc = tocH2.length >= 3 ? tocH2 : tocAll;
 
   /* 3. search text, split by heading (before the engine adds any UI text) */
   const sections = [["", "", []]];
@@ -449,16 +470,20 @@ function processPage(p) {
 
     /* Say this / terminal command */
     if (n.name === "pre" && cls.includes("say")) {
-      const label = decode(getA(n, "data-label") || "Say this");
+      const custom = getA(n, "data-label");
+      const label = decode(custom || "Say this");
+      if (!squash(textOf(n))) fail(at(n), `empty <pre class="say">`);
+      /* each Copy button gets its own accessible name, so a screen-reader list of buttons can tell them apart */
+      const name = `Copy prompt: ${custom && custom.trim() ? label : gist(textOf(n), 8)}`;
       n.before = `<div class="say-box"><div class="say-head"><span class="say-ic" aria-hidden="true">${icon("message")}</span><span class="say-label">${esc(label)}</span>` +
-        copyButton("Copy prompt") + `</div>`;
+        copyButton(name) + `</div>`;
       const needsDetails = (function has(x) { return x.kids.some((k) => k.t === "el" && ((k.name === "var" && hasA(k, "data-k")) || has(k))); })(n);
-      n.after = (needsDetails ? `<div class="say-foot" hidden><button type="button" class="say-fill" data-personalize-open>${icon("user")}<span>Add your details to fill in the highlighted parts</span></button></div>` : "") + `</div>`;
+      n.after = (needsDetails ? `<div class="say-foot" hidden><button type="button" class="say-fill" data-personalize-open>${icon("user")}<span>Add your details to fill these in</span></button></div>` : "") + `</div>`;
       n.inner = dedent;
     } else if (n.name === "pre" && cls.includes("cmd")) {
       const shell = decode(getA(n, "data-shell") || "Terminal");
       n.before = `<div class="cmd-box"><div class="cmd-head"><span class="cmd-ic" aria-hidden="true">${icon("terminal")}</span><span class="cmd-label">${esc(shell)}</span>` +
-        copyButton("Copy command") + `</div>`;
+        copyButton(`Copy ${shell} command: ${gist(textOf(n), 6)}`) + `</div>`;
       n.after = `</div>`;
       if (!hasA(n, "tabindex")) setA(n, "tabindex", "0");
       n.inner = (s) => {
@@ -480,6 +505,13 @@ function processPage(p) {
       const k = getA(n, "data-k");
       if (!VAR_KEYS.includes(k)) fail(at(n), `unknown <var data-k="${k}"> (known keys: ${VAR_KEYS.join(", ")})`);
       if (!squash(textOf(n))) fail(at(n), `<var data-k="${k}"> needs placeholder text, e.g. <var data-k="user">your-username</var>`);
+    }
+
+    /* a link that also records which path the reader chose (e.g. the path cards on choose-setup) */
+    if (hasA(n, "data-set-where")) {
+      const v = getA(n, "data-set-where");
+      if (n.name !== "a") fail(at(n), `data-set-where belongs on an <a> link, not <${n.tag}>`);
+      if (!TAB_GROUPS.where.values.includes(v)) fail(at(n), `data-set-where="${v}" is not valid (use ${TAB_GROUPS.where.values.join(" or ")})`);
     }
 
     /* tabs */
@@ -555,7 +587,7 @@ function processPage(p) {
 
     /* personalize form + progress summary */
     if (hasA(n, "data-personalize")) n.post += personalizeForm(`qs-pz${pzIndex++}`);
-    if (hasA(n, "data-progress")) n.post += progressCard();
+    if (hasA(n, "data-progress")) n.post += PROGRESS_SLOT; /* filled in at render time, once every page's track is known */
 
     /* diagrams */
     if (n.name === "figure" && cls.includes("diagram")) {
@@ -570,10 +602,14 @@ function processPage(p) {
       const vb = (getA(svg, "viewbox") || "").trim().split(/[\s,]+/).map(Number);
       if (vb.length !== 4 || vb.some((x) => !Number.isFinite(x))) fail(at(svg), `diagram <svg> needs a viewBox`);
       else {
-        if (vb[2] > 480) warn(at(svg), `diagram viewBox is ${vb[2]} wide — keep it ≤ 480 so it reads on a phone`);
+        if (vb[2] > 400) warn(at(svg), `diagram viewBox is ${vb[2]} wide — keep it ≤ 400 (ideally 340–360) so its text stays ≥ 12px on a phone`);
         if (!hasA(svg, "style")) setA(svg, "style", `--dg-w:${Math.round(vb[2] * 1.25)}px`);
       }
       if (!elKids(n).some((k) => k.name === "figcaption")) warn(at(n), `diagram has no <figcaption>`);
+      /* dg-text-on is white: with no filled shape under it, it's invisible in light mode */
+      let onText = null, filled = false;
+      walk(svg, (x) => { const c = classes(x); if (!onText && c.includes("dg-text-on")) onText = x; if (c.some((k) => DG_FILLED.has(k))) filled = true; });
+      if (onText && !filled) fail(at(onText), `dg-text-on is white text for filled shapes only (${[...DG_FILLED].join(", ")}); this diagram has none — use dg-text`);
     }
 
     /* images: there is no image pipeline — draw an inline SVG instead */
@@ -599,7 +635,7 @@ function personalizeForm(p) {
       ${hint ? `<p class="pz-hint" id="${p}-${k}-hint">${hint}</p>` : ""}
     </div>`;
   return `<form class="pz-form" data-pz-form novalidate>
-    <div class="pz-grid">${field("user", "GitHub username", "your-username", ` aria-describedby="${p}-user-hint"`, "The name in your GitHub profile address, github.com/<b>your-username</b>.")}${field("repo", "Repo name for your site", "my-site", ` aria-describedby="${p}-repo-hint"`, "What you want to call the repository that holds your website.")}${field("name", "Your name", "Your Name", ` autocomplete="name" aria-describedby="${p}-name-hint"`, "Shown as the author of your commits.")}${field("email", "GitHub noreply email", "12345678+your-username@users.noreply.github.com", ` inputmode="email" aria-describedby="${p}-email-hint"`, `On GitHub, open <span class="ui">Settings</span> → <span class="ui">Emails</span> and check <span class="ui">Keep my email addresses private</span>. GitHub then shows your address ending in <code>@users.noreply.github.com</code>.`)}
+    <div class="pz-grid">${field("user", "GitHub username", "your-username", ` aria-describedby="${p}-user-hint"`, "The name in your GitHub profile address, github.com/<b>your-username</b>.")}${field("repo", "Repo name for your site", "history-of-st-pete", ` aria-describedby="${p}-repo-hint"`, "What you’ll call the repo for your site, in lowercase with hyphens, such as history-of-st-pete. It becomes part of your site’s address. You can change it here later.")}${field("name", "Your name", "Your Name", ` autocomplete="name" aria-describedby="${p}-name-hint"`, "Shown as the author of your commits.")}${field("email", "GitHub noreply email", "12345678+your-username@users.noreply.github.com", ` inputmode="email" aria-describedby="${p}-email-hint"`, `On GitHub, open <span class="ui">Settings</span> → <span class="ui">Emails</span> and check <span class="ui">Keep my email addresses private</span>. GitHub then shows your address ending in <code>@users.noreply.github.com</code>.`)}
     </div>
     <p class="pz-warn" data-pz-warn hidden>That doesn’t look like a GitHub noreply address. It should end in <code>@users.noreply.github.com</code>.</p>
     <div class="pz-actions">
@@ -610,22 +646,31 @@ function personalizeForm(p) {
   </form>`;
 }
 
+const PROGRESS_SLOT = "<!--qs-progress-card-->";
 function progressCard() {
-  const n = PAGES.length;
+  const first = COUNTED_DEFAULT.find((p) => p.slug !== "index") || PAGES[0];
   return `<div class="progress-card" data-progress-card>
     <div class="pc-top">
-      <p class="pc-count"><strong data-p-done>0</strong> of ${n} pages done</p>
+      <p class="pc-count"><strong data-p-done>0</strong> of <span data-p-total>${N_DEFAULT}</span> pages done</p>
       <button type="button" class="pc-reset" data-p-reset>${icon("reset")}<span>Reset</span></button>
     </div>
-    <div class="bar" role="progressbar" aria-label="Pages done" aria-valuemin="0" aria-valuemax="${n}" aria-valuenow="0"><span></span></div>
-    <p class="pc-next" data-p-next-wrap><span data-p-next-label>Start with:</span> <a data-p-next href="${PAGES[1] ? `${PAGES[1].slug}.html` : "index.html"}">${esc(PAGES[1] ? PAGES[1].nav : "")}</a></p>
-    <p class="pc-next" data-p-finished hidden>You’ve finished every page. Nice work.</p>
-    <p class="pc-note">Progress is saved only in this browser. Mark a page done with the button at the bottom of each page.</p>
+    <div class="bar" role="progressbar" aria-label="Pages done" aria-valuemin="0" aria-valuemax="${N_DEFAULT}" aria-valuenow="0"><span></span></div>
+    <p class="pc-next" data-p-next-wrap><span data-p-next-label>Start with:</span> <a data-p-next href="${first.slug}.html">${esc(first.nav)}</a></p>
+    <p class="pc-next" data-p-finished hidden>You’ve finished every page on your path. Nice work.</p>
+    <p class="pc-note">Counts the pages for <span data-p-path>${PATH_PHRASE[DEFAULT_WHERE]}</span>. Saved only in this browser. Mark a page done with the button at the bottom of each page.</p>
   </div>`;
 }
 
 const built = PAGES.filter((p) => contentFiles.includes(`${p.slug}.html`)).map(processPage).filter(Boolean);
 const BUILT = new Map(built.map((b) => [b.slug, b]));
+const trackOf = (slug) => (BUILT.get(slug) ? BUILT.get(slug).meta.track : "all");
+
+/* Progress counts the reader's path: pages on both paths plus the chosen path's
+   pages, never Reference pages. Before site.js runs, assume the default path. */
+const DEFAULT_WHERE = "app";
+const PATH_PHRASE = { app: "the app path", vscode: "the VS Code path" };
+const COUNTED_DEFAULT = PAGES.filter((p) => !p.ref && ["all", DEFAULT_WHERE].includes(trackOf(p.slug)));
+const N_DEFAULT = COUNTED_DEFAULT.length;
 
 /* ---------------- link validation (needs every page's ids) ---------------- */
 const LOCAL_HOSTS = new Set(["localhost", "127.0.0.1", "0.0.0.0", "[::1]"]);
@@ -667,33 +712,36 @@ if (errors.length) bail();
 /* ============================================================
    Render
    ============================================================ */
-const N = PAGES.length;
 const BUILD_DATE = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" });
 const HAS_OG = fs.existsSync(path.join(SITE, "og.png"));
 const canonicalOf = (slug) => (slug === "index" ? SITE_BASE : `${SITE_BASE}${slug}.html`);
 const hrefOf = (root, slug) => `${root}${slug}.html`;
 
-/* Inline <head> script: no theme flash, js class, remembered tabs. */
+/* Inline <head> script: no theme flash, js class, remembered tabs.
+   The "where" tab (app / VS Code path) follows the path of the pages the reader
+   opens (whereAuto) until they pick a where tab or a data-set-where link. */
 const TAB_BOOT = JSON.stringify(Object.fromEntries(Object.entries(TAB_GROUPS).map(([g, s]) => [g, s.values])));
 const BOOT = `<script>(function(){var d=document.documentElement,t,s={};d.className=d.className.replace(/\\bno-js\\b/,"js");
 try{t=localStorage.getItem("qs-theme")}catch(e){}
 if(t!=="light"&&t!=="dark")t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
 d.setAttribute("data-theme",t);
 try{s=JSON.parse(localStorage.getItem("qs-tabs")||"{}")||{}}catch(e){}
+var tr=d.getAttribute("data-track");
+if((tr==="app"||tr==="vscode")&&(!s.where||s.whereAuto)&&s.where!==tr){s.where=tr;s.whereAuto=1;try{localStorage.setItem("qs-tabs",JSON.stringify(s))}catch(e){}}
 var g=${TAB_BOOT},p=(navigator.userAgentData&&navigator.userAgentData.platform)||navigator.platform||navigator.userAgent||"",
-f={os:/win/i.test(p)?"windows":"mac",agent:"claude",where:"app"};
+f={os:/win/i.test(p)?"windows":"mac",agent:"claude",where:"${DEFAULT_WHERE}"};
 for(var k in g)d.setAttribute("data-tab-"+k,g[k].indexOf(s[k])>-1?s[k]:(f[k]||g[k][0]));})();</script>`;
 
 function sidebar(root, active) {
   let html = `<nav class="sidebar" id="qs-sidebar" aria-label="Guide">
   <div class="sb-progress" data-sb-progress>
-    <div class="sb-progress-row"><span class="sb-progress-label">Your progress</span><span class="sb-progress-count"><span data-p-done>0</span> of ${N} done</span></div>
-    <div class="bar" role="progressbar" aria-label="Pages done" aria-valuemin="0" aria-valuemax="${N}" aria-valuenow="0"><span></span></div>
+    <div class="sb-progress-row"><span class="sb-progress-label">Your progress</span><span class="sb-progress-count"><span data-p-done>0</span> of <span data-p-total>${N_DEFAULT}</span> done</span></div>
+    <div class="bar" role="progressbar" aria-label="Pages done" aria-valuemin="0" aria-valuemax="${N_DEFAULT}" aria-valuenow="0"><span></span></div>
   </div>`;
   for (const g of NAV.groups) {
     html += `\n  <div class="sb-group"><p class="sb-title">${esc(g.label)}</p><ul>`;
     for (const it of g.items) {
-      html += `\n    <li><a class="nav-link" href="${hrefOf(root, it.slug)}" data-slug="${it.slug}"${it.slug === active ? ' aria-current="page"' : ""}><span class="nav-ic">${icon(it.icon)}</span><span class="nav-t">${esc(it.nav)}</span><span class="nav-done" aria-hidden="true">${icon("check")}</span><span class="sr-only nav-done-sr"> (done)</span></a></li>`;
+      html += `\n    <li><a class="nav-link" href="${hrefOf(root, it.slug)}" data-slug="${it.slug}" data-track="${trackOf(it.slug)}"${isRefGroup(g) ? ' data-ref="1"' : ""}${it.slug === active ? ' aria-current="page"' : ""}><span class="nav-ic">${icon(it.icon)}</span><span class="nav-t">${esc(it.nav)}</span><span class="nav-done" aria-hidden="true">${icon("check")}</span><span class="sr-only nav-done-sr"> (done)</span></a></li>`;
     }
     html += `\n  </ul></div>`;
   }
@@ -767,7 +815,12 @@ function pageHead(root, b) {
 }
 function pageFoot(root, b) {
   const i = PAGES.findIndex((p) => p.slug === b.slug);
-  const prev = PAGES[i - 1], next = PAGES[i + 1];
+  /* a page on one path skips the other path's pages; site.js does the same on
+     shared pages once it knows the reader's path */
+  const fits = (p) => b.meta.track === "all" || [b.meta.track, "all"].includes(trackOf(p.slug));
+  let prev, next;
+  for (let j = i - 1; j >= 0 && !prev; j--) if (fits(PAGES[j])) prev = PAGES[j];
+  for (let j = i + 1; j < PAGES.length && !next; j++) if (fits(PAGES[j])) next = PAGES[j];
   const done = `<div class="done-row">
   <button type="button" class="done-toggle" data-done-toggle aria-pressed="false">
     <span class="done-ic" aria-hidden="true">${icon("circle", "i-off")}${icon("check-circle", "i-on")}</span>
@@ -783,16 +836,22 @@ function pageFoot(root, b) {
     : "";
   return done + jump + nav;
 }
+const tocItems = (toc) => toc.map(([id, t, lvl]) => `<li${lvl === 3 ? ' class="toc-sub"' : ""}><a href="#${attr(id)}">${esc(t)}</a></li>`).join("");
 function tocAside(toc) {
   if (toc.length < 3) return "";
-  return `<aside class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ul>${toc.map(([id, t]) => `<li><a href="#${attr(id)}">${esc(t)}</a></li>`).join("")}</ul></aside>`;
+  return `<aside class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ul>${tocItems(toc)}</ul></aside>`;
+}
+/* long pages also get a collapsed list at the top, for screens too narrow for the rail */
+function tocMobile(toc) {
+  if (toc.length < 5) return "";
+  return `<details class="toc-mobile"><summary><span class="sum-ic" aria-hidden="true">${icon("list")}</span><span class="sum-t">On this page</span><span class="sum-chev" aria-hidden="true">${icon("chevron")}</span></summary><ul>${tocItems(toc)}</ul></details>`;
 }
 
-function shell({ root, slug, title, description, canonical, head, body, after = "", toc = "", noindex = false }) {
+function shell({ root, slug, title, description, canonical, head, body, after = "", toc = "", tocTop = "", track = "all", noindex = false }) {
   const fullTitle = title === SITE_NAME ? `${SITE_NAME}${SITE_TAGLINE ? ` · ${SITE_TAGLINE}` : ""}` : `${title} · ${SITE_NAME}`;
   const brandParts = SITE_NAME.split(" ");
   return `<!doctype html>
-<html lang="en" class="no-js" data-root="${attr(root)}" data-slug="${attr(slug)}">
+<html lang="en" class="no-js" data-root="${attr(root)}" data-slug="${attr(slug)}"${track !== "all" ? ` data-track="${attr(track)}"` : ""}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -838,6 +897,7 @@ ${sidebar(root, slug)}
   <div class="page-grid${toc ? " has-toc" : ""}">
     <article class="page">
 ${head}
+${tocTop}
       <div class="prose">
 ${body}
       </div>
@@ -848,9 +908,9 @@ ${toc}
 </main>
 </div>
 <footer class="footer"><div class="footer-inner">
-  ${AUTHOR ? `<p class="footer-by">A guide by <a href="${attr(AUTHOR.github)}" target="_blank" rel="noopener">${esc(AUTHOR.name)}</a></p>` : ""}
+  ${AUTHOR ? `<p class="footer-by">A guide by <a href="${attr(AUTHOR.github)}" target="_blank" rel="noopener">${esc(AUTHOR.name)}<span class="sr-only"> (opens in a new tab)</span></a></p>` : ""}
   <p class="footer-links">
-    <a href="${attr(REPO_URL)}" target="_blank" rel="noopener">${icon("github")}Source on GitHub</a>
+    <a href="${attr(REPO_URL)}" target="_blank" rel="noopener">${icon("github")}Source on GitHub<span class="sr-only"> (opens in a new tab)</span></a>
     <span>Built with Claude Code</span>
     <span>Last built ${esc(BUILD_DATE)}</span>
   </p>
@@ -859,7 +919,7 @@ ${toc}
 <div class="modal search-modal" id="qs-search" hidden>
   <div class="modal-backdrop" data-close></div>
   <div class="modal-panel search-panel" role="dialog" aria-modal="true" aria-label="Search the guide">
-    <div class="search-head">${icon("search")}<input id="qs-search-input" type="search" placeholder="Search the guide…" autocomplete="off" autocapitalize="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="qs-search-results" aria-autocomplete="list"><button type="button" class="icon-btn search-close" data-close aria-label="Close search">${icon("x")}</button></div>
+    <div class="search-head">${icon("search")}<input id="qs-search-input" type="search" aria-label="Search the guide" placeholder="Search the guide…" autocomplete="off" autocapitalize="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="qs-search-results" aria-autocomplete="list"><button type="button" class="icon-btn search-close" data-close aria-label="Close search">${icon("x")}</button></div>
     <div class="sr-only" id="qs-search-status" role="status" aria-live="polite"></div>
     <div class="results" id="qs-search-results" role="listbox" aria-label="Search results"></div>
     <div class="search-foot"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>↵</kbd> open</span><span><kbd>esc</kbd> close</span></div>
@@ -887,7 +947,7 @@ fs.mkdirSync(path.join(OUT, "assets"), { recursive: true });
 const write = (name, data) => fs.writeFileSync(path.join(OUT, name), data);
 
 for (const b of built) {
-  const body = serialize(b.tree).replace(/^\s*\n/, "").replace(/\s+$/, "");
+  const body = serialize(b.tree).replace(/^\s*\n/, "").replace(/\s+$/, "").split(PROGRESS_SLOT).join(progressCard());
   const html = shell({
     root: "",
     slug: b.slug,
@@ -898,6 +958,8 @@ for (const b of built) {
     body,
     after: pageFoot("", b),
     toc: tocAside(b.toc),
+    tocTop: tocMobile(b.toc),
+    track: b.meta.track,
   });
   write(`${b.slug}.html`, html);
 }

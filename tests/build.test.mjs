@@ -158,6 +158,60 @@ test("underscore drafts are ignored and http://localhost is allowed inside code"
   } finally { cleanup(dir); }
 });
 
+test("progress, Previous/Next and the where tab follow the reader's path", () => {
+  const dir = copyRepo();
+  try {
+    const r = build(dir);
+    assert.equal(r.status, 0, r.stderr);
+    const trackOf = (slug) => JSON.parse(read(dir, `content/${slug}.html`).match(/^\s*<!--meta([\s\S]*?)-->/)[1]).track || "all";
+    const refSlugs = new Set(NAV.groups.filter((g) => g.reference ?? /^reference$/i.test(g.label)).flatMap((g) => g.items.map((i) => i.slug)));
+    const html = read(dir, "docs/index.html");
+    /* every sidebar link carries its page's track; Reference links are marked */
+    for (const s of SLUGS) {
+      const a = html.match(new RegExp(`<a class="nav-link"[^>]*data-slug="${s}"[^>]*>`))[0];
+      assert.ok(a.includes(`data-track="${trackOf(s)}"`), `${s}: nav link track`);
+      assert.equal(a.includes('data-ref="1"'), refSlugs.has(s), `${s}: data-ref`);
+    }
+    /* the static total is the default (app) path, without Reference pages */
+    const n = SLUGS.filter((s) => !refSlugs.has(s) && ["all", "app"].includes(trackOf(s))).length;
+    assert.match(html, new RegExp(`<span data-p-total>${n}</span>`));
+    /* a page on one path: <html data-track>, and Next skips the other path's pages */
+    for (const [i, s] of SLUGS.entries()) {
+      const t = trackOf(s);
+      if (t === "all") continue;
+      const page = read(dir, `docs/${s}.html`);
+      assert.match(page, new RegExp(`<html[^>]*data-track="${t}"`), `${s}: html data-track`);
+      const next = SLUGS.slice(i + 1).find((x) => ["all", t].includes(trackOf(x)));
+      if (next) assert.match(page, new RegExp(`<a class="next" href="${next}\\.html"`), `${s}: Next should be ${next}`);
+    }
+  } finally { cleanup(dir); }
+});
+
+test("long pages get an On this page list; numbered steps fill in when there are few h2s", () => {
+  const dir = copyRepo();
+  try {
+    write(dir, `content/${PAGE}.html`, `<!--meta
+{ "title": "Fixture", "eyebrow": "Test", "lede": "Steps.", "time": "1 min" }
+-->
+<p>Intro.</p>
+<ol class="steps"><li><h3>Fork it</h3><p>a</p></li><li><h3>Clone it</h3><p>b</p></li><li><h3>Edit it</h3><p>c</p></li><li><h3>Push it</h3><p>d</p></li></ol>
+<h2>If it goes wrong</h2><p>e</p>
+<pre class="say">Fork fritzhand/history-of-tampa into my account.</pre>
+<pre class="say" data-label="Push">Commit and push to main.</pre>
+`);
+    const r = build(dir);
+    assert.equal(r.status, 0, r.stderr);
+    const html = read(dir, `docs/${PAGE}.html`);
+    assert.match(html, /<aside class="toc"/);
+    assert.match(html, /<details class="toc-mobile">/);
+    assert.match(html, /<li class="toc-sub"><a href="#fork-it">1\. Fork it<\/a><\/li>/);
+    assert.match(html, /<li><a href="#if-it-goes-wrong">If it goes wrong<\/a><\/li>/);
+    /* each Copy button has its own accessible name */
+    assert.ok(html.includes('aria-label="Copy prompt: Fork fritzhand/history-of-tampa into my account."'));
+    assert.ok(html.includes('aria-label="Copy prompt: Push"'));
+  } finally { cleanup(dir); }
+});
+
 const BROKEN = [
   ["a broken internal link", appendTo(PAGE, `<p><a href="does-not-exist.html">x</a></p>`), "does-not-exist.html"],
   ["a broken anchor", appendTo(PAGE, `<p><a href="index.html#no-such-anchor">x</a></p>`), "no-such-anchor"],
@@ -176,6 +230,12 @@ const BROKEN = [
   ["invalid meta JSON", (dir) => write(dir, `content/${PAGE}.html`, read(dir, `content/${PAGE}.html`).replace(/^\s*<!--meta\s*\{/, "<!--meta\n{,")), "invalid meta JSON"],
   ["a content file that is not in nav.json", (dir) => write(dir, "content/orphan-page.html", `<!--meta {"title":"a","eyebrow":"b","lede":"c","time":"1 min"} --><p>x</p>`), "orphan-page.html"],
   ["a nav slug with no content file", (dir) => fs.rmSync(path.join(dir, `content/${PAGE}.html`)), `content/${PAGE}.html does not exist`],
+  ["white diagram text with no filled shape", appendTo(PAGE, `<figure class="diagram"><svg class="dg" viewBox="0 0 10 10" role="img" aria-labelledby="wt wd"><title id="wt">t</title><desc id="wd">d</desc><rect class="dg-box" width="5" height="5"/><text class="dg-text dg-text-on" x="1" y="4">x</text></svg><figcaption>c</figcaption></figure>`), "dg-text-on is white"],
+  ["HTML in a meta field", editMeta(PAGE, (m) => { m.lede = "Run <code>git</code> first."; }), "is plain text"],
+  ["an entity in a meta field", editMeta(PAGE, (m) => { m.title = "Fork &amp; clone"; }), "is plain text"],
+  ["an invalid data-set-where", appendTo(PAGE, `<p><a href="index.html" data-set-where="phone">x</a></p>`), `data-set-where="phone"`],
+  ["an empty Say this box", appendTo(PAGE, `<pre class="say">  </pre>`), `empty <pre class="say">`],
+  ["an unknown nav key", (dir) => { const n = JSON.parse(read(dir, "content/nav.json")); n.groups[0].items[0].track = "app"; write(dir, "content/nav.json", JSON.stringify(n)); }, `unknown key "track"`],
   ["an unknown nav icon", (dir) => { const n = JSON.parse(read(dir, "content/nav.json")); n.groups[0].items[0].icon = "no-such-icon"; write(dir, "content/nav.json", JSON.stringify(n)); }, "unknown icon"],
 ];
 

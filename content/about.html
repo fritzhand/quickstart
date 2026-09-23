@@ -8,29 +8,29 @@
 }
 -->
 <h2>Who made it</h2>
-<p>Jeremy Fritzhand, <a href="https://github.com/fritzhand">fritzhand on GitHub</a>. He also made the starter sites the guide points to.</p>
+<p>Jeremy Fritzhand, <a href="https://github.com/fritzhand">fritzhand on GitHub</a>. The starter sites the guide points to are his repos too.</p>
 
 <h2>Why it exists</h2>
 <p>It's the shortest path from no GitHub account to a published website, made by telling an AI agent what you want. It teaches only what you need for that one goal. There are no servers, databases or frameworks here. You type or dictate, and the agent does the work.</p>
 
 <h2>How it's built</h2>
-<p>This site is itself a repo, <a href="https://github.com/fritzhand/quickstart">fritzhand/quickstart</a>, published with GitHub Pages from <code>main</code> and the <code>/docs</code> folder. It was made with Claude Code, by the same steps the guide teaches.</p>
+<p>This site is itself a repo, <a href="https://github.com/fritzhand/quickstart">fritzhand/quickstart</a>, published with GitHub Pages from <code>main</code> and the <code>/docs</code> folder. It was made with Claude Code.</p>
 <ul>
   <li>Each page is one HTML file in the <code>content</code> folder.</li>
   <li><code>content/nav.json</code> sets the sidebar and the page order.</li>
   <li><code>node build.mjs</code> turns them into the finished site in <code>docs</code>. It needs Node.js and nothing else.</li>
 </ul>
-<p>Want a guide like this one about your own topic? Fork it:</p>
+<p>Want a multi-page guide like this one about your own subject, such as a handbook, directory or resource guide? Fork it:</p>
 <pre class="say">Fork fritzhand/quickstart into my account and name the fork <var data-k="repo">your-repo</var>.</pre>
-<p>Then point it at your own address:</p>
-<pre class="say">Work only in <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>. Treat the other repos as read-only reference. In site.config.json, set siteName to "<var>My Guide</var>", siteBase to https://<var data-k="user">your-username</var>.github.io/<var data-k="repo">your-repo</var>/, pathPrefix to /<var data-k="repo">your-repo</var>/ and repo to https://github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>, and set the author to my name, <var data-k="name">Your Name</var>, with https://github.com/<var data-k="user">your-username</var>. Run node build.mjs until it finishes without errors, then commit and push to main.</pre>
-<p>Its <code>CLAUDE.md</code> explains the page format to the agent, and after each change the agent rebuilds the <code>docs</code> folder. Publish from <code>main</code> and <code>/docs</code>, as in <a href="github-pages.html">Turn on GitHub Pages</a>.</p>
+<p>If the agent can't fork it, open <a href="https://github.com/fritzhand/quickstart">fritzhand/quickstart</a> and click <span class="ui">Fork</span>. Then start a new session with your fork selected (on the VS Code path, clone it and open its folder first) and point it at your own address:</p>
+<pre class="say">Work only in <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>. Treat the other repos as read-only reference. In site.config.json, set siteName to "<var>My Guide</var>", siteTagline to "<var>one line about your guide</var>", siteBase to https://<var data-k="user">your-username</var>.github.io/<var data-k="repo">your-repo</var>/, pathPrefix to /<var data-k="repo">your-repo</var>/ and repo to https://github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>, and set the author to my name, <var data-k="name">Your Name</var>, with https://github.com/<var data-k="user">your-username</var>. Run node build.mjs until it finishes without errors, then commit and push to main.</pre>
+<p>Its <code>CLAUDE.md</code> explains the page format to the agent, and after each change the agent rebuilds the <code>docs</code> folder. Then switch Pages on yourself, from <code>main</code> and <code>/docs</code>, as in <a href="github-pages.html">Turn on GitHub Pages</a>.</p>
 
 <h2>The examples</h2>
 <div class="cards">
-  <a class="card" href="https://fritzhand.github.io/history-of-tampa/"><span class="card-kicker">Starter · easiest</span><strong>history-of-tampa</strong><span>A scrolling history of downtown Tampa. Plain files, no build step.</span></a>
+  <a class="card" href="https://fritzhand.github.io/history-of-tampa/"><span class="card-kicker">Starter · easiest</span><strong>history-of-tampa</strong><span>One long scrolling story of downtown Tampa. Use it to learn any history subject. Plain files, no build step.</span></a>
   <a class="card" href="https://fritzhand.github.io/history-of-indigo/"><span class="card-kicker">Made from history-of-tampa</span><strong>history-of-indigo</strong><span>The same engine, pointed at a topic instead of a place.</span></a>
-  <a class="card" href="https://fritzhand.github.io/startup-india-guide/"><span class="card-kicker">Starter · harder</span><strong>startup-india-guide</strong><span>A sidebar guide built from data files. This guide is built the same way.</span></a>
+  <a class="card" href="https://fritzhand.github.io/startup-india-guide/"><span class="card-kicker">Starter · harder</span><strong>startup-india-guide</strong><span>A multi-page sidebar site for any subject, such as a directory, handbook or resource guide. A small Node script builds it into a docs folder, and this guide is built the same way.</span></a>
   <a class="card" href="https://map.embarccollective.com/"><span class="card-kicker">Showcase only</span><strong>Florida Startup Ecosystem Map</strong><span>Made from startup-india-guide. Its repo is private.</span></a>
 </div>
 

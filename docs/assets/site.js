@@ -5,7 +5,8 @@
    Everything saved lives in this browser's localStorage only:
      qs-theme   "light" | "dark"
      qs-details { user, repo, name, email }
-     qs-tabs    { os, agent, where }
+     qs-tabs    { os, agent, where, whereAuto }  (whereAuto: the path was
+                taken from the pages read, not picked; see the boot script)
      qs-done    [slug, …]
      qs-checks  { "slug:index": 1 }
    Every storage call is wrapped: private windows and blocked storage
@@ -36,12 +37,12 @@
   /* ---------------- toast ---------------- */
   const toastEl = $("#qs-toast");
   let toastTimer;
-  function toast(msg) {
+  function toast(msg, ms = 2000) {
     if (!toastEl) return;
     toastEl.textContent = msg;
     toastEl.classList.add("show");
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toastEl.classList.remove("show"), 2000);
+    toastTimer = setTimeout(() => toastEl.classList.remove("show"), ms);
   }
 
   /* ---------------- clipboard ---------------- */
@@ -125,7 +126,7 @@
     window.scrollTo({ top: y, left: 0, behavior: "instant" });
     if (navBtn) { navBtn.setAttribute("aria-expanded", "false"); navBtn.setAttribute("aria-label", "Open navigation"); }
     setInert(false);
-    if (returnFocus && navBtn) navBtn.focus();
+    if (returnFocus && navBtn) navBtn.focus({ preventScroll: true }); /* focusing the sticky button must not move the page */
   }
   if (navBtn) navBtn.addEventListener("click", () => (isNavOpen() ? closeNav() : openNav()));
   if (scrim) scrim.addEventListener("click", () => closeNav());
@@ -134,9 +135,8 @@
     if (e.key !== "Tab" || !isNavOpen() || !sidebar || !navBtn) return;
     const f = [navBtn, ...$$(FOCUSABLE, sidebar)];
     const i = f.indexOf(document.activeElement);
-    if (i < 0) { e.preventDefault(); f[e.shiftKey ? f.length - 1 : 0].focus(); }
-    else if (e.shiftKey && i === 0) { e.preventDefault(); f[f.length - 1].focus(); }
-    else if (!e.shiftKey && i === f.length - 1) { e.preventDefault(); f[0].focus(); }
+    e.preventDefault(); /* the toggle and the links are not neighbors in the DOM, so move focus ourselves every time */
+    f[i < 0 ? (e.shiftKey ? f.length - 1 : 0) : (i + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
   });
   const onDesktop = () => { if (desktop.matches) closeNav(false); };
   desktop.addEventListener ? desktop.addEventListener("change", onDesktop) : desktop.addListener && desktop.addListener(onDesktop);
@@ -315,18 +315,29 @@
   });
 
   /* ---------------- copy buttons ---------------- */
+  /* Placeholders the reader hasn't filled in are copied in [brackets], so an agent
+     asks about "[your-repo]" instead of creating a repo literally named your-repo. */
+  function promptText(pre) {
+    const clone = pre.cloneNode(true);
+    let open = 0;
+    $$("var", clone).forEach((v) => { if (!v.classList.contains("is-filled")) { v.textContent = `[${v.textContent.trim()}]`; open++; } });
+    return { text: clone.textContent.replace(/\s+$/, ""), open };
+  }
   $$("[data-copy]").forEach((btn) => {
     btn.addEventListener("click", async () => {
       const box = btn.closest(".say-box, .cmd-box");
       const pre = box && $("pre", box);
       if (!pre) return;
-      const text = pre.textContent.replace(/\s+$/, "");
+      const isSay = box.classList.contains("say-box");
+      const open = $$("var", pre).filter((v) => !v.classList.contains("is-filled")).length;
+      const text = isSay ? promptText(pre).text : pre.textContent.replace(/\s+$/, "");
       const ok = await copyText(text);
       const label = $(".copy-label", btn);
       if (ok) {
         btn.classList.add("is-copied");
         if (label) label.textContent = "Copied";
-        toast(box.classList.contains("say-box") ? "Copied. Paste it into your agent." : "Copied");
+        if (isSay) toast(open ? "Copied. Replace the [bracketed] parts before you send it." : "Copied. Paste it into your agent.", open ? 4000 : 2000);
+        else toast(open ? "Copied. Replace the highlighted parts before you run it." : "Copied", open ? 4000 : 2000);
         setTimeout(() => { btn.classList.remove("is-copied"); if (label) label.textContent = "Copy"; }, 1800);
       } else {
         selectText(pre);
@@ -411,17 +422,28 @@
     panels.forEach((p, i) => { p.hidden = i !== idx; });
     if (focus && btns[idx]) btns[idx].focus();
   }
+  /* An explicit choice (a tab click, or a data-set-where link) sticks; until then
+     the "where" tab follows the pages the reader opens (boot script, whereAuto). */
+  function setPref(group, value) {
+    tabPrefs[group] = value;
+    if (group === "where") delete tabPrefs.whereAuto;
+    store.set("qs-tabs", tabPrefs);
+    html.setAttribute(`data-tab-${group}`, value);
+    if (group === "where") { renderProgress(); renderPagenav(); }
+  }
   function chooseTab(set, value, focus) {
     const group = set.dataset.group;
     if (!group) { selectInSet(set, value, focus); return; }
     const anchor = set.getBoundingClientRect().top;
-    tabPrefs[group] = value;
-    store.set("qs-tabs", tabPrefs);
-    html.setAttribute(`data-tab-${group}`, value);
+    setPref(group, value);
     tabSets.filter((s) => s.dataset.group === group).forEach((s) => selectInSet(s, value, focus && s === set));
     const drift = set.getBoundingClientRect().top - anchor;
     if (Math.abs(drift) > 1) window.scrollBy(0, drift); /* keep the clicked tabs under the pointer */
   }
+  $$("a[data-set-where]").forEach((a) => a.addEventListener("click", () => {
+    const v = a.dataset.setWhere;
+    if (v === "app" || v === "vscode") setPref("where", v);
+  }));
   tabSets.forEach((set, si) => {
     const list = $(":scope > .tab-list", set);
     const btns = $$(":scope > .tab-list > .tab-btn", set), panels = $$(":scope > .tab-panel", set);
@@ -448,14 +470,26 @@
   });
 
   /* ---------------- progress ---------------- */
-  const pages = sidebar ? $$(".nav-link[data-slug]", sidebar).map((a) => ({ slug: a.dataset.slug, href: a.getAttribute("href"), title: $(".nav-t", a).textContent, a })) : [];
+  /* The count covers the reader's path: pages for both paths plus the chosen
+     path's own pages. Reference pages (data-ref) can be ticked but don't count. */
+  const pages = sidebar ? $$(".nav-link[data-slug]", sidebar).map((a) => ({
+    slug: a.dataset.slug, href: a.getAttribute("href"), title: $(".nav-t", a).textContent, a,
+    track: a.dataset.track || "all", ref: a.dataset.ref === "1",
+  })) : [];
   const known = new Set(pages.map((p) => p.slug));
   let done = new Set((Array.isArray(store.get("qs-done", [])) ? store.get("qs-done", []) : []).filter((s) => known.has(s)));
+  const path = () => (html.getAttribute("data-tab-where") === "vscode" ? "vscode" : "app");
+  const onPath = (p) => p.track === "all" || p.track === path();
+  const counted = () => pages.filter((p) => !p.ref && onPath(p));
   function renderProgress() {
-    const n = pages.length, d = pages.filter((p) => done.has(p.slug)).length;
+    const list = counted();
+    const n = list.length, d = list.filter((p) => done.has(p.slug)).length;
+    $$("[data-p-total]").forEach((el) => { el.textContent = String(n); });
+    $$("[data-p-path]").forEach((el) => { el.textContent = path() === "vscode" ? "the VS Code path" : "the app path"; });
     pages.forEach((p) => p.a.classList.toggle("is-done", done.has(p.slug)));
     $$("[data-p-done]").forEach((el) => { el.textContent = String(d); });
     $$('.bar[role="progressbar"]').forEach((bar) => {
+      bar.setAttribute("aria-valuemax", String(n));
       bar.setAttribute("aria-valuenow", String(d));
       bar.setAttribute("aria-valuetext", `${d} of ${n} pages done`);
       const fill = $("span", bar);
@@ -468,13 +502,25 @@
       const l = $(".done-label", t);
       if (l) l.textContent = on ? "Done! Marked as complete" : "Mark this page as done";
     }
-    const next = pages.find((p) => !done.has(p.slug) && p.slug !== SLUG) || null;
+    const next = list.find((p) => !done.has(p.slug) && p.slug !== SLUG) || null;
     $$("[data-p-next-wrap]").forEach((w) => {
       const a = $("[data-p-next]", w), l = $("[data-p-next-label]", w);
       w.hidden = !next;
       if (next && a) { if (l) l.textContent = d ? "Continue:" : "Start with:"; a.textContent = next.title; a.setAttribute("href", next.href); }
     });
-    $$("[data-p-finished]").forEach((el) => { el.hidden = d !== n; });
+    $$("[data-p-finished]").forEach((el) => { el.hidden = !(n && d === n); });
+  }
+  /* Previous / Next on a page shared by both paths skip the other path's pages.
+     (A page on one path already links to its own path's neighbors.) */
+  function renderPagenav() {
+    const me = pages.findIndex((p) => p.slug === SLUG);
+    if (me < 0 || pages[me].track !== "all") return;
+    const fits = (p) => onPath(p);
+    const set = (a, p) => { if (a && p) { a.setAttribute("href", p.href); const t = $(".t", a); if (t) t.textContent = p.title; } };
+    let j = me - 1; while (j >= 0 && !fits(pages[j])) j--;
+    let k = me + 1; while (k < pages.length && !fits(pages[k])) k++;
+    set($(".pagenav a.prev"), pages[j]);
+    set($(".pagenav a.next"), pages[k]);
   }
   const doneBtn = $("[data-done-toggle]");
   if (doneBtn && known.has(SLUG)) {
@@ -482,7 +528,9 @@
       if (done.has(SLUG)) done.delete(SLUG); else done.add(SLUG);
       store.set("qs-done", [...done]);
       renderProgress();
-      toast(done.has(SLUG) ? `Marked as done. ${done.size} of ${pages.length} pages.` : "Marked as not done");
+      const list = counted();
+      toast(!done.has(SLUG) ? "Marked as not done"
+        : list.some((p) => p.slug === SLUG) ? `Marked as done. ${list.filter((p) => done.has(p.slug)).length} of ${list.length} pages.` : "Marked as done");
     });
   } else if (doneBtn) {
     doneBtn.closest(".done-row")?.remove();
@@ -495,6 +543,7 @@
     toast("Progress reset");
   }));
   renderProgress();
+  renderPagenav();
 
   /* ---------------- checklists ---------------- */
   const checks = store.get("qs-checks", {}) || {};

@@ -28,7 +28,7 @@
 </details>
 <details class="fix">
   <summary>Sign-in fails, or says my plan doesn't include it</summary>
-  <p>Claude Code needs Claude Pro, Max, Team or Enterprise. The free Claude plan doesn't include it. Codex needs ChatGPT Plus or higher. Check your plan, then sign in again.</p>
+  <p>Claude Code needs Claude Pro, Max, Team or Enterprise. The free Claude plan doesn't include it. Codex in VS Code needs ChatGPT Plus or higher. Check your plan, then sign in again.</p>
 </details>
 
 <h2>GitHub and pushing</h2>
@@ -38,19 +38,24 @@
   <p>Someone, maybe you on another device, pushed first. A force-push would overwrite their changes on GitHub.</p>
 </details>
 <details class="fix">
+  <summary>It says there's a merge conflict</summary>
+  <p>Two changes touched the same lines. Let the agent explain it before anything is overwritten:</p>
+  <pre class="say">Explain the conflict in plain English and suggest which version to keep. Don't change anything until I choose.</pre>
+</details>
+<details class="fix">
   <summary>Git asks for my password or a token when it pushes</summary>
   <pre class="say">Git is asking me for a password to push. Check whether the GitHub CLI is logged in and set up to sign Git in to GitHub, and tell me exactly what I need to do.</pre>
   <p>Don't type your GitHub password there. GitHub no longer accepts passwords for Git, and you don't need a token. Run <code>gh auth login</code> yourself and say yes when it offers to use your GitHub login for Git, as shown in <a href="install-tools.html">Git, Node &amp; GitHub CLI</a>. On Windows, Git for Windows can also sign you in through your browser.</p>
 </details>
 <details class="fix">
   <summary>My commits say "Claude" instead of my name</summary>
-  <pre class="say">For this repo, set git user.name to "<var data-k="name">Your Name</var>" and user.email to "<var data-k="email">your-noreply-email</var>", and commit as me from now on.</pre>
-  <p>Then put the rule in <code>CLAUDE.md</code> so the next session follows it too. Older commits keep their author. See <a href="commit-as-you.html">Commit as yourself</a>.</p>
+  <pre class="say">In <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>, set git user.name to "<var data-k="name">Your Name</var>" and user.email to "<var data-k="email">your-noreply-email</var>", and commit as me from now on. Add this rule to a CLAUDE.md file at the root of that repo (create it if needed) so every session follows it: Commit as <var data-k="name">Your Name</var> &lt;<var data-k="email">your-noreply-email</var>&gt;. Before your first commit in each session, set git user.name and user.email to these in this repo. Then commit and push to main.</pre>
+  <p>Older commits keep their author. See <a href="commit-as-you.html">Commit as yourself</a>.</p>
 </details>
 <details class="fix">
   <summary>My commits don't show on my GitHub profile</summary>
   <pre class="say">Show me the author name, email and branch of my last 5 commits.</pre>
-  <p>A commit counts only if its email is your noreply address or another email on your account, the repo isn't a fork, and the commit is on <code>main</code>. Then allow up to 24 hours. Commits in a fork never count, so make a fresh copy instead: <a href="clone-fork.html">Clone, fork or copy</a>.</p>
+  <p>A commit counts only if its email is your noreply address or another email on your account, the repo isn't a fork, and the commit is on <code>main</code>. Then allow up to 24 hours. Commits in a fork don't count unless they're merged into the original repo, so make a fresh copy instead: <a href="clone-fork.html">Clone, fork or copy</a>.</p>
 </details>
 <details class="fix">
   <summary>I committed a password, key or token</summary>
@@ -81,11 +86,16 @@
 <details class="fix">
   <summary>My repo isn't in the repository selector</summary>
   <p>Do this yourself on GitHub, because it's a permission on your account. A private repo appears only once the Claude GitHub App is installed on it, and a fork or new repo may need adding too. Click your profile picture, then <span class="ui">Settings</span> → <span class="ui">Applications</span> → <span class="ui">Installed GitHub Apps</span>. Click <span class="ui">Configure</span> next to Claude, select the repo and click <span class="ui">Save</span>. Then start a new session and pick the repo.</p>
+  <p>Claude isn't listed there? Install it: open <a href="https://github.com/apps/claude/installations/new">https://github.com/apps/claude/installations/new</a>, choose your account, pick <span class="ui">All repositories</span> (or <span class="ui">Only select repositories</span> and your repo) and click <span class="ui">Install</span>.</p>
+</details>
+<details class="fix">
+  <summary>Claude says it can't create or fork a repo</summary>
+  <p>Do this yourself on GitHub, because a session can reach only the repos you picked. New repo: go to <a href="https://github.com/new">https://github.com/new</a>, type <var data-k="repo">your-repo</var>, choose <span class="ui">Public</span>, turn on the option to add a README and click <span class="ui">Create repository</span>. Fork: open the starter, click <span class="ui">Fork</span>, type <var data-k="repo">your-repo</var> as the name and click <span class="ui">Create fork</span>. Then start a new session and pick the new repo in the repository selector. See <a href="clone-fork.html">Clone, fork or copy</a>.</p>
 </details>
 <details class="fix">
   <summary>Claude says it can't push</summary>
   <pre class="say">Work only in <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>. Treat the other repos as read-only reference.</pre>
-  <p>Claude can't push to a repo that isn't yours, such as the starter. If it's already in your repo, install the Claude GitHub App on it (above) and ask again.</p>
+  <p>Claude can't push to a repo that isn't yours, such as the starter. If it's already in your repo, add the repo to the Claude GitHub App, or install the app (above), and ask again.</p>
 </details>
 <details class="fix">
   <summary>Claude can't push to main</summary>
@@ -96,13 +106,14 @@
   <summary>Claude can't open websites for research</summary>
   <p>The cloud machine may block most websites. Paste your research prompt into a regular Claude chat with web search on, then bring the answer back to your session:</p>
   <pre class="say">Put these research results in research/notes.md exactly as written, then commit and push to main: <var>paste the results</var></pre>
+  <p>Or let your sessions reach any website: at <a href="https://claude.ai/code">https://claude.ai/code</a>, click the cloud icon with your environment's name, in the row above the message box. Point to your environment in the list and click the settings icon that appears beside it. Set <span class="ui">Network access</span> to <span class="ui">Full</span>, save, and start a new session.</p>
 </details>
 
 <h2>GitHub Pages</h2>
 <figure class="diagram">
-  <svg class="dg" viewBox="0 0 480 450" role="img" aria-labelledby="troubleshooting-change-title troubleshooting-change-desc">
+  <svg class="dg" viewBox="0 0 340 450" role="img" aria-labelledby="troubleshooting-change-title troubleshooting-change-desc">
     <title id="troubleshooting-change-title">Where did my change go?</title>
-    <desc id="troubleshooting-change-desc">Four checks, top to bottom, each with a fix to the right when the answer is no. First: is the change committed, saved in the history? If not, ask the agent to commit and push to main. Second: is it pushed, so the commit is on GitHub? If not, ask it to push to main. Third: is it on main, not a claude branch? If not, get it onto main by merging or pushing to main. Fourth: has Pages finished, with a green check in the Actions tab? If not, wait up to 10 minutes, then reload. When all four are yes, the change is live on your site. If it still looks old, open it in a private window.</desc>
+    <desc id="troubleshooting-change-desc">Four checks, top to bottom, each with a fix to the right when the answer is no. First: is the change committed, saved in the history? If not, ask the agent to commit and push to main. Second: is it pushed, sent up to GitHub? If not, ask it to push to main on GitHub. Third: is it on main, not a claude branch? If not, get it onto main by merging it or pushing to main. Fourth: is Pages done, with a green check in the Actions tab? If not, wait up to 10 minutes, then reload. When all four are yes, the change is live on your site. If it still looks old, open it in a private window.</desc>
     <defs>
       <marker id="troubleshooting-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
         <path class="dg-arrowhead" d="M0 0L10 5L0 10z"/>
@@ -112,53 +123,53 @@
       </marker>
     </defs>
 
-    <rect class="dg-box" x="16" y="8" width="204" height="60" rx="10"/>
-    <text class="dg-text-strong" x="118" y="34" text-anchor="middle">1. Committed?</text>
-    <text class="dg-text-sm" x="118" y="55" text-anchor="middle">saved in the history</text>
-    <line class="dg-line-accent" x1="220" y1="38" x2="258" y2="38" marker-end="url(#troubleshooting-arrow-accent)"/>
-    <text class="dg-text-sm" x="239" y="30" text-anchor="middle">no</text>
-    <rect class="dg-box-accent" x="260" y="8" width="204" height="60" rx="10"/>
-    <text class="dg-text-strong" x="362" y="34" text-anchor="middle">Ask it to commit</text>
-    <text class="dg-text-sm" x="362" y="55" text-anchor="middle">and push to main</text>
-    <line class="dg-line" x1="118" y1="68" x2="118" y2="98" marker-end="url(#troubleshooting-arrow)"/>
-    <text class="dg-text-sm" x="128" y="88">yes</text>
+    <rect class="dg-box" x="4" y="8" width="156" height="60" rx="10"/>
+    <text class="dg-text-strong" x="82" y="34" text-anchor="middle">1. Committed?</text>
+    <text class="dg-text-sm" x="82" y="55" text-anchor="middle">saved in the history</text>
+    <line class="dg-line-accent" x1="160" y1="38" x2="180" y2="38" marker-end="url(#troubleshooting-arrow-accent)"/>
+    <text class="dg-text-sm" x="170" y="30" text-anchor="middle">no</text>
+    <rect class="dg-box-accent" x="182" y="8" width="154" height="60" rx="10"/>
+    <text class="dg-text-strong" x="259" y="34" text-anchor="middle">Ask it to commit</text>
+    <text class="dg-text-sm" x="259" y="55" text-anchor="middle">and push to main</text>
+    <line class="dg-line" x1="82" y1="68" x2="82" y2="98" marker-end="url(#troubleshooting-arrow)"/>
+    <text class="dg-text-sm" x="92" y="88">yes</text>
 
-    <rect class="dg-box" x="16" y="100" width="204" height="60" rx="10"/>
-    <text class="dg-text-strong" x="118" y="126" text-anchor="middle">2. Pushed?</text>
-    <text class="dg-text-sm" x="118" y="147" text-anchor="middle">the commit is on GitHub</text>
-    <line class="dg-line-accent" x1="220" y1="130" x2="258" y2="130" marker-end="url(#troubleshooting-arrow-accent)"/>
-    <text class="dg-text-sm" x="239" y="122" text-anchor="middle">no</text>
-    <rect class="dg-box-accent" x="260" y="100" width="204" height="60" rx="10"/>
-    <text class="dg-text-strong" x="362" y="126" text-anchor="middle">Ask it to push</text>
-    <text class="dg-text-sm" x="362" y="147" text-anchor="middle">to main on GitHub</text>
-    <line class="dg-line" x1="118" y1="160" x2="118" y2="190" marker-end="url(#troubleshooting-arrow)"/>
-    <text class="dg-text-sm" x="128" y="180">yes</text>
+    <rect class="dg-box" x="4" y="100" width="156" height="60" rx="10"/>
+    <text class="dg-text-strong" x="82" y="126" text-anchor="middle">2. Pushed?</text>
+    <text class="dg-text-sm" x="82" y="147" text-anchor="middle">sent up to GitHub</text>
+    <line class="dg-line-accent" x1="160" y1="130" x2="180" y2="130" marker-end="url(#troubleshooting-arrow-accent)"/>
+    <text class="dg-text-sm" x="170" y="122" text-anchor="middle">no</text>
+    <rect class="dg-box-accent" x="182" y="100" width="154" height="60" rx="10"/>
+    <text class="dg-text-strong" x="259" y="126" text-anchor="middle">Ask it to push</text>
+    <text class="dg-text-sm" x="259" y="147" text-anchor="middle">to main on GitHub</text>
+    <line class="dg-line" x1="82" y1="160" x2="82" y2="190" marker-end="url(#troubleshooting-arrow)"/>
+    <text class="dg-text-sm" x="92" y="180">yes</text>
 
-    <rect class="dg-box" x="16" y="192" width="204" height="60" rx="10"/>
-    <text class="dg-text-strong" x="118" y="218" text-anchor="middle">3. On main?</text>
-    <text class="dg-text-sm" x="118" y="239" text-anchor="middle">not a claude/… branch</text>
-    <line class="dg-line-accent" x1="220" y1="222" x2="258" y2="222" marker-end="url(#troubleshooting-arrow-accent)"/>
-    <text class="dg-text-sm" x="239" y="214" text-anchor="middle">no</text>
-    <rect class="dg-box-accent" x="260" y="192" width="204" height="60" rx="10"/>
-    <text class="dg-text-strong" x="362" y="218" text-anchor="middle">Get it onto main</text>
-    <text class="dg-text-sm" x="362" y="239" text-anchor="middle">merge it, or push to main</text>
-    <line class="dg-line" x1="118" y1="252" x2="118" y2="282" marker-end="url(#troubleshooting-arrow)"/>
-    <text class="dg-text-sm" x="128" y="272">yes</text>
+    <rect class="dg-box" x="4" y="192" width="156" height="60" rx="10"/>
+    <text class="dg-text-strong" x="82" y="218" text-anchor="middle">3. On main?</text>
+    <text class="dg-text-sm" x="82" y="239" text-anchor="middle">not a claude/… branch</text>
+    <line class="dg-line-accent" x1="160" y1="222" x2="180" y2="222" marker-end="url(#troubleshooting-arrow-accent)"/>
+    <text class="dg-text-sm" x="170" y="214" text-anchor="middle">no</text>
+    <rect class="dg-box-accent" x="182" y="192" width="154" height="60" rx="10"/>
+    <text class="dg-text-strong" x="259" y="218" text-anchor="middle">Get it onto main</text>
+    <text class="dg-text-sm" x="259" y="239" text-anchor="middle">merge or push to main</text>
+    <line class="dg-line" x1="82" y1="252" x2="82" y2="282" marker-end="url(#troubleshooting-arrow)"/>
+    <text class="dg-text-sm" x="92" y="272">yes</text>
 
-    <rect class="dg-box" x="16" y="284" width="204" height="60" rx="10"/>
-    <text class="dg-text-strong" x="118" y="310" text-anchor="middle">4. Pages finished?</text>
-    <text class="dg-text-sm" x="118" y="331" text-anchor="middle">green check in Actions</text>
-    <line class="dg-line-accent" x1="220" y1="314" x2="258" y2="314" marker-end="url(#troubleshooting-arrow-accent)"/>
-    <text class="dg-text-sm" x="239" y="306" text-anchor="middle">no</text>
-    <rect class="dg-box-accent" x="260" y="284" width="204" height="60" rx="10"/>
-    <text class="dg-text-strong" x="362" y="310" text-anchor="middle">Wait, then reload</text>
-    <text class="dg-text-sm" x="362" y="331" text-anchor="middle">up to 10 minutes</text>
-    <line class="dg-line" x1="118" y1="344" x2="118" y2="374" marker-end="url(#troubleshooting-arrow)"/>
-    <text class="dg-text-sm" x="128" y="364">yes</text>
+    <rect class="dg-box" x="4" y="284" width="156" height="60" rx="10"/>
+    <text class="dg-text-strong" x="82" y="310" text-anchor="middle">4. Pages done?</text>
+    <text class="dg-text-sm" x="82" y="331" text-anchor="middle">green check in Actions</text>
+    <line class="dg-line-accent" x1="160" y1="314" x2="180" y2="314" marker-end="url(#troubleshooting-arrow-accent)"/>
+    <text class="dg-text-sm" x="170" y="306" text-anchor="middle">no</text>
+    <rect class="dg-box-accent" x="182" y="284" width="154" height="60" rx="10"/>
+    <text class="dg-text-strong" x="259" y="310" text-anchor="middle">Wait, then reload</text>
+    <text class="dg-text-sm" x="259" y="331" text-anchor="middle">up to 10 minutes</text>
+    <line class="dg-line" x1="82" y1="344" x2="82" y2="374" marker-end="url(#troubleshooting-arrow)"/>
+    <text class="dg-text-sm" x="92" y="364">yes</text>
 
-    <rect class="dg-box-primary" x="16" y="376" width="448" height="66" rx="12"/>
-    <text class="dg-text-strong dg-text-on" x="240" y="404" text-anchor="middle">Live on your site</text>
-    <text class="dg-text-sm dg-text-on" x="240" y="426" text-anchor="middle">Still old? Open it in a private window.</text>
+    <rect class="dg-box-primary" x="4" y="376" width="332" height="66" rx="12"/>
+    <text class="dg-text-strong dg-text-on" x="170" y="404" text-anchor="middle">Live on your site</text>
+    <text class="dg-text-sm dg-text-on" x="170" y="426" text-anchor="middle">Still old? Open it in a private window.</text>
   </svg>
   <figcaption>Work down the checks. The first "no" is where your change is stuck.</figcaption>
 </figure>
@@ -174,24 +185,25 @@
 </details>
 <details class="fix">
   <summary>I can't turn on Pages for my repo</summary>
+  <p>On a free GitHub account, Pages works only from public repos. Visibility is a repo setting, so change it yourself: open the repo's <span class="ui">Settings</span>, scroll to the <span class="ui">Danger Zone</span> section, click <span class="ui">Change visibility</span> and make it public. Then switch Pages on as in <a href="github-pages.html">Turn on GitHub Pages</a>.</p>
+  <p>On the VS Code path, the agent can make it public with the GitHub CLI:</p>
   <pre class="say">Make <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> public.</pre>
-  <p>On a free GitHub account, Pages works only from public repos.</p>
 </details>
 <details class="fix">
   <summary>My fork doesn't publish, or its workflows don't run</summary>
-  <p>Open the fork's <span class="ui">Actions</span> tab. If a banner there asks you to enable workflows, enable them yourself. GitHub doesn't run workflows in a fork until you do. Then:</p>
+  <p>Forked startup-india-guide? First delete its <code>.github/workflows</code> folder yourself on GitHub, as shown in <a href="make-your-version.html#minisite">Make your own version</a>. It runs a daily news bot you don't want. Then open the fork's <span class="ui">Actions</span> tab. If a banner there asks you to enable workflows, enable them yourself. GitHub doesn't run workflows in a fork until you do. Then:</p>
   <pre class="say">Update PROGRESS.md, then commit and push to main.</pre>
 </details>
 
 <h2>The site looks wrong</h2>
 <details class="fix">
   <summary>No styling, or broken images</summary>
-  <pre class="say">Some styles or images don't load on my live site. Make every link to CSS, JavaScript and image files relative, not starting with / and not pointing to another site's address. Check that each file name matches its link exactly, including capital letters. Then commit and push to main.</pre>
+  <pre class="say">Some styles or images don't load on my live site. Find links to this repo's own CSS, JavaScript and image files that start with / or point to the original owner's site, and make them relative. Leave links to other services alone, such as map, chart and font libraries and hot-linked photos, and keep the share-image (og:image) address a full https:// link. Check that each file name matches its link exactly, including capital letters. Then commit and push to main.</pre>
   <p>Web addresses are case-sensitive, so a link to <code>Photo.jpg</code> won't find <code>photo.jpg</code> online, even if it worked on your computer.</p>
 </details>
 <details class="fix">
   <summary>The site looks broken after a change</summary>
-  <pre class="say">The page now <var>describe what looks wrong</var>. Compare my repo with fritzhand/history-of-tampa, find what broke and fix it.</pre>
+  <pre class="say">The page now <var>describe what looks wrong</var>. Compare my repo with the starter I copied, <var>fritzhand/history-of-tampa</var>, find what broke and fix it.</pre>
   <p>Or go back one step: "Revert the last commit and push to main."</p>
 </details>
 

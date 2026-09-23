@@ -387,11 +387,11 @@ pre.say {
 }
 .say-foot { padding: 0 18px 13px; margin-top: -4px; }
 .say-fill {
-  display: inline-flex; align-items: center; gap: 6px;
+  display: inline-flex; align-items: flex-start; gap: 6px; text-align: left;
   font-size: 0.84rem; font-weight: 600; color: var(--say-ink);
   text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--say-border);
 }
-.say-fill svg { width: 15px; height: 15px; }
+.say-fill svg { width: 15px; height: 15px; flex: none; margin-top: 2px; }
 .say-fill:hover { text-decoration-color: currentColor; }
 .copy-btn {
   display: inline-flex; align-items: center; gap: 6px; flex: none;
@@ -422,6 +422,11 @@ pre.cmd {
   color: var(--cmd-text); background: none; tab-size: 2;
 }
 pre.cmd code { background: none; padding: 0; color: inherit; font-size: inherit; border-radius: 0; overflow-wrap: normal; }
+/* phones: wrap long commands instead of hiding their end off to the side (Copy still copies one line) */
+@media (max-width: 560px) {
+  pre.cmd { white-space: pre-wrap; overflow-wrap: anywhere; }
+  pre.cmd code { overflow-wrap: anywhere; }
+}
 /* plain <pre> (e.g. an error message the reader will see) wraps, so nothing hides off to the side */
 .prose pre:not(.say):not(.cmd) {
   font-family: var(--font-mono); font-size: 0.86rem; line-height: 1.6;
@@ -571,7 +576,9 @@ ul.checklist > li:has(.ck-input:checked) { background: var(--success-tint); bord
 .ck-input:checked + .ck-label { color: var(--text-muted); }
 
 /* ---------------- cards ---------------- */
-.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(236px, 100%), 1fr)); gap: 14px; }
+/* auto-fit: two cards share the row instead of leaving an empty third track; four go 2 × 2 */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(236px, 100%), 1fr)); gap: 14px; }
+.cards:has(> :nth-child(4):last-child) { grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); }
 .prose .cards { margin-top: 20px; }
 a.card {
   position: relative; display: flex; flex-direction: column; gap: 4px;
@@ -597,7 +604,12 @@ a.card:hover .card-go { color: var(--accent); transform: translateX(3px); }
 .prose tbody th { font-weight: 700; }
 .prose tbody tr:last-child > * { border-bottom: 0; }
 .prose caption { caption-side: top; text-align: left; padding: 10px 14px; font-weight: 700; color: var(--text-muted); }
-@media (max-width: 560px) { .table-wrap td { min-width: 10em; } } /* scroll sideways rather than squeeze text into slivers */
+/* phones: tighter cells and wrapping headers, so a 3-column table fits without a hidden last column */
+@media (max-width: 560px) {
+  .prose :is(th, td) { padding: 9px 10px; }
+  .prose thead th { white-space: normal; }
+  .prose td code { overflow-wrap: anywhere; }
+}
 
 /* ---------------- diagrams (inline SVG, themed by class) ---------------- */
 figure.diagram {
@@ -737,7 +749,18 @@ svg.dg { display: block; width: 100%; max-width: min(560px, var(--dg-w, 560px));
   .toc a { display: block; margin-left: -2px; padding: 5px 0 5px 12px; border-left: 2px solid transparent; color: var(--text-muted); line-height: 1.35; text-decoration: none; }
   .toc a:hover { color: var(--text); }
   .toc a.active { color: var(--accent-strong); border-left-color: var(--accent); font-weight: 600; }
+  .toc .toc-sub a { padding-left: 24px; font-size: 0.8rem; }
 }
+/* the same list, collapsed at the top of long pages, where the rail doesn't fit */
+.toc-mobile { margin: -8px 0 28px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); }
+.toc-mobile > summary { font-size: 0.93rem; color: var(--text-muted); }
+.toc-mobile[open] > summary { color: var(--text); }
+.toc-mobile > ul { list-style: none; padding: 0; border-left: 2px solid var(--border); font-size: 0.93rem; }
+.toc-mobile li + li { margin-top: 0; }
+.toc-mobile a { display: block; margin-left: -2px; padding: 6px 0 6px 12px; border-left: 2px solid transparent; color: var(--text-muted); line-height: 1.4; text-decoration: none; }
+.toc-mobile a:hover { color: var(--text); border-left-color: var(--accent); }
+.toc-mobile .toc-sub a { padding-left: 24px; }
+@media (min-width: 1280px) { .toc-mobile { display: none; } }
 
 /* ---------------- footer ---------------- */
 .footer { border-top: 1px solid var(--border); background: var(--sidebar-bg); }
@@ -815,7 +838,9 @@ html.modal-open { overflow: hidden; }
 .no-js :is(.copy-btn, .say-foot, .searchbtn, .pz-open, .theme-toggle, .nav-toggle, .sb-progress, .done-row, .tab-list, [data-personalize], [data-progress]) { display: none !important; }
 .no-js .tab-panel + .tab-panel { border-top: 1px solid var(--border); }
 @media (max-width: 1023px) {
-  .no-js .sidebar { position: static; width: auto; height: auto; transform: none; visibility: visible; box-shadow: none; border-right: 0; border-bottom: 1px solid var(--border); }
+  /* no drawer without JavaScript: the navigation follows the article instead of pushing it down */
+  .no-js .layout { display: flex; flex-direction: column; }
+  .no-js .layout > .sidebar { order: 2; position: static; width: auto; height: auto; transform: none; visibility: visible; box-shadow: none; border-right: 0; border-top: 1px solid var(--border); }
 }
 
 /* ---------------- motion ---------------- */
@@ -826,7 +851,7 @@ html.modal-open { overflow: hidden; }
 
 /* ---------------- print ---------------- */
 @media print {
-  .topbar, .sidebar, .toc, .scrim, .modal, .toast, .done-row, .jump-card, .pagenav, .copy-btn, .say-foot, .h-anchor, .skip-link, .tab-list, .footer { display: none !important; }
+  .topbar, .sidebar, .toc, .toc-mobile, .scrim, .modal, .toast, .done-row, .jump-card, .pagenav, .copy-btn, .say-foot, .h-anchor, .skip-link, .tab-list, .footer { display: none !important; }
   .layout { display: block; }
   .content { padding: 0; }
   .tabs > .tab-panel { display: block !important; }

@@ -58,7 +58,7 @@
   <dd>A save point for the whole project, with a short note that says what changed. You can go back to any commit. See <a href="save-and-push.html">Commit &amp; push</a>.</dd>
 
   <dt id="author">Author</dt>
-  <dd>The name and email recorded on each commit. It decides who gets the credit on GitHub. See <a href="commit-as-you.html">Commit as yourself</a>.</dd>
+  <dd>The name and email recorded on each commit. GitHub credits the commit to the account that owns the email, so use your noreply address. See <a href="commit-as-you.html">Commit as yourself</a>.</dd>
 
   <dt id="noreply-email">Noreply email</dt>
   <dd>A private address GitHub gives you, ending in <code>@users.noreply.github.com</code>. Use it as your commit email: it credits you without putting your real email in public. See <a href="github-account.html">Create your GitHub account</a>.</dd>
@@ -77,9 +77,6 @@
 
   <dt id="fork">Fork</dt>
   <dd>Your own copy of someone else's repo, on GitHub, still linked to the original. A fork of a public repo stays public, and commits in it don't count on your GitHub profile. See <a href="clone-fork.html">Clone, fork or copy</a>.</dd>
-
-  <dt id="template">Template</dt>
-  <dd>A repo set up so that its <span class="ui">Use this template</span> button makes you a fresh repo, with no link back. The starters in this guide aren't set up as templates, so you fork them or make a fresh copy. See <a href="clone-fork.html">Clone, fork or copy</a>.</dd>
 
   <dt id="branch">Branch</dt>
   <dd>A parallel line of work in the same repo. Changes on a branch don't touch the main line until they're merged. See <a href="main-branch.html">The main branch</a>.</dd>
@@ -115,7 +112,7 @@
   <dd>VS Code asks whether you trust the authors of the files in a folder. Say no, and it opens the folder in Restricted Mode, with AI agents and the terminal turned off. Trust only folders you made or cloned from someone you trust. See <a href="trusted-folder.html">Trusted folders</a>.</dd>
 
   <dt id="github-cli">GitHub CLI (gh)</dt>
-  <dd>A GitHub tool the agent runs to do GitHub chores for you, such as creating or forking a repo and turning on GitHub Pages. You sign it in once with <code>gh auth login</code>. See <a href="install-tools.html">Git, Node &amp; GitHub CLI</a>.</dd>
+  <dd>A GitHub tool the agent runs on the VS Code path to do GitHub chores for you, such as creating or forking a repo. It can also switch on GitHub Pages, as an optional shortcut. You sign it in once with <code>gh auth login</code>. See <a href="install-tools.html">Git, Node &amp; GitHub CLI</a>.</dd>
 
   <dt id="nodejs">Node.js</dt>
   <dd>A free program that runs JavaScript on your computer. Some starters need it for their build step. The agents themselves don't. See <a href="install-tools.html">Git, Node &amp; GitHub CLI</a>.</dd>
@@ -127,10 +124,13 @@
 <h2>Publishing</h2>
 <dl>
   <dt id="github-pages">GitHub Pages</dt>
-  <dd>GitHub's free website hosting. It publishes one branch and one folder of your repo at <code>https://<var data-k="user">your-username</var>.github.io/<var data-k="repo">your-repo</var>/</code>. See <a href="github-pages.html">Turn on GitHub Pages</a>.</dd>
+  <dd>GitHub's free website hosting. It publishes one branch and one folder of your repo at <code>https://<var data-k="user">your-username</var>.github.io/<var data-k="repo">your-repo</var>/</code>. You switch it on yourself, once, in your repo's <span class="ui">Settings</span> → <span class="ui">Pages</span>, because the agent can't change your repo's settings. See <a href="github-pages.html">Turn on GitHub Pages</a>.</dd>
 
   <dt id="index-html">index.html</dt>
   <dd>The page a site opens with. GitHub Pages needs it named in lowercase, in the folder it publishes from. See <a href="github-pages.html">Turn on GitHub Pages</a>.</dd>
+
+  <dt id="starter">Starter</dt>
+  <dd>A working site you copy and have the agent rewrite for your subject. history-of-tampa is one long scrolling story, a way to learn any history subject. startup-india-guide is a multi-page minisite with a sidebar, for any subject that needs several pages, such as a directory or handbook. See <a href="starters.html">Pick a starter</a>.</dd>
 
   <dt id="build-step">Build step</dt>
   <dd>A command that turns a site's source files into its finished pages, such as <code>node build.mjs</code>. history-of-tampa has none. startup-india-guide builds its pages into a <code>docs</code> folder. See <a href="starters.html">Pick a starter</a>.</dd>

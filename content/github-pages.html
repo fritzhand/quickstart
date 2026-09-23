@@ -10,13 +10,13 @@
 <p>Before you start, check two things:</p>
 <ul>
   <li><strong>Your repo is public.</strong> On a free GitHub account, Pages works only from public repos.</li>
-  <li><strong>Its name is lowercase.</strong> Web addresses are case-sensitive, so a name with capitals is easy to mistype and gets a 404.</li>
+  <li><strong>Its name is lowercase.</strong> The part of the address after <code>.github.io/</code> must match your repo's name exactly, capitals included, so an all-lowercase name is easiest. Has capitals? Rename it yourself on GitHub: click <span class="ui">Settings</span>, type the new name in <span class="ui">Repository name</span> and click <span class="ui">Rename</span>. Do it before you switch Pages on, because a site address doesn't follow a rename.</li>
 </ul>
 
 <figure class="diagram">
-  <svg class="dg" viewBox="0 0 480 504" role="img" aria-labelledby="github-pages-flow-title github-pages-flow-desc">
+  <svg class="dg" viewBox="0 0 340 612" role="img" aria-labelledby="github-pages-flow-title github-pages-flow-desc">
     <title id="github-pages-flow-title">How GitHub Pages turns your repo into a website</title>
-    <desc id="github-pages-flow-desc">At the top is your repo on GitHub, your-username/your-repo, with two settings: the branch, main, and the folder, either / (root) or /docs. An arrow labeled you switch Pages on once leads to GitHub Pages, which rebuilds the site after every push to main. An arrow labeled up to 10 minutes leads to your live site at https://your-username.github.io/your-repo/. Below, the address is split into three pieces: your-username is your GitHub username, .github.io is GitHub's Pages address, and /your-repo/ is your repo name in lowercase.</desc>
+    <desc id="github-pages-flow-desc">At the top is your repo on GitHub, your-username/your-repo, with two settings: the branch, main, and the folder, either / (root) or /docs. An arrow labeled you switch it on once leads to GitHub Pages, which rebuilds the site after every push to main. An arrow labeled up to 10 minutes leads to your live site at https://your-username.github.io/your-repo/. Below, the address is taken apart piece by piece: your-username is your GitHub username, .github.io is GitHub's Pages address, and /your-repo/ is your repo name, spelled exactly as on GitHub, capitals included.</desc>
     <defs>
       <marker id="github-pages-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
         <path class="dg-arrowhead" d="M0 0L10 5L0 10z"/>
@@ -26,74 +26,70 @@
       </marker>
     </defs>
 
-    <rect class="dg-box" x="16" y="8" width="448" height="128" rx="12"/>
-    <text class="dg-label" x="240" y="32" text-anchor="middle">YOUR REPO ON GITHUB</text>
-    <text class="dg-text-strong" x="240" y="56" text-anchor="middle">your-username/your-repo</text>
-    <rect class="dg-box-soft" x="32" y="72" width="200" height="50" rx="8"/>
-    <text class="dg-text-sm" x="132" y="92" text-anchor="middle">branch</text>
-    <text class="dg-text-strong" x="132" y="113" text-anchor="middle">main</text>
-    <rect class="dg-box-soft" x="248" y="72" width="200" height="50" rx="8"/>
-    <text class="dg-text-sm" x="348" y="92" text-anchor="middle">folder</text>
-    <text class="dg-text-strong" x="348" y="113" text-anchor="middle">/ (root) or /docs</text>
+    <rect class="dg-box" x="8" y="8" width="324" height="152" rx="12"/>
+    <text class="dg-label" x="170" y="32" text-anchor="middle">Your repo on GitHub</text>
+    <text class="dg-text-strong" x="170" y="56" text-anchor="middle">your-username/your-repo</text>
+    <rect class="dg-box-soft" x="24" y="72" width="292" height="36" rx="8"/>
+    <text class="dg-text-sm" x="40" y="95">branch</text>
+    <text class="dg-text-strong" x="112" y="95">main</text>
+    <rect class="dg-box-soft" x="24" y="116" width="292" height="36" rx="8"/>
+    <text class="dg-text-sm" x="40" y="139">folder</text>
+    <text class="dg-text-strong" x="112" y="139">/ (root) or /docs</text>
 
-    <line class="dg-line-accent" x1="240" y1="136" x2="240" y2="184" marker-end="url(#github-pages-arrow-accent)"/>
-    <text class="dg-text-sm" x="252" y="165">you switch Pages on once</text>
+    <line class="dg-line-accent" x1="170" y1="160" x2="170" y2="206" marker-end="url(#github-pages-arrow-accent)"/>
+    <text class="dg-text-sm" x="182" y="188">you switch it on once</text>
 
-    <rect class="dg-box-soft" x="90" y="186" width="300" height="64" rx="10"/>
-    <text class="dg-text-strong" x="240" y="212" text-anchor="middle">GitHub Pages</text>
-    <text class="dg-text-sm" x="240" y="236" text-anchor="middle">rebuilds after every push to main</text>
+    <rect class="dg-box-soft" x="36" y="208" width="268" height="64" rx="10"/>
+    <text class="dg-text-strong" x="170" y="234" text-anchor="middle">GitHub Pages</text>
+    <text class="dg-text-sm" x="170" y="258" text-anchor="middle">rebuilds after every push to main</text>
 
-    <line class="dg-line" x1="240" y1="250" x2="240" y2="296" marker-end="url(#github-pages-arrow)"/>
-    <text class="dg-text-sm" x="252" y="278">up to 10 minutes</text>
+    <line class="dg-line" x1="170" y1="272" x2="170" y2="318" marker-end="url(#github-pages-arrow)"/>
+    <text class="dg-text-sm" x="182" y="300">up to 10 minutes</text>
 
-    <rect class="dg-box-primary" x="16" y="298" width="448" height="72" rx="12"/>
-    <text class="dg-text-on" x="240" y="324" text-anchor="middle">YOUR LIVE SITE</text>
-    <text class="dg-text-strong dg-text-on" x="240" y="352" text-anchor="middle">https://your-username.github.io/your-repo/</text>
+    <rect class="dg-box-primary" x="8" y="320" width="324" height="96" rx="12"/>
+    <text class="dg-text-on" x="170" y="346" text-anchor="middle">Your live site</text>
+    <text class="dg-text-strong dg-text-on" x="170" y="372" text-anchor="middle">https://your-username</text>
+    <text class="dg-text-strong dg-text-on" x="170" y="396" text-anchor="middle">.github.io/your-repo/</text>
 
-    <text class="dg-label" x="240" y="404" text-anchor="middle">THE ADDRESS, PIECE BY PIECE</text>
-    <rect class="dg-box" x="16" y="416" width="140" height="40" rx="8"/>
-    <text class="dg-text-strong" x="86" y="441" text-anchor="middle">your-username</text>
-    <rect class="dg-box" x="170" y="416" width="140" height="40" rx="8"/>
-    <text class="dg-text-strong" x="240" y="441" text-anchor="middle">.github.io</text>
-    <rect class="dg-box" x="324" y="416" width="140" height="40" rx="8"/>
-    <text class="dg-text-strong" x="394" y="441" text-anchor="middle">/your-repo/</text>
-    <text class="dg-text-sm" x="86" y="476" text-anchor="middle">your GitHub</text>
-    <text class="dg-text-sm" x="86" y="494" text-anchor="middle">username</text>
-    <text class="dg-text-sm" x="240" y="476" text-anchor="middle">GitHub's</text>
-    <text class="dg-text-sm" x="240" y="494" text-anchor="middle">Pages address</text>
-    <text class="dg-text-sm" x="394" y="476" text-anchor="middle">your repo name,</text>
-    <text class="dg-text-sm" x="394" y="494" text-anchor="middle">in lowercase</text>
+    <text class="dg-label" x="170" y="450" text-anchor="middle">The address, piece by piece</text>
+    <rect class="dg-box" x="8" y="464" width="148" height="40" rx="8"/>
+    <text class="dg-text-strong" x="82" y="489" text-anchor="middle">your-username</text>
+    <text class="dg-text-sm" x="170" y="489">your GitHub username</text>
+    <rect class="dg-box" x="8" y="514" width="148" height="40" rx="8"/>
+    <text class="dg-text-strong" x="82" y="539" text-anchor="middle">.github.io</text>
+    <text class="dg-text-sm" x="170" y="539">GitHub's Pages address</text>
+    <rect class="dg-box" x="8" y="564" width="148" height="40" rx="8"/>
+    <text class="dg-text-strong" x="82" y="589" text-anchor="middle">/your-repo/</text>
+    <text class="dg-text-sm" x="170" y="580">your repo name, spelled</text>
+    <text class="dg-text-sm" x="170" y="598">exactly, capitals too</text>
   </svg>
   <figcaption>Pages publishes one branch and one folder of your repo. Your site's address is built from your username and your repo name.</figcaption>
 </figure>
 
 <h2>Switch it on</h2>
 <p>Pick the folder that holds your site's <code>index.html</code>: <code>/ (root)</code> for history-of-tampa, or <code>/docs</code> for startup-india-guide.</p>
-<div class="tabs" data-group="where">
-  <section data-tab="app" data-label="App path">
-    <aside class="callout manual" data-title="Do this yourself">
-      <p>This is a setting on GitHub's website, and the app can't switch it for you. It takes a minute in any browser, including your phone's.</p>
-      <ol>
-        <li>Open <code>https://github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>/settings/pages</code>. Or open your repo, click <span class="ui">Settings</span> (inside the <span class="ui">More</span> menu if you can't see it), then <span class="ui">Pages</span> in the left sidebar.</li>
-        <li>Under <span class="ui">Build and deployment</span>, set <span class="ui">Source</span> to <span class="ui">Deploy from a branch</span>.</li>
-        <li>Under <span class="ui">Branch</span>, choose <code>main</code>, then the folder: <code>/ (root)</code> or <code>/docs</code>.</li>
-        <li>Click <span class="ui">Save</span>.</li>
-      </ol>
-    </aside>
-  </section>
-  <section data-tab="vscode" data-label="VS Code path">
-    <p>The agent does it with the GitHub CLI you signed in to in <a href="install-tools.html">Git, Node &amp; GitHub CLI</a>.</p>
-    <pre class="say">Turn on GitHub Pages for <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> from the main branch, root folder (or /docs if the site lives in docs/), using the GitHub CLI, then tell me the URL.</pre>
-    <aside class="callout manual" data-title="If the agent can't">Switch to the <span class="ui">App path</span> tab above and follow its four steps. They work in any browser.</aside>
-  </section>
-</div>
+<aside class="callout manual" data-title="Do this yourself, on either path">
+  <p>This is a setting on your repo's page on github.com. The agent can't change your repo's settings, so you click it. It takes a minute in any web browser, including your phone's.</p>
+  <ol>
+    <li>Open <code>https://github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>/settings/pages</code>. Or open your repo, click <span class="ui">Settings</span> (inside the <span class="ui">More</span> menu if you can't see it), then <span class="ui">Pages</span> in the left sidebar.</li>
+    <li>Under <span class="ui">Build and deployment</span>, set <span class="ui">Source</span> to <span class="ui">Deploy from a branch</span>.</li>
+    <li>Under <span class="ui">Branch</span>, choose <code>main</code>, then the folder: <code>/ (root)</code> or <code>/docs</code>.</li>
+    <li>Click <span class="ui">Save</span>.</li>
+  </ol>
+  <p>On a phone, use your web browser, not the GitHub app. On an iPhone, if a GitHub link opens the GitHub app, long-press the link and tap <span class="ui">Open</span>.</p>
+</aside>
+<aside class="callout tip" data-title="Optional shortcut on the VS Code path">
+  <p>If you signed in to the GitHub CLI in <a href="install-tools.html">Git, Node &amp; GitHub CLI</a>, the agent can switch it on for you instead:</p>
+  <pre class="say">Turn on GitHub Pages for <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> from the main branch, root folder (or /docs if the site lives in docs/), using the GitHub CLI, then tell me the URL.</pre>
+  <p>If it can't, use the four steps above.</p>
+</aside>
 
 <h2>Wait for it</h2>
 <p>The first publish can take up to 10 minutes. To watch it, open your repo's <span class="ui">Actions</span> tab: a run called <span class="ui">pages build and deployment</span> appears, and a green check means it's done. <span class="ui">Settings</span> → <span class="ui">Pages</span> then shows "Your site is live at …" with a <span class="ui">Visit site</span> button.</p>
 
-<aside class="callout check" data-title="Check it worked">Open <code>https://<var data-k="user">your-username</var>.github.io/<var data-k="repo">your-repo</var>/</code>, typed in lowercase. You see your site, not a 404 page. Bookmark it.</aside>
+<aside class="callout check" data-title="Check it worked">Open <code>https://<var data-k="user">your-username</var>.github.io/<var data-k="repo">your-repo</var>/</code>, with the repo name spelled exactly as on GitHub. You see your site, not a 404 page. Bookmark it.</aside>
 
-<aside class="callout note" data-title="Forked repo, and nothing happens?">Open the fork's <span class="ui">Actions</span> tab. If a banner there asks you to enable workflows, enable them. Then have the agent push any small change, such as "Update PROGRESS.md, then commit and push to main."</aside>
+<aside class="callout note" data-title="Forked repo, and nothing happens?">Forked startup-india-guide? Delete its <code>.github/workflows</code> folder first, as shown in <a href="make-your-version.html#minisite">Make your own version</a>, so you don't switch on its daily news bot. Then open the fork's <span class="ui">Actions</span> tab. If a banner there asks you to enable workflows, enable them. Then have the agent push any small change, such as "Update PROGRESS.md, then commit and push to main."</aside>
 
 <h2>If it goes wrong</h2>
 <details class="fix">
@@ -102,7 +98,7 @@
     <li>Wait the full 10 minutes, then reload.</li>
     <li>In <span class="ui">Settings</span> → <span class="ui">Pages</span>, check the branch is <code>main</code> and the folder is the one that holds <code>index.html</code>.</li>
     <li>The start page must be named <code>index.html</code>, all lowercase.</li>
-    <li>Type the address in lowercase.</li>
+    <li>Type the part after <code>.github.io/</code> exactly as your repo's name is spelled, capitals included.</li>
   </ul>
   <p>Or let the agent look:</p>
   <pre class="say">My site at https://<var data-k="user">your-username</var>.github.io/<var data-k="repo">your-repo</var>/ shows a 404. Check that index.html, in lowercase, is in the folder GitHub Pages publishes from on main, tell me which branch and folder Pages should use, and fix anything in the repo.</pre>
@@ -110,7 +106,7 @@
 <details class="fix">
   <summary>The page loads, but with no styling or broken images</summary>
   <p>The page can't find its files, usually because a path starts with <code>/</code>, points to the original owner's site, or doesn't match a file name's capital letters.</p>
-  <pre class="say">Some styles or images don't load on my live site. Make every link to CSS, JavaScript and image files relative, not starting with / and not pointing to another site's address. Check that each file name matches its link exactly, including capital letters. Then commit and push to main.</pre>
+  <pre class="say">Some styles or images don't load on my live site. Find links to this repo's own CSS, JavaScript and image files that start with / or point to the original owner's site, and make them relative. Leave links to other services alone, such as map, chart and font libraries and hot-linked photos, and keep the share-image (og:image) address a full https:// link. Check that each file name matches its link exactly, including capital letters. Then commit and push to main.</pre>
 </details>
 <details class="fix">
   <summary>It still shows the old version</summary>
@@ -118,7 +114,7 @@
 </details>
 
 <details class="more">
-  <summary>What the agent runs for you</summary>
+  <summary>What the optional shortcut runs</summary>
   <pre><code># Turn on Pages from main, root folder (use /docs for a site in docs/)
 gh api -X POST repos/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>/pages -f "source[branch]=main" -f "source[path]=/"
 

@@ -1,23 +1,26 @@
 # Quickstart
 
 A short, step-by-step guide to publishing your first website by telling an AI agent what you want.
-You type or dictate; the agent (Claude Code or Codex) does the work.
+You type or dictate; the agent (Claude Code or Codex) does the work. You click things yourself only
+where the agent has no access, such as signing in or switching on GitHub Pages in your repo's settings.
 
 **Live guide:** https://fritzhand.github.io/quickstart/
 
 ## The five steps
 
 1. **GitHub.** Create a free GitHub account.
-2. **Set up your agent.** Either the app path (Claude Code in the Claude app: a browser, the Claude
-   mobile app or the desktop app, nothing to install) or the VS Code path (VS Code with the Claude
-   Code or Codex extension).
-3. **Just enough Git.** Repos, forks, commits, pushes and the `main` branch, all done by prompt.
-4. **Make it yours.** Fork or copy a starter, such as
-   [`fritzhand/history-of-tampa`](https://github.com/fritzhand/history-of-tampa) or
-   [`fritzhand/startup-india-guide`](https://github.com/fritzhand/startup-india-guide), and have the
-   agent rewrite it for your topic.
-5. **Publish.** Turn on GitHub Pages. Your site goes live at
-   `https://your-username.github.io/your-repo/`.
+2. **Set up your agent.** Either the app path (Claude Code at claude.ai/code in a browser, with
+   nothing to install, or in the Claude mobile or desktop app) or the VS Code path (VS Code with the
+   Claude Code or Codex extension).
+3. **Just enough Git.** Repos, forks, commits, pushes and the `main` branch, mostly done by prompt.
+4. **Make it yours.** Pick a starter and have the agent rewrite it:
+   [`fritzhand/history-of-tampa`](https://github.com/fritzhand/history-of-tampa), one long scrolling
+   story, to research and tell any history (a city, a material like indigo, an industry, a company, a
+   movement), or [`fritzhand/startup-india-guide`](https://github.com/fritzhand/startup-india-guide),
+   a multi-page minisite with a sidebar, for any subject (a directory, handbook, resource guide or
+   program catalog).
+5. **Publish.** Switch on GitHub Pages yourself, once, in the repo's **Settings → Pages**, because the
+   agent can't change repo settings. Your site goes live at `https://your-username.github.io/your-repo/`.
 
 ## How it's built
 
@@ -27,7 +30,7 @@ A static site with a zero-dependency build (Node 18 or later).
 content/nav.json      sidebar groups and page order (the single source of navigation)
 content/<slug>.html   one page each: a JSON meta comment, then an HTML body fragment
 site/                 the skin: tokens.css (all colors and fonts), site.css, site.js, favicon.svg
-site.config.json      siteName, siteBase, pathPrefix, repo, author
+site.config.json      siteName, siteTagline, siteBase, pathPrefix, repo, author
 build.mjs             content + site → docs/   (validates everything, fails loudly)
 docs/                 GENERATED: what GitHub Pages serves. Never edit it by hand.
 ```
