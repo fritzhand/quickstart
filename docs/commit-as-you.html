@@ -110,7 +110,7 @@ for(var k in g)d.setAttribute("data-tab-"+k,g[k].indexOf(s[k])>-1?s[k]:(f[k]||g[
 <p>In the Claude app, Claude's cloud machine commits as <code>Claude &lt;noreply@anthropic.com&gt;</code> unless you say otherwise. Those commits aren't credited to you and don't show on your GitHub profile. One sentence fixes it.</p>
 
 <figure class="diagram">
-  <svg class="dg" viewBox="0 0 480 368" role="img" aria-labelledby="commit-as-you-cards-title commit-as-you-cards-desc" style="--dg-w:600px">
+  <svg class="dg" viewBox="0 0 360 388" role="img" aria-labelledby="commit-as-you-cards-title commit-as-you-cards-desc" style="--dg-w:450px">
     <title id="commit-as-you-cards-title">The same commit, two different authors</title>
     <desc id="commit-as-you-cards-desc">Two commit cards, one above the other, both with the message Add St. Pete timeline. The first, the default in the Claude app, has the author Claude, noreply@anthropic.com, and is not credited to you or shown on your profile. An arrow labeled set your name and noreply email leads to the second card. Its author is Your Name, ID+your-username@users.noreply.github.com. It is credited to you, and your real email stays private.</desc>
     <defs>
@@ -119,23 +119,24 @@ for(var k in g)d.setAttribute("data-tab-"+k,g[k].indexOf(s[k])>-1?s[k]:(f[k]||g[
       </marker>
     </defs>
 
-    <rect class="dg-box" x="16" y="8" width="448" height="136" rx="12"/>
+    <rect class="dg-box" x="16" y="8" width="328" height="154" rx="12"/>
     <text class="dg-label" x="36" y="34">By default in the app</text>
     <text class="dg-text-strong" x="36" y="62">Add St. Pete timeline</text>
     <text class="dg-text" x="36" y="88">Author: Claude</text>
     <text class="dg-text-sm" x="36" y="108">noreply@anthropic.com</text>
-    <text class="dg-text-sm" x="36" y="130">Not credited to you · not on your profile</text>
+    <text class="dg-text-sm" x="36" y="130">Not credited to you</text>
+    <text class="dg-text-sm" x="36" y="148">Not on your profile</text>
 
-    <line class="dg-line-accent" x1="240" y1="144" x2="240" y2="194" marker-end="url(#commit-as-you-arrow-accent)"/>
-    <text class="dg-text-sm" x="252" y="174">set your name + noreply email</text>
+    <line class="dg-line-accent" x1="52" y1="162" x2="52" y2="212" marker-end="url(#commit-as-you-arrow-accent)"/>
+    <text class="dg-text-sm" x="66" y="192">set your name + noreply email</text>
 
-    <rect class="dg-box-accent" x="16" y="196" width="448" height="164" rx="12"/>
-    <text class="dg-label" x="36" y="222">After you set it</text>
-    <text class="dg-text-strong" x="36" y="250">Add St. Pete timeline</text>
-    <text class="dg-text" x="36" y="276">Author: Your Name</text>
-    <text class="dg-text-sm" x="36" y="296">ID+your-username@users.noreply.github.com</text>
-    <text class="dg-text-strong" x="36" y="324">Credited to you</text>
-    <text class="dg-text-sm" x="36" y="346">Your real email stays private</text>
+    <rect class="dg-box-accent" x="16" y="214" width="328" height="166" rx="12"/>
+    <text class="dg-label" x="36" y="240">After you set it</text>
+    <text class="dg-text-strong" x="36" y="268">Add St. Pete timeline</text>
+    <text class="dg-text" x="36" y="294">Author: Your Name</text>
+    <text class="dg-text-sm" x="36" y="314">ID+your-username@users.noreply.github.com</text>
+    <text class="dg-text-strong" x="36" y="342">Credited to you</text>
+    <text class="dg-text-sm" x="36" y="364">Your real email stays private</text>
   </svg>
   <figcaption>Same work, same message. Only the author changes, and with it, who gets the credit.</figcaption>
 </figure>
@@ -146,17 +147,8 @@ for(var k in g)d.setAttribute("data-tab-"+k,g[k].indexOf(s[k])>-1?s[k]:(f[k]||g[
 <h2 id="tell-the-agent">Tell the agent<a class="h-anchor" href="#tell-the-agent" aria-label="Link to this section: Tell the agent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h2>
 <div class="tabs" data-group="where"><div class="tab-list" aria-label="Where you run it"><button type="button" class="tab-btn" data-tab="app">App path</button><button type="button" class="tab-btn" data-tab="vscode">VS Code path</button></div>
   <section data-tab="app" data-label="App path" class="tab-panel"><p class="tab-title">App path</p>
-    <ol class="steps">
-      <li>
-        <h3 id="for-this-session">For this session<a class="h-anchor" href="#for-this-session" aria-label="Link to this section: For this session"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h3>
-        <div class="say-box"><div class="say-head"><span class="say-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/><path d="M8 9h8M8 13h5"/></svg></span><span class="say-label">Say this</span><button type="button" class="copy-btn" data-copy aria-label="Copy prompt"><span class="copy-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="copy-label">Copy</span></button></div><pre class="say">For this repo, set git user.name to "<var data-k="name">Your Name</var>" and user.email to "<var data-k="email">your-noreply-email</var>", and commit as me from now on.</pre><div class="say-foot" hidden><button type="button" class="say-fill" data-personalize-open><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg><span>Add your details to fill in the highlighted parts</span></button></div></div>
-      </li>
-      <li>
-        <h3 id="make-it-stick">Make it stick<a class="h-anchor" href="#make-it-stick" aria-label="Link to this section: Make it stick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h3>
-        <p>Each session starts on a fresh machine, so that setting is gone next time. Claude reads a <code>CLAUDE.md</code> file in your repo at the start of every session, so put the rule there:</p>
-        <div class="say-box"><div class="say-head"><span class="say-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/><path d="M8 9h8M8 13h5"/></svg></span><span class="say-label">Say this</span><button type="button" class="copy-btn" data-copy aria-label="Copy prompt"><span class="copy-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="copy-label">Copy</span></button></div><pre class="say">Add a CLAUDE.md file to this repo (or add to it if it exists) with this rule: Always commit as <var data-k="name">Your Name</var> &lt;<var data-k="email">your-noreply-email</var>&gt;. Then commit and push to main.</pre><div class="say-foot" hidden><button type="button" class="say-fill" data-personalize-open><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg><span>Add your details to fill in the highlighted parts</span></button></div></div>
-      </li>
-    </ol>
+    <div class="say-box"><div class="say-head"><span class="say-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/><path d="M8 9h8M8 13h5"/></svg></span><span class="say-label">Say this</span><button type="button" class="copy-btn" data-copy aria-label="Copy prompt"><span class="copy-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="copy-label">Copy</span></button></div><pre class="say">In <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>, set git user.name to "<var data-k="name">Your Name</var>" and user.email to "<var data-k="email">your-noreply-email</var>", and commit as me from now on. Add this rule to a CLAUDE.md file at the root of that repo (create it if needed) so every session follows it: Commit as <var data-k="name">Your Name</var> &lt;<var data-k="email">your-noreply-email</var>&gt;. Before your first commit in each session, set git user.name and user.email to these in this repo. Then commit and push to main.</pre><div class="say-foot" hidden><button type="button" class="say-fill" data-personalize-open><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg><span>Add your details to fill in the highlighted parts</span></button></div></div>
+    <p>Each session starts on a fresh machine, so the setting is gone next time. Claude reads <code>CLAUDE.md</code> at the start of every session, so the rule brings it back.</p>
   </section>
   <section data-tab="vscode" data-label="VS Code path" class="tab-panel"><p class="tab-title">VS Code path</p>
     <p>The agent commits with your computer's git identity. Set it once, and it applies to every repo on this computer:</p>
@@ -164,17 +156,7 @@ for(var k in g)d.setAttribute("data-tab-"+k,g[k].indexOf(s[k])>-1?s[k]:(f[k]||g[
     <p>The name is what your commits show, usually your full name. It doesn't have to match your GitHub username.</p>
   </section>
 </div>
-<p>In a hurry? Add this to any prompt that commits: "Commit as <var data-k="name">Your Name</var> &lt;<var data-k="email">your-noreply-email</var>&gt;."</p>
-<p>Claude may still add a <code>Co-Authored-By: Claude</code> line at the end of each commit message. That's a credit line. You're the author.</p>
-
-<aside class="callout tip" data-title="CLAUDE.md holds your other standing rules too" role="note"><p class="callout-head"><span class="callout-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5M9 18h6m-5 4h4"/></svg></span><span class="callout-title">CLAUDE.md holds your other standing rules too</span></p><div class="callout-body">
-<p>Anything you'd otherwise repeat every session belongs there. A short one looks like this:</p>
-<pre><code># Rules for this repo
-- Always commit as <var data-k="name">Your Name</var> &lt;<var data-k="email">your-noreply-email</var>&gt;.
-- Only use facts you can cite with a link. Mark anything you can't verify as TBD.</code></pre>
-</div></aside>
-
-<aside class="callout check" data-title="Check it worked" role="note"><p class="callout-head"><span class="callout-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span><span class="callout-title">Check it worked</span></p><div class="callout-body">Open <code>https://github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>/commits/main</code>. Your newest commit shows your name and profile picture, not Claude's. Commits on <code>main</code> can take up to 24 hours to appear on your profile's contribution graph. Commits in a fork don't count there; see <a href="clone-fork.html">Clone, fork or copy</a>.</div></aside>
+<aside class="callout check" data-title="Check it worked" role="note"><p class="callout-head"><span class="callout-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span><span class="callout-title">Check it worked</span></p><div class="callout-body">Open <code>https://github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>/commits/main</code>. Your newest commit shows your name and profile picture as the author. Claude's picture may appear beside yours as a co-author, because Claude adds a <code>Co-Authored-By</code> line to the commit message. That's expected. Commits on <code>main</code> can take up to 24 hours to appear on your profile's contribution graph. Commits in a fork don't count there; see <a href="clone-fork.html">Clone, fork or copy</a>.</div></aside>
 
 <h2 id="if-it-goes-wrong">If it goes wrong<a class="h-anchor" href="#if-it-goes-wrong" aria-label="Link to this section: If it goes wrong"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h2>
 <details class="fix">

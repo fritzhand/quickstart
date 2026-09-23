@@ -10,16 +10,14 @@
 <p>A branch is a parallel line of work in the same repo. You can make changes on a branch without touching the main line. <code>main</code> is the line GitHub Pages publishes from, so your site updates only when <code>main</code> changes.</p>
 
 <h2>Make sure it's called main</h2>
-<p>Repos you create on GitHub already use <code>main</code>. Git on your own computer may still call a brand-new repo's first branch <code>master</code>, so on the VS Code path say this when the agent starts a new repo:</p>
-<pre class="say">Start a new git repository here on a branch named main.</pre>
-<p>Have an older repo that uses <code>master</code>?</p>
-<pre class="say">Rename the master branch to main, push it, and make main the default branch on GitHub.</pre>
+<p>Repos you create on GitHub, and forks of the starters, already use <code>main</code>. On the VS Code path, <a href="install-tools.html">Git, Node &amp; GitHub CLI</a> set your computer to use <code>main</code> for new repos too. If you ever have the agent start a repo from scratch, name the folder and the branch:</p>
+<pre class="say">In the <var data-k="repo">your-repo</var> folder, start a new git repository on a branch named main.</pre>
 
 <h2>The app path: Claude's own branch</h2>
 <p>In the Claude app, Claude works on its own branch, named <code>claude/…</code>, and pushes that branch, not <code>main</code>. Your site doesn't change until the work is merged into <code>main</code>.</p>
 
 <figure class="diagram">
-  <svg class="dg" viewBox="0 0 480 392" role="img" aria-labelledby="main-branch-graph-title main-branch-graph-desc">
+  <svg class="dg" viewBox="0 0 360 392" role="img" aria-labelledby="main-branch-graph-title main-branch-graph-desc">
     <title id="main-branch-graph-title">A claude branch splits off main and merges back</title>
     <desc id="main-branch-graph-desc">A line labeled main runs from top to bottom on the left. Its first point is your site as it is now. A branch named claude/… splits off to the right and gets two commits: new timeline, then fix a date. While Claude works on the branch, the live site on main is unchanged. A curve labeled pull request, then merge, joins the branch back into main. At that point main updates, and so does your site.</desc>
     <defs>
@@ -28,29 +26,30 @@
       </marker>
     </defs>
 
-    <text class="dg-label" x="48" y="22" text-anchor="middle">main</text>
-    <line class="dg-line-accent" x1="48" y1="34" x2="48" y2="382" marker-end="url(#main-branch-arrow-accent)"/>
+    <text class="dg-label" x="24" y="22" text-anchor="middle">main</text>
+    <line class="dg-line-accent" x1="24" y1="34" x2="24" y2="382" marker-end="url(#main-branch-arrow-accent)"/>
 
-    <path class="dg-line" d="M48 64 C48 112 200 96 200 144 V222"/>
-    <path class="dg-line-accent" d="M200 222 C200 280 48 270 48 330"/>
+    <path class="dg-line" d="M24 64 C24 112 160 96 160 144 V222"/>
+    <path class="dg-line-accent" d="M160 222 C160 280 24 270 24 330"/>
 
-    <circle class="dg-fill-accent" cx="48" cy="64" r="9"/>
-    <text class="dg-text" x="68" y="69">Your site as it is now</text>
+    <circle class="dg-fill-accent" cx="24" cy="64" r="9"/>
+    <text class="dg-text" x="44" y="69">Your site as it is now</text>
 
-    <text class="dg-text-strong" x="212" y="126">claude/… branch</text>
+    <text class="dg-text-strong" x="176" y="126">claude/… branch</text>
 
-    <text class="dg-text-sm" x="64" y="188">Live site unchanged</text>
-    <text class="dg-text-sm" x="64" y="206">while Claude works</text>
+    <text class="dg-text-sm" x="38" y="176">Live site</text>
+    <text class="dg-text-sm" x="38" y="194">unchanged while</text>
+    <text class="dg-text-sm" x="38" y="212">Claude works</text>
 
-    <circle class="dg-fill-primary" cx="200" cy="164" r="9"/>
-    <text class="dg-text" x="220" y="169">Commit: new timeline</text>
-    <circle class="dg-fill-primary" cx="200" cy="222" r="9"/>
-    <text class="dg-text" x="220" y="227">Commit: fix a date</text>
+    <circle class="dg-fill-primary" cx="160" cy="164" r="9"/>
+    <text class="dg-text" x="178" y="169">Commit: new timeline</text>
+    <circle class="dg-fill-primary" cx="160" cy="222" r="9"/>
+    <text class="dg-text" x="178" y="227">Commit: fix a date</text>
 
-    <text class="dg-text-strong" x="128" y="292">Pull request → merge</text>
+    <text class="dg-text-strong" x="104" y="296">Pull request → merge</text>
 
-    <circle class="dg-fill-accent" cx="48" cy="330" r="9"/>
-    <text class="dg-text" x="68" y="335">main updates, and so does your site</text>
+    <circle class="dg-fill-accent" cx="24" cy="330" r="9"/>
+    <text class="dg-text" x="44" y="335">main updates, and so does your site</text>
   </svg>
   <figcaption>Claude's commits wait on its own branch. Merging them into main is what updates your site.</figcaption>
 </figure>
@@ -62,8 +61,9 @@
 
 <h3>Through a pull request</h3>
 <p>Let Claude push its <code>claude/…</code> branch, then say:</p>
-<pre class="say">Open a pull request into main and merge it.</pre>
+<pre class="say">Open a pull request from your branch into main of <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> (my repo, not the original) and merge it.</pre>
 <p>Or tap <span class="ui">Create PR</span> at the top of the diff view. Then open the pull request on GitHub, click <span class="ui">Merge pull request</span>, then <span class="ui">Confirm merge</span>.</p>
+<aside class="callout warn" data-title="Is your repo a fork?">GitHub may aim a pull request from a fork at the original repo. Before you merge, check that it goes into <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>, not <code>fritzhand/…</code>. If it doesn't, close it and use the prompt above.</aside>
 
 <p>On the VS Code path the agent usually works on <code>main</code> already, so "Commit and push to main." is all you need.</p>
 
@@ -73,7 +73,7 @@
 <details class="fix">
   <summary>The agent says it can't push to main</summary>
   <p>Use the pull request way instead:</p>
-  <pre class="say">Push your branch, then open a pull request into main and merge it.</pre>
+  <pre class="say">Push your branch, then open a pull request from it into main of <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> (my repo, not the original) and merge it.</pre>
 </details>
 <details class="fix">
   <summary>The agent pushed, but my site didn't change</summary>
@@ -88,13 +88,9 @@
 git init -b main
 git config --global init.defaultBranch main   # every new repo from now on
 
-# Rename an old master branch
-git branch -M main
-git push -u origin main
-gh repo edit --default-branch main
-
-# Pull request, then merge (GitHub CLI)
-gh pr create --base main --fill
-gh pr merge --merge</code></pre>
+# Pull request, then merge (GitHub CLI). Naming the repo keeps a fork's
+# pull request out of the original repo.
+gh pr create --repo <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> --base main --fill
+gh pr merge <var>branch-name</var> --repo <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> --merge</code></pre>
   <p>On the app path, Claude may use its built-in GitHub tools for the pull request instead.</p>
 </details>
