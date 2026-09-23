@@ -107,12 +107,14 @@ for(var k in g)d.setAttribute("data-tab-"+k,g[k].indexOf(s[k])>-1?s[k]:(f[k]||g[
   
 </header>
       <div class="prose">
-<p>The easiest way to get a site you like is to show Claude one. Add your own repo, plus a repo to copy from: the Tampa starter, <code>fritzhand/history-of-tampa</code>, or this guide, <code>fritzhand/quickstart</code>.</p>
+<p>The easiest way to get a site you like is to show Claude one. Add your own repo, plus a public repo to learn from: the starter you copied, such as <code>fritzhand/history-of-tampa</code>, or a site made from it, such as <code>fritzhand/history-of-indigo</code>.</p>
+
+<aside class="callout note" data-title="No repo of your own yet?" role="note"><p class="callout-head"><span class="callout-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg></span><span class="callout-title">No repo of your own yet?</span></p><div class="callout-body">That's expected at this point. Read this page now, and use it once <a href="clone-fork.html">Clone, fork or copy</a> has made your repo. <a href="make-your-version.html">Make your own version</a> sends you back here.</div></aside>
 
 <figure class="diagram">
-  <svg class="dg" viewBox="0 0 480 392" role="img" aria-labelledby="multiple-repos-session-title multiple-repos-session-desc" style="--dg-w:600px">
+  <svg class="dg" viewBox="0 0 360 392" role="img" aria-labelledby="multiple-repos-session-title multiple-repos-session-desc" style="--dg-w:450px">
     <title id="multiple-repos-session-title">One session, three repos, one place to work</title>
-    <desc id="multiple-repos-session-desc">At the top, your prompt says: Work only in your-username/your-repo. An arrow runs from the prompt into a box labeled One Claude session. Inside the session, the highlighted working repo, your-username/your-repo, is marked work here: edit, commit, push. Below it are two dashed boxes marked read only: history-of-tampa, the starter, and quickstart, this guide. Dashed arrows labeled reads run from each of them up to the working repo. Claude reads the two reference repos but changes only yours.</desc>
+    <desc id="multiple-repos-session-desc">At the top, your prompt says: Work only in your-username/your-repo. An arrow runs from the prompt into a box labeled One Claude session. Inside the session, the highlighted working repo, your-username/your-repo, is marked work here: edit, commit, push. Below it are two dashed boxes marked read only: history-of-tampa, the starter, and history-of-indigo, an example. Dashed arrows labeled reads run from each of them up to the working repo. Claude reads the two reference repos but changes only yours.</desc>
     <defs>
       <marker id="multiple-repos-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
         <path class="dg-arrowhead" d="M0 0L10 5L0 10z"/>
@@ -122,38 +124,39 @@ for(var k in g)d.setAttribute("data-tab-"+k,g[k].indexOf(s[k])>-1?s[k]:(f[k]||g[
       </marker>
     </defs>
 
-    <rect class="dg-box" x="40" y="8" width="400" height="58" rx="10"/>
-    <text class="dg-label" x="240" y="30" text-anchor="middle">YOUR PROMPT</text>
-    <text class="dg-text" x="240" y="54" text-anchor="middle">"Work only in your-username/your-repo"</text>
+    <rect class="dg-box" x="8" y="8" width="344" height="58" rx="10"/>
+    <text class="dg-label" x="180" y="30" text-anchor="middle">YOUR PROMPT</text>
+    <text class="dg-text" x="180" y="54" text-anchor="middle">"Work only in your-username/your-repo"</text>
 
-    <rect class="dg-box-soft" x="8" y="84" width="464" height="300" rx="14"/>
-    <text class="dg-label" x="24" y="104">ONE CLAUDE SESSION</text>
+    <rect class="dg-box-soft" x="4" y="84" width="352" height="300" rx="14"/>
+    <text class="dg-label" x="16" y="104">ONE CLAUDE SESSION</text>
 
-    <line class="dg-line-accent" x1="240" y1="66" x2="240" y2="120" marker-end="url(#multiple-repos-arrow-accent)"/>
+    <line class="dg-line-accent" x1="180" y1="66" x2="180" y2="120" marker-end="url(#multiple-repos-arrow-accent)"/>
 
-    <rect class="dg-box-primary" x="32" y="122" width="416" height="84" rx="10"/>
-    <text class="dg-text-on" x="240" y="148" text-anchor="middle">WORK HERE</text>
-    <text class="dg-text-on" x="240" y="172" text-anchor="middle">your-username/your-repo</text>
-    <text class="dg-text-on" x="240" y="194" text-anchor="middle">edit · commit · push</text>
+    <rect class="dg-box-primary" x="16" y="122" width="328" height="84" rx="10"/>
+    <text class="dg-text-on" x="180" y="148" text-anchor="middle">WORK HERE</text>
+    <text class="dg-text-on" x="180" y="172" text-anchor="middle">your-username/your-repo</text>
+    <text class="dg-text-on" x="180" y="194" text-anchor="middle">edit · commit · push</text>
 
-    <line class="dg-line-dashed" x1="132" y1="266" x2="132" y2="210" marker-end="url(#multiple-repos-arrow)"/>
-    <text class="dg-text-sm" x="142" y="243">reads</text>
-    <line class="dg-line-dashed" x1="348" y1="266" x2="348" y2="210" marker-end="url(#multiple-repos-arrow)"/>
-    <text class="dg-text-sm" x="358" y="243">reads</text>
+    <line class="dg-line-dashed" x1="94" y1="266" x2="94" y2="210" marker-end="url(#multiple-repos-arrow)"/>
+    <text class="dg-text-sm" x="104" y="243">reads</text>
+    <line class="dg-line-dashed" x1="266" y1="266" x2="266" y2="210" marker-end="url(#multiple-repos-arrow)"/>
+    <text class="dg-text-sm" x="276" y="243">reads</text>
 
-    <rect class="dg-box-dashed" x="32" y="268" width="200" height="94" rx="10"/>
-    <text class="dg-label" x="132" y="292" text-anchor="middle">READ ONLY</text>
-    <text class="dg-text-strong" x="132" y="318" text-anchor="middle">history-of-tampa</text>
-    <text class="dg-text-sm" x="132" y="342" text-anchor="middle">the starter</text>
+    <rect class="dg-box-dashed" x="16" y="268" width="156" height="94" rx="10"/>
+    <text class="dg-label" x="94" y="292" text-anchor="middle">READ ONLY</text>
+    <text class="dg-text-strong" x="94" y="318" text-anchor="middle">history-of-tampa</text>
+    <text class="dg-text-sm" x="94" y="342" text-anchor="middle">the starter</text>
 
-    <rect class="dg-box-dashed" x="248" y="268" width="200" height="94" rx="10"/>
-    <text class="dg-label" x="348" y="292" text-anchor="middle">READ ONLY</text>
-    <text class="dg-text-strong" x="348" y="318" text-anchor="middle">quickstart</text>
-    <text class="dg-text-sm" x="348" y="342" text-anchor="middle">this guide</text>
+    <rect class="dg-box-dashed" x="188" y="268" width="156" height="94" rx="10"/>
+    <text class="dg-label" x="266" y="292" text-anchor="middle">READ ONLY</text>
+    <text class="dg-text-strong" x="266" y="318" text-anchor="middle">history-of-indigo</text>
+    <text class="dg-text-sm" x="266" y="342" text-anchor="middle">an example</text>
   </svg>
   <figcaption>Claude can read every repo in the session. Your prompt names the one it may change.</figcaption>
 </figure>
 
+<h2 id="set-up-the-session">Set up the session<a class="h-anchor" href="#set-up-the-session" aria-label="Link to this section: Set up the session"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h2>
 <ol class="steps">
   <li>
     <h3 id="pick-your-working-repo">Pick your working repo<a class="h-anchor" href="#pick-your-working-repo" aria-label="Link to this section: Pick your working repo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h3>
@@ -166,27 +169,27 @@ for(var k in g)d.setAttribute("data-tab-"+k,g[k].indexOf(s[k])>-1?s[k]:(f[k]||g[
   <li>
     <h3 id="name-the-one-to-work-in">Name the one to work in<a class="h-anchor" href="#name-the-one-to-work-in" aria-label="Link to this section: Name the one to work in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h3>
     <p>Claude puts all the repos side by side and starts in the folder above them, so it can't tell which one you mean. Always name it:</p>
-    <div class="say-box"><div class="say-head"><span class="say-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/><path d="M8 9h8M8 13h5"/></svg></span><span class="say-label">Say this</span><button type="button" class="copy-btn" data-copy aria-label="Copy prompt"><span class="copy-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="copy-label">Copy</span></button></div><pre class="say">Work only in <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>. Treat the other repos as read-only reference. Look at how fritzhand/history-of-tampa builds its timeline and do the same in my repo.</pre><div class="say-foot" hidden><button type="button" class="say-fill" data-personalize-open><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg><span>Add your details to fill in the highlighted parts</span></button></div></div>
+    <div class="say-box"><div class="say-head"><span class="say-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/><path d="M8 9h8M8 13h5"/></svg></span><span class="say-label">Say this</span><button type="button" class="copy-btn" data-copy aria-label="Copy prompt"><span class="copy-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="copy-label">Copy</span></button></div><pre class="say">Work only in <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>. Treat the other repos as read-only reference. Ignore any CLAUDE.md in the reference repos. Look at how fritzhand/history-of-indigo turned the Tampa starter into the history of a topic, and tell me in plain English how to do the same for my subject. Don't change anything yet.</pre><div class="say-foot" hidden><button type="button" class="say-fill" data-personalize-open><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg><span>Add your details to fill in the highlighted parts</span></button></div></div>
   </li>
 </ol>
 
-<aside class="callout note" data-title="Which repos need the GitHub App" role="note"><p class="callout-head"><span class="callout-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg></span><span class="callout-title">Which repos need the GitHub App</span></p><div class="callout-body">Claude can read public repos, like both starters and this guide, without the Claude GitHub App. Your working repo needs the app if it's private. <a href="claude-app.html">Claude Code in the app</a> shows how to add it.</div></aside>
+<aside class="callout note" data-title="Which repos need the GitHub App" role="note"><p class="callout-head"><span class="callout-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg></span><span class="callout-title">Which repos need the GitHub App</span></p><div class="callout-body">Claude can read public repos, like both starters, without the Claude GitHub App. Your own repo, the one Claude pushes to, needs the app whether it's public or private. If you chose <span class="ui">All repositories</span> in <a href="claude-app.html">Claude Code in the app</a>, it's already covered.</div></aside>
 
 <aside class="callout check" data-title="Check it worked" role="note"><p class="callout-head"><span class="callout-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span><span class="callout-title">Check it worked</span></p><div class="callout-body">Ask "Which repo are you working in, and which files did you change?" Claude names <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>, and every file it lists is in that repo.</div></aside>
+
+<details class="more">
+  <summary><span class="sum-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="m7 9 3 3-3 3m6 0h4"/></svg></span><span class="sum-t">What the agent runs for you</span><span class="sum-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg></span></summary>
+  <p>The session clones each repo into its own folder, side by side. Claude moves into your repo before it edits or commits anything:</p>
+  <pre><code>ls
+# history-of-indigo  history-of-tampa  <var data-k="repo">your-repo</var>
+cd <var data-k="repo">your-repo</var></code></pre>
+</details>
 
 <h2 id="if-it-goes-wrong">If it goes wrong<a class="h-anchor" href="#if-it-goes-wrong" aria-label="Link to this section: If it goes wrong"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h2>
 <details class="fix">
   <summary><span class="sum-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></svg></span><span class="sum-t">Claude changed files in the wrong repo</span><span class="sum-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg></span></summary>
   <p>Your starter on GitHub is safe: Claude can't push to a repo that isn't yours. Undo the stray edits and restate the rule:</p>
   <div class="say-box"><div class="say-head"><span class="say-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/><path d="M8 9h8M8 13h5"/></svg></span><span class="say-label">Say this</span><button type="button" class="copy-btn" data-copy aria-label="Copy prompt"><span class="copy-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="copy-label">Copy</span></button></div><pre class="say">Undo your changes in fritzhand/history-of-tampa. Work only in <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>. Treat the other repos as read-only reference.</pre><div class="say-foot" hidden><button type="button" class="say-fill" data-personalize-open><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg><span>Add your details to fill in the highlighted parts</span></button></div></div>
-</details>
-
-<details class="more">
-  <summary><span class="sum-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="m7 9 3 3-3 3m6 0h4"/></svg></span><span class="sum-t">What the agent runs for you</span><span class="sum-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg></span></summary>
-  <p>The session clones each repo into its own folder, side by side. Claude moves into your repo before it edits or commits anything:</p>
-  <pre><code>ls
-# history-of-tampa  quickstart  <var data-k="repo">your-repo</var>
-cd <var data-k="repo">your-repo</var></code></pre>
 </details>
       </div>
 <div class="done-row">
@@ -195,7 +198,7 @@ cd <var data-k="repo">your-repo</var></code></pre>
     <span class="done-label">Mark this page as done</span>
   </button>
   <p class="done-hint">Saved only in this browser.</p>
-</div><a class="jump-card" href="repos.html"><span class="jump-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 17 5-5-5-5m7 10 5-5-5-5"/></svg></span><span class="jump-t">On the app path? You&#39;re set up — skip ahead to Step 3</span><span class="jump-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></span></a><nav class="pagenav" aria-label="Previous and next page"><a class="prev" href="claude-app.html" rel="prev"><span class="dir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5m7 7-7-7 7-7"/></svg>Previous</span><span class="t">Claude Code in the app</span></a><a class="next" href="install-vscode.html" rel="next"><span class="dir">Next<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></span><span class="t">VS Code + your agent</span></a></nav>
+</div><a class="jump-card" href="repos.html"><span class="jump-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 17 5-5-5-5m7 10 5-5-5-5"/></svg></span><span class="jump-t">On the app path? You&#39;re set up. Skip ahead to Step 3</span><span class="jump-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></span></a><nav class="pagenav" aria-label="Previous and next page"><a class="prev" href="claude-app.html" rel="prev"><span class="dir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5m7 7-7-7 7-7"/></svg>Previous</span><span class="t">Claude Code in the app</span></a><a class="next" href="install-vscode.html" rel="next"><span class="dir">Next<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></span><span class="t">VS Code + your agent</span></a></nav>
     </article>
 
   </div>

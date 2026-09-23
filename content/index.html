@@ -7,8 +7,8 @@
   "track": "all",
   "hero": true,
   "cta": [
-    { "text": "Start with Step 1", "href": "github-account.html", "primary": true },
-    { "text": "App or VS Code?", "href": "choose-setup.html" }
+    { "text": "Start with the big picture", "href": "how-it-works.html", "primary": true },
+    { "text": "Skip to Step 1", "href": "github-account.html" }
   ]
 }
 -->
@@ -16,73 +16,31 @@
 
 <h2>The one rule</h2>
 <p><strong>You type or say what you want. The agent does the work. You check it.</strong></p>
-<p>Every page gives you a <em>Say this</em> prompt to copy or dictate to the agent. You click things yourself only where no agent can, like creating your account or signing in.</p>
+<p>Most pages give you a <em>Say this</em> prompt to copy or dictate to the agent. You do things by hand only where the agent has no access: creating your GitHub account, signing in, approving a permission request, installing VS Code if you take that path, and changing a setting on github.com. The main one is turning on GitHub Pages, once, in your repo's <span class="ui">Settings</span> → <span class="ui">Pages</span>.</p>
 <pre class="say" data-label="A prompt looks like this">Change the site title to "A History of St. Petersburg" and show me what you changed.</pre>
 
 <h2>What you'll end with</h2>
-<p>Your own site at <strong>https://<var data-k="user">your-username</var>.github.io/<var data-k="repo">your-repo</var>/</strong>. The running example in this guide turns the Tampa history site into a history of your own city, such as St. Petersburg in a repo called <code>history-of-st-pete</code>.</p>
-<p>These are real, live sites. The Tampa site and the Playbook are the two starters this guide uses.</p>
+<p>Your own site at <strong>https://<var data-k="user">your-username</var>.github.io/<var data-k="repo">your-repo</var>/</strong>, on a subject you choose. You start by copying one of two real sites:</p>
+<ul>
+  <li><strong>history-of-tampa, one long scrolling story.</strong> Use it to learn any history subject: a city or neighborhood, a material like indigo, an industry, a company or a movement. Researching, sourcing and telling the story is how you learn it.</li>
+  <li><strong>startup-india-guide, a multi-page minisite with a sidebar</strong>, like this guide. Use it to organize any subject that needs several pages: a directory, a handbook, a resource guide or a program catalog.</li>
+</ul>
+<p>The running example turns history-of-tampa into a history of St. Petersburg, Florida, in a repo called <code>history-of-st-pete</code>. All four sites below are live.</p>
 <div class="cards">
-  <a class="card" href="https://fritzhand.github.io/history-of-tampa/"><span class="card-kicker">Starter · easiest</span><strong>Downtown Tampa: A Civic Development Autopsy</strong><span>200 years of downtown Tampa as a scrolling story. Plain files, no build step.</span></a>
-  <a class="card" href="https://fritzhand.github.io/history-of-indigo/"><span class="card-kicker">Same engine, new topic</span><strong>Indigo: The Blue That Dyed the World</strong><span>The Tampa site's engine, pointed at the history of a dye instead of a city.</span></a>
-  <a class="card" href="https://fritzhand.github.io/startup-india-guide/"><span class="card-kicker">Starter · harder</span><strong>Startup Schemes Playbook</strong><span>A guide with a sidebar, like this one, built from data files.</span></a>
-  <a class="card" href="https://map.embarccollective.com/"><span class="card-kicker">Showcase</span><strong>Florida Startup Ecosystem Map</strong><span>Built on the Playbook's engine. Its repo is private, so you can look but not copy it.</span></a>
+  <a class="card" href="https://fritzhand.github.io/history-of-tampa/"><span class="card-kicker">Starter · easiest · learn a history</span><strong>history-of-tampa</strong><span>200 years of downtown Tampa as one scrolling story. Plain files, no build step.</span></a>
+  <a class="card" href="https://fritzhand.github.io/history-of-indigo/"><span class="card-kicker">Same engine, new topic</span><strong>history-of-indigo</strong><span>The Tampa site's engine, telling the history of a dye instead of a city.</span></a>
+  <a class="card" href="https://fritzhand.github.io/startup-india-guide/"><span class="card-kicker">Starter · harder · multi-page minisite</span><strong>startup-india-guide</strong><span>India's startup schemes as a searchable site with a sidebar. The agent runs its build step.</span></a>
+  <a class="card" href="https://map.embarccollective.com/"><span class="card-kicker">Built from startup-india-guide</span><strong>Florida Startup Ecosystem Map</strong><span>A directory with a sidebar. Its repo is private, so you can look but not copy it.</span></a>
 </div>
 
-<h2>The route</h2>
-<figure class="diagram">
-  <svg class="dg" viewBox="0 0 480 500" role="img" aria-labelledby="index-route-title index-route-desc">
-    <title id="index-route-title">The route from zero to a published site</title>
-    <desc id="index-route-desc">Five steps from top to bottom. Step 1: create a GitHub account. Step 2: set up your agent on one of two paths, the app path (the Claude app on a phone, in a browser or on the desktop) or the VS Code path (VS Code with the Claude Code or Codex extension). Both paths lead to Step 3: get a starter by forking or copying it. Step 4: make it yours. Step 5: publish on GitHub Pages, at your-username.github.io/your-repo.</desc>
-    <defs>
-      <marker id="index-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
-        <path class="dg-arrowhead" d="M0 0L10 5L0 10z"/>
-      </marker>
-    </defs>
-
-    <rect class="dg-box" x="90" y="8" width="300" height="56" rx="10"/>
-    <text class="dg-label" x="240" y="30" text-anchor="middle">STEP 1</text>
-    <text class="dg-text-strong" x="240" y="52" text-anchor="middle">Create a GitHub account</text>
-    <line class="dg-line" x1="240" y1="64" x2="240" y2="88" marker-end="url(#index-arrow)"/>
-
-    <rect class="dg-box-dashed" x="16" y="90" width="448" height="132" rx="12"/>
-    <text class="dg-label" x="240" y="114" text-anchor="middle">STEP 2 · SET UP YOUR AGENT</text>
-    <rect class="dg-box-soft" x="32" y="128" width="196" height="78" rx="10"/>
-    <text class="dg-text-strong" x="130" y="152" text-anchor="middle">The app path</text>
-    <text class="dg-text-sm" x="130" y="174" text-anchor="middle">Claude app on phone,</text>
-    <text class="dg-text-sm" x="130" y="194" text-anchor="middle">browser or desktop</text>
-    <text class="dg-text-sm" x="240" y="172" text-anchor="middle">or</text>
-    <rect class="dg-box-soft" x="252" y="128" width="196" height="78" rx="10"/>
-    <text class="dg-text-strong" x="350" y="152" text-anchor="middle">The VS Code path</text>
-    <text class="dg-text-sm" x="350" y="174" text-anchor="middle">VS Code + Claude Code</text>
-    <text class="dg-text-sm" x="350" y="194" text-anchor="middle">or Codex extension</text>
-    <line class="dg-line" x1="240" y1="222" x2="240" y2="246" marker-end="url(#index-arrow)"/>
-
-    <rect class="dg-box" x="90" y="248" width="300" height="56" rx="10"/>
-    <text class="dg-label" x="240" y="270" text-anchor="middle">STEP 3</text>
-    <text class="dg-text-strong" x="240" y="292" text-anchor="middle">Get a starter: fork or copy</text>
-    <line class="dg-line" x1="240" y1="304" x2="240" y2="328" marker-end="url(#index-arrow)"/>
-
-    <rect class="dg-box" x="90" y="330" width="300" height="56" rx="10"/>
-    <text class="dg-label" x="240" y="352" text-anchor="middle">STEP 4</text>
-    <text class="dg-text-strong" x="240" y="374" text-anchor="middle">Make it yours</text>
-    <line class="dg-line" x1="240" y1="386" x2="240" y2="410" marker-end="url(#index-arrow)"/>
-
-    <rect class="dg-box-primary" x="90" y="412" width="300" height="56" rx="10"/>
-    <text class="dg-text-sm dg-text-on" x="240" y="434" text-anchor="middle">STEP 5</text>
-    <text class="dg-text-strong dg-text-on" x="240" y="456" text-anchor="middle">Publish on GitHub Pages</text>
-    <text class="dg-text-sm" x="240" y="490" text-anchor="middle">your-username.github.io/your-repo</text>
-  </svg>
-  <figcaption>Five steps. Step 2 is the only fork in the road: pick the app path or the VS Code path.</figcaption>
-</figure>
-
 <h2>The five steps</h2>
+<p>Step 2 is the only fork in the road: the app path or the VS Code path. Both lead to the same published site.</p>
 <div class="cards">
   <a class="card" href="github-account.html"><span class="card-kicker">Step 1 · GitHub</span><strong>Create your GitHub account</strong><span>Free. Your username becomes part of your site's address.</span></a>
   <a class="card" href="choose-setup.html"><span class="card-kicker">Step 2 · Set up your agent</span><strong>App or VS Code?</strong><span>The app path needs nothing installed. The VS Code path works on your computer.</span></a>
   <a class="card" href="repos.html"><span class="card-kicker">Step 3 · Just enough Git</span><strong>Repos, forks, commits and pushes</strong><span>The few words you need, and the prompts that do the work.</span></a>
-  <a class="card" href="starters.html"><span class="card-kicker">Step 4 · Make it yours</span><strong>Pick a starter and rewrite it</strong><span>Tell the agent your topic. It edits, you check.</span></a>
-  <a class="card" href="github-pages.html"><span class="card-kicker">Step 5 · Publish</span><strong>Turn on GitHub Pages</strong><span>Your site goes live. Then update it and share the link.</span></a>
+  <a class="card" href="starters.html"><span class="card-kicker">Step 4 · Make it yours</span><strong>Pick a starter and rewrite it</strong><span>Copy history-of-tampa or startup-india-guide, then tell the agent your subject.</span></a>
+  <a class="card" href="github-pages.html"><span class="card-kicker">Step 5 · Publish</span><strong>Turn on GitHub Pages</strong><span>One setting you switch on yourself. Then your site is live.</span></a>
 </div>
 
 <h2>What you need</h2>
@@ -91,5 +49,3 @@
   <li><strong>A paid AI plan.</strong> Claude Pro or higher for Claude Code, or ChatGPT Plus or higher for Codex. The free Claude plan doesn't include Claude Code.</li>
   <li><strong>A phone or a computer.</strong> The app path works from a phone or a browser. The VS Code path needs a computer.</li>
 </ul>
-
-<aside class="callout tip" data-title="New to all of this?">Read <a href="how-it-works.html">The big picture</a> and <a href="talk-to-it.html">How to talk to the agent</a> first. Together they take about 10 minutes.</aside>

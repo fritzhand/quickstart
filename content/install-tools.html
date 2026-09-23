@@ -16,8 +16,8 @@
     </thead>
     <tbody>
       <tr><th scope="row">Git</th><td>Saves versions of your files and sends them to GitHub.</td><td>Yes.</td></tr>
-      <tr><th scope="row">Node.js</th><td>Runs the build script some starters use. The Startup Schemes Playbook builds with <code>node build.mjs</code>. The Tampa starter needs no build.</td><td>Install it anyway. It's quick.</td></tr>
-      <tr><th scope="row">GitHub CLI (<code>gh</code>)</th><td>Lets the agent do GitHub chores for you: create and fork repos, and turn on GitHub Pages.</td><td>Optional, but it's what saves you the clicking on GitHub.</td></tr>
+      <tr><th scope="row">Node.js</th><td>Runs the build script some starters use: <code>startup-india-guide</code>, the multi-page starter, builds with <code>node build.mjs</code>. <code>history-of-tampa</code>, the one-page story, needs no build.</td><td>Install it anyway. It's quick.</td></tr>
+      <tr><th scope="row">GitHub CLI (<code>gh</code>)</th><td>Lets the agent create and fork repos for you, and handles Git's sign-in to GitHub so pushes work. It can also turn on GitHub Pages, a shortcut for the setting you'd otherwise click on GitHub.</td><td>Optional, but recommended. Without it, you create and fork repos yourself on github.com.</td></tr>
     </tbody>
   </table>
 </div>
@@ -26,12 +26,12 @@
 <ol class="steps">
   <li>
     <h3>Ask for the installs</h3>
-    <pre class="say">Install whatever is missing from git, node and the GitHub CLI (gh). Use the right method for this computer: winget on Windows; on a Mac, Homebrew if I have it, or xcode-select --install for git. If a step needs my password or a click in an installer window, stop and tell me exactly what to do. Then run git config --global init.defaultBranch main so my new repos start on a branch called main.</pre>
+    <pre class="say">Install whatever is missing from git, node and the GitHub CLI (gh). Use the right method for this computer: winget on Windows; on a Mac, Homebrew if I have it, or xcode-select --install for git. If a step needs my password or a click in an installer window, stop and tell me exactly what to do.</pre>
   </li>
   <li>
     <h3>Approve and click through</h3>
     <p>The agent may ask before each install. Read the command, then allow it. Windows may ask whether to allow changes to your device, and a Mac may ask for your password. Both are normal for an install.</p>
-    <p>If an installer window opens, keep the defaults. In the Git for Windows installer, on the page about the name of the initial branch, choose <span class="ui">Override the default branch name for new repositories</span> and type <code>main</code>.</p>
+    <p>If an installer window opens, keep the defaults.</p>
   </li>
   <li>
     <h3>Restart VS Code</h3>
@@ -47,14 +47,14 @@
     <pre class="say">Walk me through signing in to the GitHub CLI with gh auth login, one question at a time.</pre>
   </li>
   <li>
-    <h3>Check everything</h3>
-    <pre class="say">Show me the versions of git, node and gh, and confirm gh is logged in.</pre>
+    <h3>Set main, then check everything</h3>
+    <pre class="say">Set git's default branch for new repos to main. Then show me the versions of git, node and gh, and confirm gh is logged in.</pre>
   </li>
 </ol>
 
 <aside class="callout check" data-title="Check it worked">The agent shows a version number for git, node and gh, and says gh is logged in to github.com as <var data-k="user">your-username</var>.</aside>
 
-<aside class="callout warn" data-title="Windows: “running scripts is disabled”">If you or the agent see an error that ends in <code>running scripts is disabled on this system</code>, go to <a href="windows-scripts.html">Windows: allow scripts</a>. It's a one-line fix. Then come back.</aside>
+<aside class="callout warn" data-title="Windows: “running scripts is disabled”">If you or the agent see an error that includes <code>running scripts is disabled on this system</code>, go to <a href="windows-scripts.html">Windows: allow scripts</a>. It's a one-line fix. Then come back.</aside>
 
 <h2>If the agent can't install them</h2>
 <aside class="callout manual" data-title="Do this yourself">Download each missing tool, run its installer and keep the defaults. Then restart VS Code.</aside>
@@ -84,20 +84,19 @@
 <details class="more">
   <summary>What the agent runs for you</summary>
   <p>The exact commands depend on your computer. They look like this:</p>
-  <pre><code># Windows
-winget install --id Git.Git -e --source winget
-winget install -e --id OpenJS.NodeJS.LTS
-winget install --id GitHub.cli
+  <pre><code># Windows (the --accept flags answer winget's yes/no questions,
+# which the agent can't type)
+winget install --id Git.Git -e --source winget --accept-source-agreements --accept-package-agreements
+winget install --id OpenJS.NodeJS.LTS -e --source winget --accept-source-agreements --accept-package-agreements
+winget install --id GitHub.cli -e --source winget --accept-source-agreements --accept-package-agreements
 
 # Mac
 xcode-select --install
 brew install node
 brew install gh
 
-# Both: new repos start on main
+# After the restart: new repos start on main, then the check
 git config --global init.defaultBranch main
-
-# The check
 git --version
 node -v
 gh --version

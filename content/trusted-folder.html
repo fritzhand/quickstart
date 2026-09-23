@@ -2,21 +2,18 @@
 {
   "title": "Trusted folders: how the agent works in your folder",
   "eyebrow": "Step 2 · Set up your agent",
-  "lede": "The folder you open is the agent's whole world. Trust only folders you made or got from people you trust, and read what the agent asks before you approve it.",
-  "time": "5 min",
+  "lede": "The folder you open is the agent's workspace. Trust only folders you made or got from people you trust, and read what the agent asks before you approve it.",
+  "time": "3 min",
   "track": "vscode"
 }
 -->
 <h2>Two trust questions</h2>
-<p>The first time you open a folder, you may be asked twice.</p>
+<p>The first time you open a folder, you trust it twice: once for VS Code, and sometimes once for the agent.</p>
 <ol class="steps">
   <li>
-    <h3>VS Code asks first</h3>
-    <p><span class="ui">Do you trust the authors of the files in this folder?</span></p>
-    <ul>
-      <li><span class="ui">Yes, I trust the authors</span>: everything works.</li>
-      <li><span class="ui">No, I don't trust the authors</span>: VS Code opens the folder in <strong>Restricted Mode</strong>. AI agents and the terminal are turned off, and the Claude Code extension doesn't work.</li>
-    </ul>
+    <h3>VS Code checks first</h3>
+    <p>A folder you haven't trusted opens in <strong>Restricted Mode</strong>. A banner across the top says so, and AI agents and the terminal are turned off. The Claude Code extension doesn't work there. Click <span class="ui">Manage</span> in the banner, then <span class="ui">Trust</span>.</p>
+    <p>Some setups ask up front instead: <span class="ui">Do you trust the authors of the files in this folder?</span> <span class="ui">Yes, I trust the authors</span> trusts it. <span class="ui">No, I don't trust the authors</span> keeps Restricted Mode.</p>
   </li>
   <li>
     <h3>Then the agent may ask</h3>
@@ -28,93 +25,67 @@
 
 <h2>How the agent works in your folder</h2>
 <figure class="diagram">
-  <svg class="dg" viewBox="0 0 480 456" role="img" aria-labelledby="trusted-folder-scope-title trusted-folder-scope-desc">
+  <svg class="dg" viewBox="0 0 340 480" role="img" aria-labelledby="trusted-folder-scope-title trusted-folder-scope-desc">
     <title id="trusted-folder-scope-title">The agent works inside your trusted project folder</title>
-    <desc id="trusted-folder-scope-desc">A large dashed box labeled Your computer contains a smaller box labeled Your project folder, trusted, for example Projects/history-of-st-pete. Inside the project folder is the agent. Arrows run from the agent to four things it does there: reads files, to learn the project; edits files, which you can undo; runs commands, with your permission; and commits and pushes, when you say so. Below the project folder, still on your computer, is a box for everything else, such as Documents and Downloads, marked off limits unless you allow it.</desc>
+    <desc id="trusted-folder-scope-desc">A large dashed box labeled Your computer contains a box labeled Your project folder, trusted, for example Projects/history-of-st-pete. Inside the project folder is the agent. Arrows run from the agent to four things it does there: reads files, to learn the project; edits files, which you can undo; runs commands, such as a build or Git; and commits and pushes to GitHub, when you say so. Below the project folder, still on your computer, is a box for everything else on your computer: the agent may read files there, and changes there are checked or asked first.</desc>
     <defs>
       <marker id="trusted-folder-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
         <path class="dg-arrowhead" d="M0 0L10 5L0 10z"/>
       </marker>
     </defs>
 
-    <rect class="dg-box-dashed" x="8" y="8" width="464" height="440" rx="14"/>
-    <text class="dg-label" x="24" y="30">YOUR COMPUTER</text>
+    <rect class="dg-box-dashed" x="2" y="2" width="336" height="476" rx="14"/>
+    <text class="dg-label" x="16" y="24">YOUR COMPUTER</text>
 
-    <rect class="dg-box-soft" x="24" y="44" width="432" height="296" rx="12"/>
-    <text class="dg-label" x="40" y="68">YOUR PROJECT FOLDER · TRUSTED</text>
-    <text class="dg-text-sm" x="40" y="90">e.g. Projects/history-of-st-pete</text>
+    <rect class="dg-box-soft" x="12" y="36" width="316" height="334" rx="12"/>
+    <text class="dg-label" x="26" y="58">YOUR PROJECT FOLDER · TRUSTED</text>
+    <text class="dg-text-sm" x="26" y="78">e.g. Projects/history-of-st-pete</text>
 
-    <rect class="dg-box-primary" x="150" y="100" width="180" height="46" rx="10"/>
-    <text class="dg-text-on" x="240" y="128" text-anchor="middle">The agent</text>
-    <line class="dg-line" x1="240" y1="146" x2="240" y2="158"/>
-    <line class="dg-line" x1="136" y1="158" x2="344" y2="158"/>
-    <line class="dg-line" x1="136" y1="158" x2="136" y2="175" marker-end="url(#trusted-folder-arrow)"/>
-    <line class="dg-line" x1="344" y1="158" x2="344" y2="175" marker-end="url(#trusted-folder-arrow)"/>
+    <rect class="dg-box-primary" x="26" y="90" width="120" height="38" rx="10"/>
+    <text class="dg-text-on" x="86" y="114" text-anchor="middle">The agent</text>
 
-    <rect class="dg-box" x="40" y="176" width="192" height="66" rx="10"/>
-    <text class="dg-text-strong" x="136" y="203" text-anchor="middle">Reads files</text>
-    <text class="dg-text-sm" x="136" y="226" text-anchor="middle">to learn the project</text>
+    <line class="dg-line" x1="46" y1="128" x2="46" y2="332"/>
+    <line class="dg-line" x1="46" y1="164" x2="64" y2="164" marker-end="url(#trusted-folder-arrow)"/>
+    <line class="dg-line" x1="46" y1="220" x2="64" y2="220" marker-end="url(#trusted-folder-arrow)"/>
+    <line class="dg-line" x1="46" y1="276" x2="64" y2="276" marker-end="url(#trusted-folder-arrow)"/>
+    <line class="dg-line" x1="46" y1="332" x2="64" y2="332" marker-end="url(#trusted-folder-arrow)"/>
 
-    <rect class="dg-box" x="248" y="176" width="192" height="66" rx="10"/>
-    <text class="dg-text-strong" x="344" y="203" text-anchor="middle">Edits files</text>
-    <text class="dg-text-sm" x="344" y="226" text-anchor="middle">you can undo</text>
+    <rect class="dg-box" x="66" y="140" width="250" height="48" rx="10"/>
+    <text class="dg-text-strong" x="80" y="161">Reads files</text>
+    <text class="dg-text-sm" x="80" y="179">to learn the project</text>
 
-    <rect class="dg-box" x="40" y="256" width="192" height="66" rx="10"/>
-    <text class="dg-text-strong" x="136" y="283" text-anchor="middle">Runs commands</text>
-    <text class="dg-text-sm" x="136" y="306" text-anchor="middle">with your permission</text>
+    <rect class="dg-box" x="66" y="196" width="250" height="48" rx="10"/>
+    <text class="dg-text-strong" x="80" y="217">Edits files</text>
+    <text class="dg-text-sm" x="80" y="235">you can undo</text>
 
-    <rect class="dg-box" x="248" y="256" width="192" height="66" rx="10"/>
-    <text class="dg-text-strong" x="344" y="283" text-anchor="middle">Commits &amp; pushes</text>
-    <text class="dg-text-sm" x="344" y="306" text-anchor="middle">when you say so</text>
+    <rect class="dg-box" x="66" y="252" width="250" height="48" rx="10"/>
+    <text class="dg-text-strong" x="80" y="273">Runs commands</text>
+    <text class="dg-text-sm" x="80" y="291">such as a build or Git</text>
 
-    <rect class="dg-box" x="24" y="358" width="432" height="74" rx="12"/>
-    <text class="dg-text-strong" x="240" y="388" text-anchor="middle">Everything else: Documents, Downloads…</text>
-    <text class="dg-text-sm" x="240" y="412" text-anchor="middle">Off limits unless you allow it</text>
+    <rect class="dg-box" x="66" y="308" width="250" height="48" rx="10"/>
+    <text class="dg-text-strong" x="80" y="329">Commits &amp; pushes</text>
+    <text class="dg-text-sm" x="80" y="347">to GitHub, when you say so</text>
+
+    <rect class="dg-box" x="12" y="382" width="316" height="84" rx="12"/>
+    <text class="dg-text-strong" x="170" y="408" text-anchor="middle">Everything else on your computer</text>
+    <text class="dg-text-sm" x="170" y="430" text-anchor="middle">It may read files here.</text>
+    <text class="dg-text-sm" x="170" y="450" text-anchor="middle">Changes are checked or asked first.</text>
   </svg>
-  <figcaption>The folder you open is the agent's workspace. It asks before it reaches outside.</figcaption>
+  <figcaption>The folder you open is the agent's workspace. It may still read files elsewhere on your computer, and it checks or asks before changing anything outside the folder.</figcaption>
 </figure>
 
-<ul>
-  <li><strong>It reads</strong> the files in the folder to understand the project.</li>
-  <li><strong>It proposes changes and edits files</strong>, then tells you what it did.</li>
-  <li><strong>It runs commands</strong>, such as a build or a Git command. When it needs your OK, it shows a permission prompt. Read the command before you approve it. Pushes, deletes and installs deserve a careful look.</li>
-  <li><strong>It commits and pushes</strong> when you tell it to.</li>
-</ul>
-
-<h2>How often it asks</h2>
-<p>You choose how often the agent stops to ask.</p>
-<div class="tabs" data-group="agent">
-  <section data-tab="claude" data-label="Claude Code">
-    <p>Click the mode at the bottom of the message box:</p>
-    <ul>
-      <li><span class="ui">Manual</span>: asks before it edits files or runs most commands.</li>
-      <li><span class="ui">Edit automatically</span>: edits files without asking.</li>
-      <li><span class="ui">Auto</span>: a background safety check reviews most actions instead of asking you. It's the default on Pro, Max and Team plans.</li>
-      <li><span class="ui">Plan</span>: describes what it will do and waits for your OK before changing anything.</li>
-    </ul>
-  </section>
-  <section data-tab="codex" data-label="Codex">
-    <p>Use the permissions control below the message box. <span class="ui">Ask for approval</span> lets Codex work inside the folder and pauses before it reaches beyond it.</p>
-  </section>
-</div>
-
-<h2>Undo and standing rules</h2>
-<ul>
-  <li><strong>Undo:</strong> ask the agent to "undo that last change." In Claude Code, you can also hover over a message, click the rewind button and choose <span class="ui">Rewind code to here</span>. Anything already pushed can be undone with Git: "Revert the last commit and push to main."</li>
-  <li><strong>Standing rules:</strong> a <code>CLAUDE.md</code> file in the folder holds instructions the agent reads every time it starts, such as which name to commit as (see <a href="commit-as-you.html">Commit as yourself</a>). Codex reads a file called <code>AGENTS.md</code> instead.</li>
-</ul>
-
-<aside class="callout note" data-title="On the app path">There's no folder on your computer. The agent's folder is a fresh copy of the repos you picked, on a cloud machine.</aside>
+<p>When the agent needs your OK to run a command, it shows a permission prompt. Read the command before you approve it. Pushes, deletes and installs deserve a careful look. To see a plan before any change, add this to your request:</p>
+<pre class="say">Plan this first. Don't change anything until I say go.</pre>
 
 <h2>See the agent's world</h2>
 <pre class="say">Which folder are you working in? List what's in it, and don't change anything.</pre>
 
-<aside class="callout check" data-title="Check it worked">The agent names the folder you opened and lists its files. VS Code shows no <span class="ui">Restricted Mode</span> notice.</aside>
+<aside class="callout check" data-title="Check it worked">The agent names the folder you opened and lists its files. VS Code shows no <span class="ui">Restricted Mode</span> banner.</aside>
 
 <h2>If it goes wrong</h2>
 <details class="fix">
-  <summary>I clicked No, and now the agent doesn't work</summary>
-  <p>Open the Command Palette (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>, or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> on Mac), run <span class="ui">Workspaces: Manage Workspace Trust</span> and trust the folder.</p>
+  <summary>VS Code says Restricted Mode, and the agent doesn't work</summary>
+  <p>Click <span class="ui">Manage</span> in the <span class="ui">Restricted Mode</span> banner, then <span class="ui">Trust</span>. Or open the Command Palette (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>, or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> on Mac), run <span class="ui">Workspaces: Manage Workspace Trust</span> and trust the folder.</p>
 </details>
 <details class="fix">
   <summary>The agent asks about a folder I didn't expect</summary>

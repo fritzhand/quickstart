@@ -7,7 +7,7 @@
   "track": "vscode"
 }
 -->
-<aside class="callout manual" data-title="Do this yourself">The agent runs inside VS Code, so it can't install VS Code or itself. Signing in to your account is yours to do, too.</aside>
+<aside class="callout manual" data-title="Do this yourself">The agent runs inside VS Code, so it can't install VS Code or itself. Trusting your folder and signing in are yours to do, too.</aside>
 
 <ol class="steps">
   <li>
@@ -25,7 +25,7 @@
   <li>
     <h3>Open a folder for your projects</h3>
     <p>In VS Code, choose <span class="ui">File</span> → <span class="ui">Open Folder…</span>. Go to your <span class="ui">Documents</span> folder and use the window's new-folder button to make a folder called <code>Projects</code>. Select it and open it. Each site you make will get its own folder inside <code>Projects</code>.</p>
-    <p>If VS Code asks <span class="ui">Do you trust the authors of the files in this folder?</span>, click <span class="ui">Yes, I trust the authors</span>. You made this folder, so it's safe. <a href="trusted-folder.html">Trusted folders</a> explains why this question matters.</p>
+    <p>VS Code opens a new folder in <strong>Restricted Mode</strong>, and a banner across the top says so. Click <span class="ui">Manage</span> in the banner, then click <span class="ui">Trust</span>. If a box asks <span class="ui">Do you trust the authors of the files in this folder?</span> instead, click <span class="ui">Yes, I trust the authors</span>. You made this folder, so it's safe. Until you trust it, VS Code turns off or limits AI agents. <a href="trusted-folder.html">Trusted folders</a> explains why.</p>
   </li>
   <li>
     <h3>Add your agent</h3>
@@ -35,7 +35,7 @@
         <ol>
           <li>Open the Extensions view: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>X</kbd> on Windows, <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>X</kbd> on Mac.</li>
           <li>Search for <strong>Claude Code</strong>. Pick the one published by <strong>Anthropic</strong> and click <span class="ui">Install</span>.</li>
-          <li>Click the Spark icon in the Activity Bar, the strip of icons down the left edge, to open Claude.</li>
+          <li>Click the Spark icon in the Activity Bar, the strip of icons down the left edge. It opens your list of Claude sessions. Start a new one there. Or open the Command Palette (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>, or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> on Mac) and run <span class="ui">Claude Code: Open in New Tab</span>.</li>
           <li>The first time, a sign-in screen appears. Click <span class="ui">Sign in</span> and approve in the browser window that opens.</li>
         </ol>
       </section>
@@ -64,7 +64,7 @@
 <h2>If it goes wrong</h2>
 <details class="fix">
   <summary>I can't find the Spark icon</summary>
-  <p>Look in the Activity Bar down the left edge. It also appears at the top right of the editor, but only while a file is open. Still missing? A <span class="ui">Restricted Mode</span> notice means VS Code doesn't trust the folder, and the extension doesn't work there. Open the Command Palette, run <span class="ui">Workspaces: Manage Workspace Trust</span> and trust the folder. Otherwise, run <span class="ui">Developer: Reload Window</span> from the Command Palette.</p>
+  <p>Look in the Activity Bar down the left edge. It also appears at the top right of the editor, but only while a file is open. Still missing? A <span class="ui">Restricted Mode</span> banner at the top means VS Code doesn't trust the folder, so the extension is switched off and its icon is hidden. Click <span class="ui">Manage</span> in the banner, then <span class="ui">Trust</span>, or run <span class="ui">Workspaces: Manage Workspace Trust</span> from the Command Palette. Otherwise, run <span class="ui">Developer: Reload Window</span> from the Command Palette.</p>
 </details>
 <details class="fix">
   <summary>On my Mac, a window offers to install developer tools</summary>

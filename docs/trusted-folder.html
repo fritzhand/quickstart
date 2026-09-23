@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Trusted folders: how the agent works in your folder · Quickstart</title>
-<meta name="description" content="The folder you open is the agent&#39;s whole world. Trust only folders you made or got from people you trust, and read what the agent asks before you approve it.">
+<meta name="description" content="The folder you open is the agent&#39;s workspace. Trust only folders you made or got from people you trust, and read what the agent asks before you approve it.">
 <link rel="canonical" href="https://fritzhand.github.io/quickstart/trusted-folder.html">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#fbfcfc" media="(prefers-color-scheme: light)">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Quickstart">
 <meta property="og:title" content="Trusted folders: how the agent works in your folder · Quickstart">
-<meta property="og:description" content="The folder you open is the agent&#39;s whole world. Trust only folders you made or got from people you trust, and read what the agent asks before you approve it.">
+<meta property="og:description" content="The folder you open is the agent&#39;s workspace. Trust only folders you made or got from people you trust, and read what the agent asks before you approve it.">
 <meta property="og:url" content="https://fritzhand.github.io/quickstart/trusted-folder.html">
 <meta property="og:image" content="https://fritzhand.github.io/quickstart/assets/og.png">
 <meta property="og:image:width" content="1200">
@@ -102,21 +102,18 @@ for(var k in g)d.setAttribute("data-tab-"+k,g[k].indexOf(s[k])>-1?s[k]:(f[k]||g[
 <header class="page-head">
   <p class="eyebrow">Step 2 · Set up your agent</p>
   <h1>Trusted folders: how the agent works in your folder</h1>
-  <p class="lede">The folder you open is the agent&#39;s whole world. Trust only folders you made or got from people you trust, and read what the agent asks before you approve it.</p>
-  <div class="chips"><span class="chip chip-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span><span class="sr-only">Time: </span>5 min</span></span><span class="chip chip-track track-vscode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg><span>VS Code path</span></span></div>
+  <p class="lede">The folder you open is the agent&#39;s workspace. Trust only folders you made or got from people you trust, and read what the agent asks before you approve it.</p>
+  <div class="chips"><span class="chip chip-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span><span class="sr-only">Time: </span>3 min</span></span><span class="chip chip-track track-vscode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg><span>VS Code path</span></span></div>
   
 </header>
       <div class="prose">
 <h2 id="two-trust-questions">Two trust questions<a class="h-anchor" href="#two-trust-questions" aria-label="Link to this section: Two trust questions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h2>
-<p>The first time you open a folder, you may be asked twice.</p>
+<p>The first time you open a folder, you trust it twice: once for VS Code, and sometimes once for the agent.</p>
 <ol class="steps">
   <li>
-    <h3 id="vs-code-asks-first">VS Code asks first<a class="h-anchor" href="#vs-code-asks-first" aria-label="Link to this section: VS Code asks first"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h3>
-    <p><span class="ui">Do you trust the authors of the files in this folder?</span></p>
-    <ul>
-      <li><span class="ui">Yes, I trust the authors</span>: everything works.</li>
-      <li><span class="ui">No, I don't trust the authors</span>: VS Code opens the folder in <strong>Restricted Mode</strong>. AI agents and the terminal are turned off, and the Claude Code extension doesn't work.</li>
-    </ul>
+    <h3 id="vs-code-checks-first">VS Code checks first<a class="h-anchor" href="#vs-code-checks-first" aria-label="Link to this section: VS Code checks first"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h3>
+    <p>A folder you haven't trusted opens in <strong>Restricted Mode</strong>. A banner across the top says so, and AI agents and the terminal are turned off. The Claude Code extension doesn't work there. Click <span class="ui">Manage</span> in the banner, then <span class="ui">Trust</span>.</p>
+    <p>Some setups ask up front instead: <span class="ui">Do you trust the authors of the files in this folder?</span> <span class="ui">Yes, I trust the authors</span> trusts it. <span class="ui">No, I don't trust the authors</span> keeps Restricted Mode.</p>
   </li>
   <li>
     <h3 id="then-the-agent-may-ask">Then the agent may ask<a class="h-anchor" href="#then-the-agent-may-ask" aria-label="Link to this section: Then the agent may ask"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h3>
@@ -128,93 +125,67 @@ for(var k in g)d.setAttribute("data-tab-"+k,g[k].indexOf(s[k])>-1?s[k]:(f[k]||g[
 
 <h2 id="how-the-agent-works-in-your-folder">How the agent works in your folder<a class="h-anchor" href="#how-the-agent-works-in-your-folder" aria-label="Link to this section: How the agent works in your folder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h2>
 <figure class="diagram">
-  <svg class="dg" viewBox="0 0 480 456" role="img" aria-labelledby="trusted-folder-scope-title trusted-folder-scope-desc" style="--dg-w:600px">
+  <svg class="dg" viewBox="0 0 340 480" role="img" aria-labelledby="trusted-folder-scope-title trusted-folder-scope-desc" style="--dg-w:425px">
     <title id="trusted-folder-scope-title">The agent works inside your trusted project folder</title>
-    <desc id="trusted-folder-scope-desc">A large dashed box labeled Your computer contains a smaller box labeled Your project folder, trusted, for example Projects/history-of-st-pete. Inside the project folder is the agent. Arrows run from the agent to four things it does there: reads files, to learn the project; edits files, which you can undo; runs commands, with your permission; and commits and pushes, when you say so. Below the project folder, still on your computer, is a box for everything else, such as Documents and Downloads, marked off limits unless you allow it.</desc>
+    <desc id="trusted-folder-scope-desc">A large dashed box labeled Your computer contains a box labeled Your project folder, trusted, for example Projects/history-of-st-pete. Inside the project folder is the agent. Arrows run from the agent to four things it does there: reads files, to learn the project; edits files, which you can undo; runs commands, such as a build or Git; and commits and pushes to GitHub, when you say so. Below the project folder, still on your computer, is a box for everything else on your computer: the agent may read files there, and changes there are checked or asked first.</desc>
     <defs>
       <marker id="trusted-folder-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
         <path class="dg-arrowhead" d="M0 0L10 5L0 10z"/>
       </marker>
     </defs>
 
-    <rect class="dg-box-dashed" x="8" y="8" width="464" height="440" rx="14"/>
-    <text class="dg-label" x="24" y="30">YOUR COMPUTER</text>
+    <rect class="dg-box-dashed" x="2" y="2" width="336" height="476" rx="14"/>
+    <text class="dg-label" x="16" y="24">YOUR COMPUTER</text>
 
-    <rect class="dg-box-soft" x="24" y="44" width="432" height="296" rx="12"/>
-    <text class="dg-label" x="40" y="68">YOUR PROJECT FOLDER · TRUSTED</text>
-    <text class="dg-text-sm" x="40" y="90">e.g. Projects/history-of-st-pete</text>
+    <rect class="dg-box-soft" x="12" y="36" width="316" height="334" rx="12"/>
+    <text class="dg-label" x="26" y="58">YOUR PROJECT FOLDER · TRUSTED</text>
+    <text class="dg-text-sm" x="26" y="78">e.g. Projects/history-of-st-pete</text>
 
-    <rect class="dg-box-primary" x="150" y="100" width="180" height="46" rx="10"/>
-    <text class="dg-text-on" x="240" y="128" text-anchor="middle">The agent</text>
-    <line class="dg-line" x1="240" y1="146" x2="240" y2="158"/>
-    <line class="dg-line" x1="136" y1="158" x2="344" y2="158"/>
-    <line class="dg-line" x1="136" y1="158" x2="136" y2="175" marker-end="url(#trusted-folder-arrow)"/>
-    <line class="dg-line" x1="344" y1="158" x2="344" y2="175" marker-end="url(#trusted-folder-arrow)"/>
+    <rect class="dg-box-primary" x="26" y="90" width="120" height="38" rx="10"/>
+    <text class="dg-text-on" x="86" y="114" text-anchor="middle">The agent</text>
 
-    <rect class="dg-box" x="40" y="176" width="192" height="66" rx="10"/>
-    <text class="dg-text-strong" x="136" y="203" text-anchor="middle">Reads files</text>
-    <text class="dg-text-sm" x="136" y="226" text-anchor="middle">to learn the project</text>
+    <line class="dg-line" x1="46" y1="128" x2="46" y2="332"/>
+    <line class="dg-line" x1="46" y1="164" x2="64" y2="164" marker-end="url(#trusted-folder-arrow)"/>
+    <line class="dg-line" x1="46" y1="220" x2="64" y2="220" marker-end="url(#trusted-folder-arrow)"/>
+    <line class="dg-line" x1="46" y1="276" x2="64" y2="276" marker-end="url(#trusted-folder-arrow)"/>
+    <line class="dg-line" x1="46" y1="332" x2="64" y2="332" marker-end="url(#trusted-folder-arrow)"/>
 
-    <rect class="dg-box" x="248" y="176" width="192" height="66" rx="10"/>
-    <text class="dg-text-strong" x="344" y="203" text-anchor="middle">Edits files</text>
-    <text class="dg-text-sm" x="344" y="226" text-anchor="middle">you can undo</text>
+    <rect class="dg-box" x="66" y="140" width="250" height="48" rx="10"/>
+    <text class="dg-text-strong" x="80" y="161">Reads files</text>
+    <text class="dg-text-sm" x="80" y="179">to learn the project</text>
 
-    <rect class="dg-box" x="40" y="256" width="192" height="66" rx="10"/>
-    <text class="dg-text-strong" x="136" y="283" text-anchor="middle">Runs commands</text>
-    <text class="dg-text-sm" x="136" y="306" text-anchor="middle">with your permission</text>
+    <rect class="dg-box" x="66" y="196" width="250" height="48" rx="10"/>
+    <text class="dg-text-strong" x="80" y="217">Edits files</text>
+    <text class="dg-text-sm" x="80" y="235">you can undo</text>
 
-    <rect class="dg-box" x="248" y="256" width="192" height="66" rx="10"/>
-    <text class="dg-text-strong" x="344" y="283" text-anchor="middle">Commits &amp; pushes</text>
-    <text class="dg-text-sm" x="344" y="306" text-anchor="middle">when you say so</text>
+    <rect class="dg-box" x="66" y="252" width="250" height="48" rx="10"/>
+    <text class="dg-text-strong" x="80" y="273">Runs commands</text>
+    <text class="dg-text-sm" x="80" y="291">such as a build or Git</text>
 
-    <rect class="dg-box" x="24" y="358" width="432" height="74" rx="12"/>
-    <text class="dg-text-strong" x="240" y="388" text-anchor="middle">Everything else: Documents, Downloads…</text>
-    <text class="dg-text-sm" x="240" y="412" text-anchor="middle">Off limits unless you allow it</text>
+    <rect class="dg-box" x="66" y="308" width="250" height="48" rx="10"/>
+    <text class="dg-text-strong" x="80" y="329">Commits &amp; pushes</text>
+    <text class="dg-text-sm" x="80" y="347">to GitHub, when you say so</text>
+
+    <rect class="dg-box" x="12" y="382" width="316" height="84" rx="12"/>
+    <text class="dg-text-strong" x="170" y="408" text-anchor="middle">Everything else on your computer</text>
+    <text class="dg-text-sm" x="170" y="430" text-anchor="middle">It may read files here.</text>
+    <text class="dg-text-sm" x="170" y="450" text-anchor="middle">Changes are checked or asked first.</text>
   </svg>
-  <figcaption>The folder you open is the agent's workspace. It asks before it reaches outside.</figcaption>
+  <figcaption>The folder you open is the agent's workspace. It may still read files elsewhere on your computer, and it checks or asks before changing anything outside the folder.</figcaption>
 </figure>
 
-<ul>
-  <li><strong>It reads</strong> the files in the folder to understand the project.</li>
-  <li><strong>It proposes changes and edits files</strong>, then tells you what it did.</li>
-  <li><strong>It runs commands</strong>, such as a build or a Git command. When it needs your OK, it shows a permission prompt. Read the command before you approve it. Pushes, deletes and installs deserve a careful look.</li>
-  <li><strong>It commits and pushes</strong> when you tell it to.</li>
-</ul>
-
-<h2 id="how-often-it-asks">How often it asks<a class="h-anchor" href="#how-often-it-asks" aria-label="Link to this section: How often it asks"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h2>
-<p>You choose how often the agent stops to ask.</p>
-<div class="tabs" data-group="agent"><div class="tab-list" aria-label="Your agent"><button type="button" class="tab-btn" data-tab="claude">Claude Code</button><button type="button" class="tab-btn" data-tab="codex">Codex</button></div>
-  <section data-tab="claude" data-label="Claude Code" class="tab-panel"><p class="tab-title">Claude Code</p>
-    <p>Click the mode at the bottom of the message box:</p>
-    <ul>
-      <li><span class="ui">Manual</span>: asks before it edits files or runs most commands.</li>
-      <li><span class="ui">Edit automatically</span>: edits files without asking.</li>
-      <li><span class="ui">Auto</span>: a background safety check reviews most actions instead of asking you. It's the default on Pro, Max and Team plans.</li>
-      <li><span class="ui">Plan</span>: describes what it will do and waits for your OK before changing anything.</li>
-    </ul>
-  </section>
-  <section data-tab="codex" data-label="Codex" class="tab-panel"><p class="tab-title">Codex</p>
-    <p>Use the permissions control below the message box. <span class="ui">Ask for approval</span> lets Codex work inside the folder and pauses before it reaches beyond it.</p>
-  </section>
-</div>
-
-<h2 id="undo-and-standing-rules">Undo and standing rules<a class="h-anchor" href="#undo-and-standing-rules" aria-label="Link to this section: Undo and standing rules"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h2>
-<ul>
-  <li><strong>Undo:</strong> ask the agent to "undo that last change." In Claude Code, you can also hover over a message, click the rewind button and choose <span class="ui">Rewind code to here</span>. Anything already pushed can be undone with Git: "Revert the last commit and push to main."</li>
-  <li><strong>Standing rules:</strong> a <code>CLAUDE.md</code> file in the folder holds instructions the agent reads every time it starts, such as which name to commit as (see <a href="commit-as-you.html">Commit as yourself</a>). Codex reads a file called <code>AGENTS.md</code> instead.</li>
-</ul>
-
-<aside class="callout note" data-title="On the app path" role="note"><p class="callout-head"><span class="callout-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg></span><span class="callout-title">On the app path</span></p><div class="callout-body">There's no folder on your computer. The agent's folder is a fresh copy of the repos you picked, on a cloud machine.</div></aside>
+<p>When the agent needs your OK to run a command, it shows a permission prompt. Read the command before you approve it. Pushes, deletes and installs deserve a careful look. To see a plan before any change, add this to your request:</p>
+<div class="say-box"><div class="say-head"><span class="say-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/><path d="M8 9h8M8 13h5"/></svg></span><span class="say-label">Say this</span><button type="button" class="copy-btn" data-copy aria-label="Copy prompt"><span class="copy-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="copy-label">Copy</span></button></div><pre class="say">Plan this first. Don't change anything until I say go.</pre></div>
 
 <h2 id="see-the-agents-world">See the agent's world<a class="h-anchor" href="#see-the-agents-world" aria-label="Link to this section: See the agent&#39;s world"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h2>
 <div class="say-box"><div class="say-head"><span class="say-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/><path d="M8 9h8M8 13h5"/></svg></span><span class="say-label">Say this</span><button type="button" class="copy-btn" data-copy aria-label="Copy prompt"><span class="copy-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="copy-label">Copy</span></button></div><pre class="say">Which folder are you working in? List what's in it, and don't change anything.</pre></div>
 
-<aside class="callout check" data-title="Check it worked" role="note"><p class="callout-head"><span class="callout-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span><span class="callout-title">Check it worked</span></p><div class="callout-body">The agent names the folder you opened and lists its files. VS Code shows no <span class="ui">Restricted Mode</span> notice.</div></aside>
+<aside class="callout check" data-title="Check it worked" role="note"><p class="callout-head"><span class="callout-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span><span class="callout-title">Check it worked</span></p><div class="callout-body">The agent names the folder you opened and lists its files. VS Code shows no <span class="ui">Restricted Mode</span> banner.</div></aside>
 
 <h2 id="if-it-goes-wrong">If it goes wrong<a class="h-anchor" href="#if-it-goes-wrong" aria-label="Link to this section: If it goes wrong"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h2>
 <details class="fix">
-  <summary><span class="sum-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></svg></span><span class="sum-t">I clicked No, and now the agent doesn't work</span><span class="sum-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg></span></summary>
-  <p>Open the Command Palette (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>, or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> on Mac), run <span class="ui">Workspaces: Manage Workspace Trust</span> and trust the folder.</p>
+  <summary><span class="sum-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></svg></span><span class="sum-t">VS Code says Restricted Mode, and the agent doesn't work</span><span class="sum-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg></span></summary>
+  <p>Click <span class="ui">Manage</span> in the <span class="ui">Restricted Mode</span> banner, then <span class="ui">Trust</span>. Or open the Command Palette (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>, or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> on Mac), run <span class="ui">Workspaces: Manage Workspace Trust</span> and trust the folder.</p>
 </details>
 <details class="fix">
   <summary><span class="sum-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></svg></span><span class="sum-t">The agent asks about a folder I didn't expect</span><span class="sum-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg></span></summary>
@@ -229,7 +200,7 @@ for(var k in g)d.setAttribute("data-tab-"+k,g[k].indexOf(s[k])>-1?s[k]:(f[k]||g[
   <p class="done-hint">Saved only in this browser.</p>
 </div><nav class="pagenav" aria-label="Previous and next page"><a class="prev" href="windows-scripts.html" rel="prev"><span class="dir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5m7 7-7-7 7-7"/></svg>Previous</span><span class="t">Windows: allow scripts</span></a><a class="next" href="repos.html" rel="next"><span class="dir">Next<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></span><span class="t">Repos: public or private</span></a></nav>
     </article>
-<aside class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ul><li><a href="#two-trust-questions">Two trust questions</a></li><li><a href="#how-the-agent-works-in-your-folder">How the agent works in your folder</a></li><li><a href="#how-often-it-asks">How often it asks</a></li><li><a href="#undo-and-standing-rules">Undo and standing rules</a></li><li><a href="#see-the-agents-world">See the agent&#39;s world</a></li><li><a href="#if-it-goes-wrong">If it goes wrong</a></li></ul></aside>
+<aside class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ul><li><a href="#two-trust-questions">Two trust questions</a></li><li><a href="#how-the-agent-works-in-your-folder">How the agent works in your folder</a></li><li><a href="#see-the-agents-world">See the agent&#39;s world</a></li><li><a href="#if-it-goes-wrong">If it goes wrong</a></li></ul></aside>
   </div>
 </main>
 </div>

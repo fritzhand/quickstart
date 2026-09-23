@@ -7,7 +7,7 @@
   "track": "all"
 }
 -->
-<aside class="callout tip" data-title="Forking a starter?">A fork makes the repo for you. Read "Public or private" below, then skip to <a href="clone-fork.html">Clone, fork or copy</a>.</aside>
+<aside class="callout tip" data-title="Most readers skip the last part of this page">A fork makes your repo for you, and a fork is what this guide recommends for a first site. Read "Public or private" and "Pick a name", then go on to <a href="clone-fork.html">Clone, fork or copy</a>. Create a new repo here only when that page's "Make a fresh copy" steps send you back.</aside>
 
 <h2>Public or private</h2>
 <div class="table-wrap">
@@ -26,15 +26,23 @@
 
 <aside class="callout warn" data-title="Decide before your first push">Git keeps every version. If you push a password, a key or someone's private details to a public repo, deleting the file later doesn't remove it: it's still in the history for anyone to find. Never put them in a repo.</aside>
 
-<h2>Create your repo</h2>
-<p>Pick a name in lowercase with hyphens, such as <code>history-of-st-pete</code>. It becomes part of your site's address, <code>https://<var data-k="user">your-username</var>.github.io/<var data-k="repo">your-repo</var>/</code>, and web addresses are case-sensitive.</p>
+<h2>Pick a name</h2>
+<p>Use lowercase with hyphens, such as <code>history-of-st-pete</code>. The name becomes part of your site's address, <code>https://<var data-k="user">your-username</var>.github.io/<var data-k="repo">your-repo</var>/</code>, and web addresses are case-sensitive.</p>
 
+<h2>Create a new repo (fresh copy only)</h2>
 <div class="tabs" data-group="where">
   <section data-tab="app" data-label="App path">
     <ol class="steps">
       <li>
-        <h3>Ask Claude to create it</h3>
-        <pre class="say">Create a new public GitHub repository called <var data-k="repo">your-repo</var> in my account, with a README. Then give me its link.</pre>
+        <h3>Create it on GitHub</h3>
+        <p>Cloud sessions can only work in a repo that already exists, so this click is yours.</p>
+        <ol>
+          <li>Go to <a href="https://github.com/new">https://github.com/new</a>.</li>
+          <li>Type the name.</li>
+          <li>Choose <span class="ui">Public</span>.</li>
+          <li>Turn on the option to add a README.</li>
+          <li>Click <span class="ui">Create repository</span>.</li>
+        </ol>
       </li>
       <li>
         <h3>Open it in a new session</h3>
@@ -43,30 +51,21 @@
     </ol>
   </section>
   <section data-tab="vscode" data-label="VS Code path">
-    <p>Open your projects folder in VS Code. The agent creates the repo with the GitHub CLI you signed in to in <a href="install-tools.html">Git, Node &amp; GitHub CLI</a>.</p>
-    <pre class="say">Create a new public GitHub repository called <var data-k="repo">your-repo</var> with a README, clone it here, and open it.</pre>
+    <p>Open your <code>Projects</code> folder in VS Code. The agent creates the repo with the GitHub CLI you signed in to in <a href="install-tools.html">Git, Node &amp; GitHub CLI</a>.</p>
+    <pre class="say">Create a new public GitHub repository called <var data-k="repo">your-repo</var> with a README and clone it here.</pre>
+    <p>Then open it yourself: <span class="ui">File</span> → <span class="ui">Open Folder…</span>, choose <code>Projects/<var data-k="repo">your-repo</var></code>, and start a new conversation there. Now the agent works in your repo and reads its <code>CLAUDE.md</code> or <code>AGENTS.md</code> when it starts.</p>
+    <aside class="callout manual" data-title="If the agent can't create it">Go to <a href="https://github.com/new">https://github.com/new</a>, type the name, choose <span class="ui">Public</span>, turn on the option to add a README and click <span class="ui">Create repository</span>. Then say "Clone https://github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> into this folder." and open it as above.</aside>
   </section>
 </div>
 
-<aside class="callout manual" data-title="If the agent can't create it">
-  <p>It takes a minute on GitHub:</p>
-  <ol>
-    <li>Go to <a href="https://github.com/new">https://github.com/new</a>.</li>
-    <li>Type the name in lowercase with hyphens.</li>
-    <li>Choose <span class="ui">Public</span>.</li>
-    <li>Turn on the option to add a README.</li>
-    <li>Click <span class="ui">Create repository</span>.</li>
-  </ol>
-  <p>Then, on the app path, pick the repo in a new session. On the VS Code path, say "Clone https://github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> into this folder and open it."</p>
-</aside>
-
-<aside class="callout check" data-title="Check it worked">Open <code>https://github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var></code>. You see your repo's page with a README file and a <span class="ui">Public</span> label next to its name.</aside>
+<aside class="callout check" data-title="Check it worked">If you created a repo, open <code>https://github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var></code>. You see your repo's page with a README file and a <span class="ui">Public</span> label next to its name.</aside>
 
 <h2>If it goes wrong</h2>
 <details class="fix">
   <summary>I made it private by mistake</summary>
+  <p>Visibility is a repo setting, so you change it on GitHub: open the repo's <span class="ui">Settings</span>, scroll to the <span class="ui">Danger Zone</span> section and click <span class="ui">Change visibility</span>.</p>
+  <p>On the VS Code path, the agent can do it with the GitHub CLI:</p>
   <pre class="say">Make <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> public.</pre>
-  <p>Or do it yourself on GitHub: open the repo's <span class="ui">Settings</span>, find the <span class="ui">Danger Zone</span> section and click <span class="ui">Change visibility</span>.</p>
 </details>
 <details class="fix">
   <summary>I pushed a password or key to a public repo</summary>
@@ -77,6 +76,7 @@
   <summary>What the agent runs for you</summary>
   <p>On the VS Code path, with the GitHub CLI:</p>
   <pre><code>gh repo create <var data-k="repo">your-repo</var> --public --add-readme --clone
-cd <var data-k="repo">your-repo</var></code></pre>
-  <p>On the app path, Claude may use its built-in GitHub tools instead of a command.</p>
+
+# Make a private repo public
+gh repo edit <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> --visibility public --accept-visibility-change-consequences</code></pre>
 </details>

@@ -14,8 +14,8 @@
 <p><strong>Why:</strong> on Windows, VS Code's terminal runs Windows PowerShell. Its starting policy, called Restricted, runs single commands but no scripts. <code>npm</code> and the tools it installs start through small <code>.ps1</code> script files, so PowerShell refuses them.</p>
 
 <h2>Fix it</h2>
-<pre class="say">Allow PowerShell scripts for my user account only using Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser, then check it with Get-ExecutionPolicy -List.</pre>
-<p>Read the command in the permission prompt, then allow it. It doesn't need admin rights, and it works right away.</p>
+<pre class="say">Allow PowerShell scripts for my user account only using Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force, then check it with Get-ExecutionPolicy -List.</pre>
+<p>Read the command in the permission prompt, then allow it. It doesn't need admin rights, and it works right away. <code>-Force</code> only skips PowerShell's "are you sure?" question, which the agent can't answer.</p>
 
 <aside class="callout manual" data-title="If the agent can't">Open the terminal with <span class="ui">View</span> → <span class="ui">Terminal</span>, paste this and press <kbd>Enter</kbd>. If PowerShell asks you to confirm, type <kbd>Y</kbd> and press <kbd>Enter</kbd>.
 <pre class="cmd" data-shell="PowerShell"><code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code></pre>
@@ -39,7 +39,7 @@
 
 <details class="more">
   <summary>What the agent runs for you</summary>
-  <pre><code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+  <pre><code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force   # -Force skips the Y/N question
 Get-ExecutionPolicy -List</code></pre>
   <p>The list looks something like this. The line that matters is <code>CurrentUser</code>:</p>
   <pre><code>        Scope ExecutionPolicy

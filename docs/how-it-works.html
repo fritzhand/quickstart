@@ -109,9 +109,9 @@ for(var k in g)d.setAttribute("data-tab-"+k,g[k].indexOf(s[k])>-1?s[k]:(f[k]||g[
       <div class="prose">
 <h2 id="three-places-your-project-lives">Three places your project lives<a class="h-anchor" href="#three-places-your-project-lives" aria-label="Link to this section: Three places your project lives"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h2>
 <figure class="diagram">
-  <svg class="dg" viewBox="0 0 480 330" role="img" aria-labelledby="how-it-works-places-title how-it-works-places-desc" style="--dg-w:600px">
+  <svg class="dg" viewBox="0 0 340 450" role="img" aria-labelledby="how-it-works-places-title how-it-works-places-desc" style="--dg-w:425px">
     <title id="how-it-works-places-title">The three places your project lives</title>
-    <desc id="how-it-works-places-desc">At the top is your repository on GitHub, the official copy with its full history. An arrow labeled clone / pull runs down from it to the working copy, where the agent edits files. An arrow labeled commit + push runs back up from the working copy to the repository. The working copy is a folder on your computer on the VS Code path, or a fresh copy in the cloud on the app path. A third arrow, labeled Pages publishes, runs from the repository to the live website at your-username.github.io/your-repo, which anyone can visit.</desc>
+    <desc id="how-it-works-places-desc">Three boxes stacked from top to bottom. At the top is the working copy, where the agent edits files: a folder on your computer on the VS Code path, or a fresh copy in the cloud on the app path. An arrow labeled commit + push runs down from it to your repository on GitHub, the official copy with its full history. An arrow labeled clone / pull runs back up from the repository to the working copy. A third arrow, labeled Pages publishes, runs down from the repository to the live website at your-username.github.io/your-repo, which anyone can visit.</desc>
     <defs>
       <marker id="how-it-works-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
         <path class="dg-arrowhead" d="M0 0L10 5L0 10z"/>
@@ -121,38 +121,38 @@ for(var k in g)d.setAttribute("data-tab-"+k,g[k].indexOf(s[k])>-1?s[k]:(f[k]||g[
       </marker>
     </defs>
 
-    <rect class="dg-box" x="16" y="8" width="448" height="78" rx="12"/>
-    <text class="dg-label" x="240" y="32" text-anchor="middle">ON GITHUB</text>
-    <text class="dg-text-strong" x="240" y="54" text-anchor="middle">Your repository</text>
-    <text class="dg-text-sm" x="240" y="74" text-anchor="middle">The official copy, plus its full history</text>
+    <rect class="dg-box-dashed" x="8" y="8" width="324" height="128" rx="12"/>
+    <text class="dg-label" x="170" y="32" text-anchor="middle">WORKING COPY</text>
+    <rect class="dg-box-primary" x="45" y="44" width="250" height="42" rx="10"/>
+    <text class="dg-text-strong dg-text-on" x="170" y="70" text-anchor="middle">The agent edits here</text>
+    <text class="dg-text-sm" x="170" y="106" text-anchor="middle">VS Code: a folder on your computer</text>
+    <text class="dg-text-sm" x="170" y="126" text-anchor="middle">App: a fresh copy in the cloud</text>
 
-    <line class="dg-line" x1="56" y1="88" x2="56" y2="164" marker-end="url(#how-it-works-arrow)"/>
-    <text class="dg-text-sm" x="66" y="122">clone / pull</text>
-    <line class="dg-line-accent" x1="236" y1="164" x2="236" y2="88" marker-end="url(#how-it-works-arrow-accent)"/>
-    <text class="dg-text-sm" x="226" y="146" text-anchor="end">commit + push</text>
-    <line class="dg-line" x1="380" y1="88" x2="380" y2="164" marker-end="url(#how-it-works-arrow)"/>
-    <text class="dg-text-sm" x="370" y="122" text-anchor="end">Pages publishes</text>
+    <line class="dg-line-accent" x1="120" y1="138" x2="120" y2="214" marker-end="url(#how-it-works-arrow-accent)"/>
+    <text class="dg-text-sm" x="110" y="181" text-anchor="end">commit + push</text>
+    <line class="dg-line" x1="220" y1="214" x2="220" y2="138" marker-end="url(#how-it-works-arrow)"/>
+    <text class="dg-text-sm" x="230" y="181">clone / pull</text>
 
-    <rect class="dg-box-dashed" x="16" y="166" width="260" height="156" rx="12"/>
-    <text class="dg-label" x="146" y="190" text-anchor="middle">WORKING COPY</text>
-    <rect class="dg-box-primary" x="36" y="204" width="220" height="48" rx="10"/>
-    <text class="dg-text-on" x="146" y="233" text-anchor="middle">The agent edits here</text>
-    <text class="dg-text-sm" x="146" y="280" text-anchor="middle">VS Code: a folder on your computer</text>
-    <text class="dg-text-sm" x="146" y="302" text-anchor="middle">App: a fresh copy in the cloud</text>
+    <rect class="dg-box" x="8" y="216" width="324" height="84" rx="12"/>
+    <text class="dg-label" x="170" y="240" text-anchor="middle">ON GITHUB</text>
+    <text class="dg-text-strong" x="170" y="264" text-anchor="middle">Your repository</text>
+    <text class="dg-text-sm" x="170" y="286" text-anchor="middle">The official copy, plus its full history</text>
 
-    <rect class="dg-box-soft" x="296" y="166" width="168" height="156" rx="12"/>
-    <text class="dg-label" x="380" y="190" text-anchor="middle">LIVE WEBSITE</text>
-    <text class="dg-text-strong" x="380" y="236" text-anchor="middle">Public on the web</text>
-    <text class="dg-text-sm" x="380" y="270" text-anchor="middle">your-username</text>
-    <text class="dg-text-sm" x="380" y="290" text-anchor="middle">.github.io/your-repo</text>
+    <line class="dg-line" x1="170" y1="302" x2="170" y2="356" marker-end="url(#how-it-works-arrow)"/>
+    <text class="dg-text-sm" x="182" y="334">Pages publishes</text>
+
+    <rect class="dg-box-soft" x="8" y="358" width="324" height="84" rx="12"/>
+    <text class="dg-label" x="170" y="382" text-anchor="middle">LIVE WEBSITE</text>
+    <text class="dg-text-strong" x="170" y="406" text-anchor="middle">Public on the web</text>
+    <text class="dg-text-sm" x="170" y="428" text-anchor="middle">your-username.github.io/your-repo</text>
   </svg>
   <figcaption>The agent edits the working copy. Its changes reach GitHub, and then your live site, only when it pushes.</figcaption>
 </figure>
 
 <ol>
-  <li><strong>Your repository on GitHub.</strong> The official copy of your site's files, plus the history of every saved change. It lives at <code>github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var></code>.</li>
   <li><strong>The working copy.</strong> The copy the agent actually edits. On the VS Code path it's a folder on your computer. On the app path it's a fresh copy in the cloud, made for each session. Nothing here reaches GitHub until it's pushed.</li>
-  <li><strong>The live website.</strong> GitHub Pages builds it from your repository and serves it at <code>https://<var data-k="user">your-username</var>.github.io/<var data-k="repo">your-repo</var>/</code>. Changes can take up to 10 minutes to show after a push.</li>
+  <li><strong>Your repository on GitHub.</strong> The official copy of your site's files, plus the history of every saved change. It lives at <code>github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var></code>.</li>
+  <li><strong>The live website.</strong> GitHub Pages builds it from your repository and serves it at <code>https://<var data-k="user">your-username</var>.github.io/<var data-k="repo">your-repo</var>/</code>. Changes can take up to 10 minutes to show after a push. You switch Pages on yourself, once, in your repo's settings on github.com. The agent edits files, not your repo's settings, so this one is yours. <a href="github-pages.html">Turn on GitHub Pages</a> shows how.</li>
 </ol>
 
 <p>Four words move changes between them. You'll rarely type them yourself; you'll ask the agent.</p>
@@ -181,7 +181,7 @@ for(var k in g)d.setAttribute("data-tab-"+k,g[k].indexOf(s[k])>-1?s[k]:(f[k]||g[
 <h2 id="what-it-can-see-and-what-it-remembers">What it can see, and what it remembers<a class="h-anchor" href="#what-it-can-see-and-what-it-remembers" aria-label="Link to this section: What it can see, and what it remembers"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h2>
 <ul>
   <li><strong>Only what you give it.</strong> It works in the folder you opened in VS Code, or the repos you picked in the app. It doesn't see the rest of your computer unless you allow it.</li>
-  <li><strong>Each session starts fresh.</strong> It doesn't carry your earlier conversations into a new session. What carries over is the repo: its files, its history and a rules file. Claude reads <code>CLAUDE.md</code> at the start of every session, and Codex reads <code>AGENTS.md</code>. Put standing rules there, such as who to commit as or "never invent facts". <a href="commit-as-you.html">Commit as yourself</a> shows one.</li>
+  <li><strong>Don't count on it remembering.</strong> It doesn't carry your conversations into a new session. On your computer, Claude Code keeps a few short notes of its own, but what reliably carries over is the repo: its files, its history and a rules file. Claude reads <code>CLAUDE.md</code> at the start of every session, and Codex reads <code>AGENTS.md</code>. Put standing rules there, such as who to commit as or "never invent facts". <a href="commit-as-you.html">Commit as yourself</a> shows one.</li>
 </ul>
 
 <aside class="callout check" data-title="Check you've got it" role="note"><p class="callout-head"><span class="callout-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span><span class="callout-title">Check you&#39;ve got it</span></p><div class="callout-body">You can answer two questions: where does the agent make its edits (the working copy), and what makes them show up on your site (commit and push, then Pages publishes)?</div></aside>

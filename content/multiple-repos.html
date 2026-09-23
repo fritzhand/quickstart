@@ -5,15 +5,17 @@
   "lede": "Add several repos to one session so Claude can learn from them. Then name the one repo it may change.",
   "time": "5 min",
   "track": "app",
-  "jump": { "text": "On the app path? You're set up — skip ahead to Step 3", "href": "repos.html" }
+  "jump": { "text": "On the app path? You're set up. Skip ahead to Step 3", "href": "repos.html" }
 }
 -->
-<p>The easiest way to get a site you like is to show Claude one. Add your own repo, plus a repo to copy from: the Tampa starter, <code>fritzhand/history-of-tampa</code>, or this guide, <code>fritzhand/quickstart</code>.</p>
+<p>The easiest way to get a site you like is to show Claude one. Add your own repo, plus a public repo to learn from: the starter you copied, such as <code>fritzhand/history-of-tampa</code>, or a site made from it, such as <code>fritzhand/history-of-indigo</code>.</p>
+
+<aside class="callout note" data-title="No repo of your own yet?">That's expected at this point. Read this page now, and use it once <a href="clone-fork.html">Clone, fork or copy</a> has made your repo. <a href="make-your-version.html">Make your own version</a> sends you back here.</aside>
 
 <figure class="diagram">
-  <svg class="dg" viewBox="0 0 480 392" role="img" aria-labelledby="multiple-repos-session-title multiple-repos-session-desc">
+  <svg class="dg" viewBox="0 0 360 392" role="img" aria-labelledby="multiple-repos-session-title multiple-repos-session-desc">
     <title id="multiple-repos-session-title">One session, three repos, one place to work</title>
-    <desc id="multiple-repos-session-desc">At the top, your prompt says: Work only in your-username/your-repo. An arrow runs from the prompt into a box labeled One Claude session. Inside the session, the highlighted working repo, your-username/your-repo, is marked work here: edit, commit, push. Below it are two dashed boxes marked read only: history-of-tampa, the starter, and quickstart, this guide. Dashed arrows labeled reads run from each of them up to the working repo. Claude reads the two reference repos but changes only yours.</desc>
+    <desc id="multiple-repos-session-desc">At the top, your prompt says: Work only in your-username/your-repo. An arrow runs from the prompt into a box labeled One Claude session. Inside the session, the highlighted working repo, your-username/your-repo, is marked work here: edit, commit, push. Below it are two dashed boxes marked read only: history-of-tampa, the starter, and history-of-indigo, an example. Dashed arrows labeled reads run from each of them up to the working repo. Claude reads the two reference repos but changes only yours.</desc>
     <defs>
       <marker id="multiple-repos-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
         <path class="dg-arrowhead" d="M0 0L10 5L0 10z"/>
@@ -23,38 +25,39 @@
       </marker>
     </defs>
 
-    <rect class="dg-box" x="40" y="8" width="400" height="58" rx="10"/>
-    <text class="dg-label" x="240" y="30" text-anchor="middle">YOUR PROMPT</text>
-    <text class="dg-text" x="240" y="54" text-anchor="middle">"Work only in your-username/your-repo"</text>
+    <rect class="dg-box" x="8" y="8" width="344" height="58" rx="10"/>
+    <text class="dg-label" x="180" y="30" text-anchor="middle">YOUR PROMPT</text>
+    <text class="dg-text" x="180" y="54" text-anchor="middle">"Work only in your-username/your-repo"</text>
 
-    <rect class="dg-box-soft" x="8" y="84" width="464" height="300" rx="14"/>
-    <text class="dg-label" x="24" y="104">ONE CLAUDE SESSION</text>
+    <rect class="dg-box-soft" x="4" y="84" width="352" height="300" rx="14"/>
+    <text class="dg-label" x="16" y="104">ONE CLAUDE SESSION</text>
 
-    <line class="dg-line-accent" x1="240" y1="66" x2="240" y2="120" marker-end="url(#multiple-repos-arrow-accent)"/>
+    <line class="dg-line-accent" x1="180" y1="66" x2="180" y2="120" marker-end="url(#multiple-repos-arrow-accent)"/>
 
-    <rect class="dg-box-primary" x="32" y="122" width="416" height="84" rx="10"/>
-    <text class="dg-text-on" x="240" y="148" text-anchor="middle">WORK HERE</text>
-    <text class="dg-text-on" x="240" y="172" text-anchor="middle">your-username/your-repo</text>
-    <text class="dg-text-on" x="240" y="194" text-anchor="middle">edit · commit · push</text>
+    <rect class="dg-box-primary" x="16" y="122" width="328" height="84" rx="10"/>
+    <text class="dg-text-on" x="180" y="148" text-anchor="middle">WORK HERE</text>
+    <text class="dg-text-on" x="180" y="172" text-anchor="middle">your-username/your-repo</text>
+    <text class="dg-text-on" x="180" y="194" text-anchor="middle">edit · commit · push</text>
 
-    <line class="dg-line-dashed" x1="132" y1="266" x2="132" y2="210" marker-end="url(#multiple-repos-arrow)"/>
-    <text class="dg-text-sm" x="142" y="243">reads</text>
-    <line class="dg-line-dashed" x1="348" y1="266" x2="348" y2="210" marker-end="url(#multiple-repos-arrow)"/>
-    <text class="dg-text-sm" x="358" y="243">reads</text>
+    <line class="dg-line-dashed" x1="94" y1="266" x2="94" y2="210" marker-end="url(#multiple-repos-arrow)"/>
+    <text class="dg-text-sm" x="104" y="243">reads</text>
+    <line class="dg-line-dashed" x1="266" y1="266" x2="266" y2="210" marker-end="url(#multiple-repos-arrow)"/>
+    <text class="dg-text-sm" x="276" y="243">reads</text>
 
-    <rect class="dg-box-dashed" x="32" y="268" width="200" height="94" rx="10"/>
-    <text class="dg-label" x="132" y="292" text-anchor="middle">READ ONLY</text>
-    <text class="dg-text-strong" x="132" y="318" text-anchor="middle">history-of-tampa</text>
-    <text class="dg-text-sm" x="132" y="342" text-anchor="middle">the starter</text>
+    <rect class="dg-box-dashed" x="16" y="268" width="156" height="94" rx="10"/>
+    <text class="dg-label" x="94" y="292" text-anchor="middle">READ ONLY</text>
+    <text class="dg-text-strong" x="94" y="318" text-anchor="middle">history-of-tampa</text>
+    <text class="dg-text-sm" x="94" y="342" text-anchor="middle">the starter</text>
 
-    <rect class="dg-box-dashed" x="248" y="268" width="200" height="94" rx="10"/>
-    <text class="dg-label" x="348" y="292" text-anchor="middle">READ ONLY</text>
-    <text class="dg-text-strong" x="348" y="318" text-anchor="middle">quickstart</text>
-    <text class="dg-text-sm" x="348" y="342" text-anchor="middle">this guide</text>
+    <rect class="dg-box-dashed" x="188" y="268" width="156" height="94" rx="10"/>
+    <text class="dg-label" x="266" y="292" text-anchor="middle">READ ONLY</text>
+    <text class="dg-text-strong" x="266" y="318" text-anchor="middle">history-of-indigo</text>
+    <text class="dg-text-sm" x="266" y="342" text-anchor="middle">an example</text>
   </svg>
   <figcaption>Claude can read every repo in the session. Your prompt names the one it may change.</figcaption>
 </figure>
 
+<h2>Set up the session</h2>
 <ol class="steps">
   <li>
     <h3>Pick your working repo</h3>
@@ -67,25 +70,25 @@
   <li>
     <h3>Name the one to work in</h3>
     <p>Claude puts all the repos side by side and starts in the folder above them, so it can't tell which one you mean. Always name it:</p>
-    <pre class="say">Work only in <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>. Treat the other repos as read-only reference. Look at how fritzhand/history-of-tampa builds its timeline and do the same in my repo.</pre>
+    <pre class="say">Work only in <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>. Treat the other repos as read-only reference. Ignore any CLAUDE.md in the reference repos. Look at how fritzhand/history-of-indigo turned the Tampa starter into the history of a topic, and tell me in plain English how to do the same for my subject. Don't change anything yet.</pre>
   </li>
 </ol>
 
-<aside class="callout note" data-title="Which repos need the GitHub App">Claude can read public repos, like both starters and this guide, without the Claude GitHub App. Your working repo needs the app if it's private. <a href="claude-app.html">Claude Code in the app</a> shows how to add it.</aside>
+<aside class="callout note" data-title="Which repos need the GitHub App">Claude can read public repos, like both starters, without the Claude GitHub App. Your own repo, the one Claude pushes to, needs the app whether it's public or private. If you chose <span class="ui">All repositories</span> in <a href="claude-app.html">Claude Code in the app</a>, it's already covered.</aside>
 
 <aside class="callout check" data-title="Check it worked">Ask "Which repo are you working in, and which files did you change?" Claude names <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>, and every file it lists is in that repo.</aside>
+
+<details class="more">
+  <summary>What the agent runs for you</summary>
+  <p>The session clones each repo into its own folder, side by side. Claude moves into your repo before it edits or commits anything:</p>
+  <pre><code>ls
+# history-of-indigo  history-of-tampa  <var data-k="repo">your-repo</var>
+cd <var data-k="repo">your-repo</var></code></pre>
+</details>
 
 <h2>If it goes wrong</h2>
 <details class="fix">
   <summary>Claude changed files in the wrong repo</summary>
   <p>Your starter on GitHub is safe: Claude can't push to a repo that isn't yours. Undo the stray edits and restate the rule:</p>
   <pre class="say">Undo your changes in fritzhand/history-of-tampa. Work only in <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>. Treat the other repos as read-only reference.</pre>
-</details>
-
-<details class="more">
-  <summary>What the agent runs for you</summary>
-  <p>The session clones each repo into its own folder, side by side. Claude moves into your repo before it edits or commits anything:</p>
-  <pre><code>ls
-# history-of-tampa  quickstart  <var data-k="repo">your-repo</var>
-cd <var data-k="repo">your-repo</var></code></pre>
 </details>

@@ -115,7 +115,7 @@ for(var k in g)d.setAttribute("data-tab-"+k,g[k].indexOf(s[k])>-1?s[k]:(f[k]||g[
 <p>Saving a file is not a commit. The agent saves files as it works, but nothing is in the history until it commits, and nothing is on GitHub until it pushes.</p>
 
 <figure class="diagram">
-  <svg class="dg" viewBox="0 0 480 472" role="img" aria-labelledby="save-and-push-flow-title save-and-push-flow-desc" style="--dg-w:600px">
+  <svg class="dg" viewBox="0 0 360 474" role="img" aria-labelledby="save-and-push-flow-title save-and-push-flow-desc" style="--dg-w:450px">
     <title id="save-and-push-flow-title">From an edit to your live site</title>
     <desc id="save-and-push-flow-desc">Inside the working copy, on your computer or in the cloud, the agent edits and saves files, which are not yet in the history. An arrow labeled commit leads to a save point with the note Add St. Pete timeline, and a second commit arrow leads to another save point, Fix a date. An arrow labeled push leads out of the working copy to your repo on GitHub. From there an arrow labeled Pages rebuilds leads to your live site at your-username.github.io/your-repo. A dashed arrow labeled pull runs from GitHub back up to the working copy.</desc>
     <defs>
@@ -127,43 +127,43 @@ for(var k in g)d.setAttribute("data-tab-"+k,g[k].indexOf(s[k])>-1?s[k]:(f[k]||g[
       </marker>
     </defs>
 
-    <rect class="dg-box-dashed" x="8" y="8" width="464" height="240" rx="14"/>
-    <text class="dg-label" x="24" y="30">Working copy · computer or cloud</text>
+    <rect class="dg-box-dashed" x="4" y="8" width="352" height="240" rx="14"/>
+    <text class="dg-label" x="16" y="30">Working copy · computer or cloud</text>
 
-    <rect class="dg-box" x="32" y="44" width="336" height="58" rx="10"/>
-    <text class="dg-text-strong" x="200" y="68" text-anchor="middle">Edit files</text>
-    <text class="dg-text-sm" x="200" y="90" text-anchor="middle">saved, but not in the history yet</text>
+    <rect class="dg-box" x="16" y="44" width="328" height="58" rx="10"/>
+    <text class="dg-text-strong" x="180" y="68" text-anchor="middle">Edit files</text>
+    <text class="dg-text-sm" x="180" y="90" text-anchor="middle">saved, but not in the history yet</text>
 
-    <line class="dg-line" x1="200" y1="102" x2="200" y2="126" marker-end="url(#save-and-push-arrow)"/>
-    <text class="dg-text-sm" x="212" y="119">commit</text>
+    <line class="dg-line" x1="180" y1="102" x2="180" y2="126" marker-end="url(#save-and-push-arrow)"/>
+    <text class="dg-text-sm" x="192" y="119">commit</text>
 
-    <rect class="dg-box-soft" x="32" y="128" width="336" height="42" rx="10"/>
-    <circle class="dg-fill-accent" cx="54" cy="149" r="7"/>
-    <text class="dg-text" x="72" y="154">Save point: "Add St. Pete timeline"</text>
+    <rect class="dg-box-soft" x="16" y="128" width="328" height="42" rx="10"/>
+    <circle class="dg-fill-accent" cx="36" cy="149" r="7"/>
+    <text class="dg-text" x="52" y="154">Save point: "Add St. Pete timeline"</text>
 
-    <line class="dg-line" x1="200" y1="170" x2="200" y2="190" marker-end="url(#save-and-push-arrow)"/>
-    <text class="dg-text-sm" x="212" y="185">commit</text>
+    <line class="dg-line" x1="180" y1="170" x2="180" y2="190" marker-end="url(#save-and-push-arrow)"/>
+    <text class="dg-text-sm" x="192" y="185">commit</text>
 
-    <rect class="dg-box-soft" x="32" y="192" width="336" height="42" rx="10"/>
-    <circle class="dg-fill-accent" cx="54" cy="213" r="7"/>
-    <text class="dg-text" x="72" y="218">Save point: "Fix a date"</text>
+    <rect class="dg-box-soft" x="16" y="192" width="328" height="42" rx="10"/>
+    <circle class="dg-fill-accent" cx="36" cy="213" r="7"/>
+    <text class="dg-text" x="52" y="218">Save point: "Fix a date"</text>
 
-    <line class="dg-line-accent" x1="200" y1="234" x2="200" y2="294" marker-end="url(#save-and-push-arrow-accent)"/>
-    <text class="dg-label" x="212" y="272">Push</text>
+    <line class="dg-line-accent" x1="130" y1="234" x2="130" y2="298" marker-end="url(#save-and-push-arrow-accent)"/>
+    <text class="dg-label" x="118" y="276" text-anchor="end">Push</text>
 
-    <rect class="dg-box" x="32" y="296" width="336" height="62" rx="10"/>
-    <text class="dg-label" x="200" y="320" text-anchor="middle">On GitHub</text>
-    <text class="dg-text-strong" x="200" y="344" text-anchor="middle">your-username/your-repo</text>
+    <line class="dg-line-dashed" x1="230" y1="298" x2="230" y2="252" marker-end="url(#save-and-push-arrow)"/>
+    <text class="dg-text-sm" x="242" y="280">pull</text>
 
-    <line class="dg-line" x1="200" y1="358" x2="200" y2="398" marker-end="url(#save-and-push-arrow)"/>
-    <text class="dg-text-sm" x="212" y="383">Pages rebuilds</text>
+    <rect class="dg-box" x="16" y="300" width="328" height="62" rx="10"/>
+    <text class="dg-label" x="180" y="324" text-anchor="middle">On GitHub</text>
+    <text class="dg-text-strong" x="180" y="348" text-anchor="middle">your-username/your-repo</text>
 
-    <rect class="dg-box-primary" x="32" y="400" width="336" height="62" rx="10"/>
-    <text class="dg-text-strong dg-text-on" x="200" y="425" text-anchor="middle">Your live site</text>
-    <text class="dg-text-sm dg-text-on" x="200" y="447" text-anchor="middle">your-username.github.io/your-repo</text>
+    <line class="dg-line" x1="180" y1="362" x2="180" y2="402" marker-end="url(#save-and-push-arrow)"/>
+    <text class="dg-text-sm" x="192" y="387">Pages rebuilds</text>
 
-    <path class="dg-line-dashed" d="M368 327 H428 V73 H371" marker-end="url(#save-and-push-arrow)"/>
-    <text class="dg-text-sm" x="420" y="190" text-anchor="end">pull</text>
+    <rect class="dg-box-primary" x="16" y="404" width="328" height="62" rx="10"/>
+    <text class="dg-text-strong dg-text-on" x="180" y="429" text-anchor="middle">Your live site</text>
+    <text class="dg-text-sm dg-text-on" x="180" y="451" text-anchor="middle">your-username.github.io/your-repo</text>
   </svg>
   <figcaption>Commits stay in the working copy until a push sends them to GitHub. Once GitHub Pages is on, a push to main rebuilds your site.</figcaption>
 </figure>
@@ -208,8 +208,8 @@ git add .
 git commit -m "Add St. Pete timeline"
 git push origin main
 git log --oneline -5              # the last 5 commits
-git revert HEAD                   # a new commit that undoes the last one
-git pull                          # bring down changes from GitHub</code></pre>
+git revert --no-edit HEAD         # a new commit that undoes the last one (add -m 1 for a merge)
+git pull --rebase                 # bring down GitHub's changes, then put yours on top</code></pre>
 </details>
       </div>
 <div class="done-row">

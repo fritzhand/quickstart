@@ -103,7 +103,7 @@ for(var k in g)d.setAttribute("data-tab-"+k,g[k].indexOf(s[k])>-1?s[k]:(f[k]||g[
     <p class="hero-kicker">A step-by-step guide</p>
     <h1>Publish your first website with an AI agent</h1>
     <p class="hero-lede">You&#39;ll end with your own version of a real website, live on the web, made by telling an AI agent what you want. Work from your phone or your computer.</p>
-    <div class="cta-row"><a class="btn btn-primary" href="github-account.html">Start with Step 1<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></a><a class="btn btn-glass" href="choose-setup.html">App or VS Code?</a></div>
+    <div class="cta-row"><a class="btn btn-primary" href="how-it-works.html">Start with the big picture<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></a><a class="btn btn-glass" href="github-account.html">Skip to Step 1</a></div>
     <div class="chips"><span class="chip chip-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span><span class="sr-only">Time: </span>About 1–2 hours</span></span></div>
   </div>
   <div class="hero-art" aria-hidden="true"><svg class="hero-svg" viewBox="0 0 360 300" aria-hidden="true" focusable="false">
@@ -146,73 +146,31 @@ for(var k in g)d.setAttribute("data-tab-"+k,g[k].indexOf(s[k])>-1?s[k]:(f[k]||g[
 
 <h2 id="the-one-rule">The one rule<a class="h-anchor" href="#the-one-rule" aria-label="Link to this section: The one rule"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h2>
 <p><strong>You type or say what you want. The agent does the work. You check it.</strong></p>
-<p>Every page gives you a <em>Say this</em> prompt to copy or dictate to the agent. You click things yourself only where no agent can, like creating your account or signing in.</p>
+<p>Most pages give you a <em>Say this</em> prompt to copy or dictate to the agent. You do things by hand only where the agent has no access: creating your GitHub account, signing in, approving a permission request, installing VS Code if you take that path, and changing a setting on github.com. The main one is turning on GitHub Pages, once, in your repo's <span class="ui">Settings</span> → <span class="ui">Pages</span>.</p>
 <div class="say-box"><div class="say-head"><span class="say-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/><path d="M8 9h8M8 13h5"/></svg></span><span class="say-label">A prompt looks like this</span><button type="button" class="copy-btn" data-copy aria-label="Copy prompt"><span class="copy-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="copy-label">Copy</span></button></div><pre class="say" data-label="A prompt looks like this">Change the site title to "A History of St. Petersburg" and show me what you changed.</pre></div>
 
 <h2 id="what-youll-end-with">What you'll end with<a class="h-anchor" href="#what-youll-end-with" aria-label="Link to this section: What you&#39;ll end with"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h2>
-<p>Your own site at <strong>https://<var data-k="user">your-username</var>.github.io/<var data-k="repo">your-repo</var>/</strong>. The running example in this guide turns the Tampa history site into a history of your own city, such as St. Petersburg in a repo called <code>history-of-st-pete</code>.</p>
-<p>These are real, live sites. The Tampa site and the Playbook are the two starters this guide uses.</p>
+<p>Your own site at <strong>https://<var data-k="user">your-username</var>.github.io/<var data-k="repo">your-repo</var>/</strong>, on a subject you choose. You start by copying one of two real sites:</p>
+<ul>
+  <li><strong>history-of-tampa, one long scrolling story.</strong> Use it to learn any history subject: a city or neighborhood, a material like indigo, an industry, a company or a movement. Researching, sourcing and telling the story is how you learn it.</li>
+  <li><strong>startup-india-guide, a multi-page minisite with a sidebar</strong>, like this guide. Use it to organize any subject that needs several pages: a directory, a handbook, a resource guide or a program catalog.</li>
+</ul>
+<p>The running example turns history-of-tampa into a history of St. Petersburg, Florida, in a repo called <code>history-of-st-pete</code>. All four sites below are live.</p>
 <div class="cards">
-  <a class="card" href="https://fritzhand.github.io/history-of-tampa/" target="_blank" rel="noopener"><span class="card-kicker">Starter · easiest</span><strong>Downtown Tampa: A Civic Development Autopsy</strong><span>200 years of downtown Tampa as a scrolling story. Plain files, no build step.</span><span class="sr-only"> (opens in a new tab)</span><span class="card-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6m0-6L10 14M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span></a>
-  <a class="card" href="https://fritzhand.github.io/history-of-indigo/" target="_blank" rel="noopener"><span class="card-kicker">Same engine, new topic</span><strong>Indigo: The Blue That Dyed the World</strong><span>The Tampa site's engine, pointed at the history of a dye instead of a city.</span><span class="sr-only"> (opens in a new tab)</span><span class="card-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6m0-6L10 14M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span></a>
-  <a class="card" href="https://fritzhand.github.io/startup-india-guide/" target="_blank" rel="noopener"><span class="card-kicker">Starter · harder</span><strong>Startup Schemes Playbook</strong><span>A guide with a sidebar, like this one, built from data files.</span><span class="sr-only"> (opens in a new tab)</span><span class="card-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6m0-6L10 14M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span></a>
-  <a class="card" href="https://map.embarccollective.com/" target="_blank" rel="noopener"><span class="card-kicker">Showcase</span><strong>Florida Startup Ecosystem Map</strong><span>Built on the Playbook's engine. Its repo is private, so you can look but not copy it.</span><span class="sr-only"> (opens in a new tab)</span><span class="card-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6m0-6L10 14M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span></a>
+  <a class="card" href="https://fritzhand.github.io/history-of-tampa/" target="_blank" rel="noopener"><span class="card-kicker">Starter · easiest · learn a history</span><strong>history-of-tampa</strong><span>200 years of downtown Tampa as one scrolling story. Plain files, no build step.</span><span class="sr-only"> (opens in a new tab)</span><span class="card-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6m0-6L10 14M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span></a>
+  <a class="card" href="https://fritzhand.github.io/history-of-indigo/" target="_blank" rel="noopener"><span class="card-kicker">Same engine, new topic</span><strong>history-of-indigo</strong><span>The Tampa site's engine, telling the history of a dye instead of a city.</span><span class="sr-only"> (opens in a new tab)</span><span class="card-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6m0-6L10 14M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span></a>
+  <a class="card" href="https://fritzhand.github.io/startup-india-guide/" target="_blank" rel="noopener"><span class="card-kicker">Starter · harder · multi-page minisite</span><strong>startup-india-guide</strong><span>India's startup schemes as a searchable site with a sidebar. The agent runs its build step.</span><span class="sr-only"> (opens in a new tab)</span><span class="card-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6m0-6L10 14M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span></a>
+  <a class="card" href="https://map.embarccollective.com/" target="_blank" rel="noopener"><span class="card-kicker">Built from startup-india-guide</span><strong>Florida Startup Ecosystem Map</strong><span>A directory with a sidebar. Its repo is private, so you can look but not copy it.</span><span class="sr-only"> (opens in a new tab)</span><span class="card-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6m0-6L10 14M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span></a>
 </div>
 
-<h2 id="the-route">The route<a class="h-anchor" href="#the-route" aria-label="Link to this section: The route"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h2>
-<figure class="diagram">
-  <svg class="dg" viewBox="0 0 480 500" role="img" aria-labelledby="index-route-title index-route-desc" style="--dg-w:600px">
-    <title id="index-route-title">The route from zero to a published site</title>
-    <desc id="index-route-desc">Five steps from top to bottom. Step 1: create a GitHub account. Step 2: set up your agent on one of two paths, the app path (the Claude app on a phone, in a browser or on the desktop) or the VS Code path (VS Code with the Claude Code or Codex extension). Both paths lead to Step 3: get a starter by forking or copying it. Step 4: make it yours. Step 5: publish on GitHub Pages, at your-username.github.io/your-repo.</desc>
-    <defs>
-      <marker id="index-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
-        <path class="dg-arrowhead" d="M0 0L10 5L0 10z"/>
-      </marker>
-    </defs>
-
-    <rect class="dg-box" x="90" y="8" width="300" height="56" rx="10"/>
-    <text class="dg-label" x="240" y="30" text-anchor="middle">STEP 1</text>
-    <text class="dg-text-strong" x="240" y="52" text-anchor="middle">Create a GitHub account</text>
-    <line class="dg-line" x1="240" y1="64" x2="240" y2="88" marker-end="url(#index-arrow)"/>
-
-    <rect class="dg-box-dashed" x="16" y="90" width="448" height="132" rx="12"/>
-    <text class="dg-label" x="240" y="114" text-anchor="middle">STEP 2 · SET UP YOUR AGENT</text>
-    <rect class="dg-box-soft" x="32" y="128" width="196" height="78" rx="10"/>
-    <text class="dg-text-strong" x="130" y="152" text-anchor="middle">The app path</text>
-    <text class="dg-text-sm" x="130" y="174" text-anchor="middle">Claude app on phone,</text>
-    <text class="dg-text-sm" x="130" y="194" text-anchor="middle">browser or desktop</text>
-    <text class="dg-text-sm" x="240" y="172" text-anchor="middle">or</text>
-    <rect class="dg-box-soft" x="252" y="128" width="196" height="78" rx="10"/>
-    <text class="dg-text-strong" x="350" y="152" text-anchor="middle">The VS Code path</text>
-    <text class="dg-text-sm" x="350" y="174" text-anchor="middle">VS Code + Claude Code</text>
-    <text class="dg-text-sm" x="350" y="194" text-anchor="middle">or Codex extension</text>
-    <line class="dg-line" x1="240" y1="222" x2="240" y2="246" marker-end="url(#index-arrow)"/>
-
-    <rect class="dg-box" x="90" y="248" width="300" height="56" rx="10"/>
-    <text class="dg-label" x="240" y="270" text-anchor="middle">STEP 3</text>
-    <text class="dg-text-strong" x="240" y="292" text-anchor="middle">Get a starter: fork or copy</text>
-    <line class="dg-line" x1="240" y1="304" x2="240" y2="328" marker-end="url(#index-arrow)"/>
-
-    <rect class="dg-box" x="90" y="330" width="300" height="56" rx="10"/>
-    <text class="dg-label" x="240" y="352" text-anchor="middle">STEP 4</text>
-    <text class="dg-text-strong" x="240" y="374" text-anchor="middle">Make it yours</text>
-    <line class="dg-line" x1="240" y1="386" x2="240" y2="410" marker-end="url(#index-arrow)"/>
-
-    <rect class="dg-box-primary" x="90" y="412" width="300" height="56" rx="10"/>
-    <text class="dg-text-sm dg-text-on" x="240" y="434" text-anchor="middle">STEP 5</text>
-    <text class="dg-text-strong dg-text-on" x="240" y="456" text-anchor="middle">Publish on GitHub Pages</text>
-    <text class="dg-text-sm" x="240" y="490" text-anchor="middle">your-username.github.io/your-repo</text>
-  </svg>
-  <figcaption>Five steps. Step 2 is the only fork in the road: pick the app path or the VS Code path.</figcaption>
-</figure>
-
 <h2 id="the-five-steps">The five steps<a class="h-anchor" href="#the-five-steps" aria-label="Link to this section: The five steps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h2>
+<p>Step 2 is the only fork in the road: the app path or the VS Code path. Both lead to the same published site.</p>
 <div class="cards">
   <a class="card" href="github-account.html"><span class="card-kicker">Step 1 · GitHub</span><strong>Create your GitHub account</strong><span>Free. Your username becomes part of your site's address.</span><span class="card-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></span></a>
   <a class="card" href="choose-setup.html"><span class="card-kicker">Step 2 · Set up your agent</span><strong>App or VS Code?</strong><span>The app path needs nothing installed. The VS Code path works on your computer.</span><span class="card-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></span></a>
   <a class="card" href="repos.html"><span class="card-kicker">Step 3 · Just enough Git</span><strong>Repos, forks, commits and pushes</strong><span>The few words you need, and the prompts that do the work.</span><span class="card-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></span></a>
-  <a class="card" href="starters.html"><span class="card-kicker">Step 4 · Make it yours</span><strong>Pick a starter and rewrite it</strong><span>Tell the agent your topic. It edits, you check.</span><span class="card-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></span></a>
-  <a class="card" href="github-pages.html"><span class="card-kicker">Step 5 · Publish</span><strong>Turn on GitHub Pages</strong><span>Your site goes live. Then update it and share the link.</span><span class="card-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></span></a>
+  <a class="card" href="starters.html"><span class="card-kicker">Step 4 · Make it yours</span><strong>Pick a starter and rewrite it</strong><span>Copy history-of-tampa or startup-india-guide, then tell the agent your subject.</span><span class="card-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></span></a>
+  <a class="card" href="github-pages.html"><span class="card-kicker">Step 5 · Publish</span><strong>Turn on GitHub Pages</strong><span>One setting you switch on yourself. Then your site is live.</span><span class="card-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></span></a>
 </div>
 
 <h2 id="what-you-need">What you need<a class="h-anchor" href="#what-you-need" aria-label="Link to this section: What you need"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h2>
@@ -221,8 +179,6 @@ for(var k in g)d.setAttribute("data-tab-"+k,g[k].indexOf(s[k])>-1?s[k]:(f[k]||g[
   <li><strong>A paid AI plan.</strong> Claude Pro or higher for Claude Code, or ChatGPT Plus or higher for Codex. The free Claude plan doesn't include Claude Code.</li>
   <li><strong>A phone or a computer.</strong> The app path works from a phone or a browser. The VS Code path needs a computer.</li>
 </ul>
-
-<aside class="callout tip" data-title="New to all of this?" role="note"><p class="callout-head"><span class="callout-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5M9 18h6m-5 4h4"/></svg></span><span class="callout-title">New to all of this?</span></p><div class="callout-body">Read <a href="how-it-works.html">The big picture</a> and <a href="talk-to-it.html">How to talk to the agent</a> first. Together they take about 10 minutes.</div></aside>
       </div>
 <div class="done-row">
   <button type="button" class="done-toggle" data-done-toggle aria-pressed="false">
@@ -232,7 +188,7 @@ for(var k in g)d.setAttribute("data-tab-"+k,g[k].indexOf(s[k])>-1?s[k]:(f[k]||g[
   <p class="done-hint">Saved only in this browser.</p>
 </div><nav class="pagenav" aria-label="Previous and next page"><span></span><a class="next" href="how-it-works.html" rel="next"><span class="dir">Next<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></span><span class="t">The big picture</span></a></nav>
     </article>
-<aside class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ul><li><a href="#the-one-rule">The one rule</a></li><li><a href="#what-youll-end-with">What you&#39;ll end with</a></li><li><a href="#the-route">The route</a></li><li><a href="#the-five-steps">The five steps</a></li><li><a href="#what-you-need">What you need</a></li></ul></aside>
+<aside class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ul><li><a href="#the-one-rule">The one rule</a></li><li><a href="#what-youll-end-with">What you&#39;ll end with</a></li><li><a href="#the-five-steps">The five steps</a></li><li><a href="#what-you-need">What you need</a></li></ul></aside>
   </div>
 </main>
 </div>
