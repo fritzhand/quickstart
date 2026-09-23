@@ -1,0 +1,311 @@
+/* ============================================================
+   tokens.css — the skin for the Quickstart guide.
+   This is the ONLY file with color and font literals. site.css reads
+   nothing but these custom properties.
+
+   Identity: a sibling of the Startup Schemes Playbook skin. Ink-navy
+   text and headings, a teal-green accent for links, active nav and
+   buttons, and a warm amber/sand reserved for the "Say this" prompt
+   boxes (the most important thing on every page).
+
+   Themes: light is the default. Dark applies when <html data-theme="dark">
+   (set by the inline boot script from the reader's saved choice or the
+   system setting). build.mjs also copies the dark block into a
+   prefers-color-scheme media query when it writes docs/assets/tokens.css,
+   so the dark theme works with JavaScript off too. Edit the dark block
+   here only once.
+
+   Two tokens are read by build.mjs rather than by CSS:
+   --fonts-href  → the <link rel="stylesheet"> for web fonts
+   --theme-color → <meta name="theme-color"> (light and dark)
+   All text/background pairs below meet WCAG AA (4.5:1) in both themes.
+   ============================================================ */
+
+:root {
+  --fonts-href: "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap";
+
+  /* ---- typography ---- */
+  --font-display: "Bricolage Grotesque", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* ---- shape ---- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  /* ---- layout ---- */
+  --topbar-h: 58px;
+  --sidebar-w: 272px;
+  --measure: 44rem;             /* ≈ 70 characters of body text, the same for every element */
+  --column: 860px;
+
+  /* ---- motion ---- */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --speed: 180ms;
+}
+
+/* ============ LIGHT (default) ============ */
+:root,
+:root[data-theme="light"] {
+  color-scheme: light;
+  --theme-color: #fbfcfc;
+
+  --bg: #fbfcfc;
+  --surface: #ffffff;
+  --surface-alt: #f3f6f7;
+  --surface-sunken: #eaeef1;
+  --border: #e1e6ea;
+  --border-strong: #c9d1d8;
+
+  --text: #14223a;              /* ink navy — body text and headings */
+  --text-muted: #44516a;
+  --text-faint: #5b677d;        /* AA on every light surface */
+
+  --primary: #15294a;           /* ink navy — step circles, filled diagram boxes */
+  --primary-contrast: #ffffff;
+  --accent: #0b7a6e;            /* teal-green — active nav, buttons, focus */
+  --accent-strong: #075f55;
+  --accent-contrast: #ffffff;
+  --accent-tint: #e2f3f0;
+  --link: #0b6f64;
+  --link-hover: #075248;
+
+  --info: #2a5ea8;
+  --info-tint: #eaf1fb;
+  --success: #1e7a3c;
+  --success-tint: #e6f4eb;
+  --warn: #b3261e;
+  --warn-tint: #fdecea;
+  --manual: #6a3fc1;
+  --manual-tint: #f1ecfc;
+
+  /* "Say this" — the amber/sand family is used by nothing else */
+  --say-bg: #fff6e3;
+  --say-head-bg: #fcefd2;
+  --say-border: #eec77a;
+  --say-bar: #e39a1b;
+  --say-ink: #8a4b00;
+  --say-btn-bg: #ffffff;
+  --var-bg: #ffe3a3;
+  --var-border: #d9951f;
+  --var-text: #6e3d00;
+  --var-filled-bg: #d8f1ec;
+  --var-filled-border: #0b7a6e;
+  --var-filled-text: #064e45;
+
+  /* terminal commands (dark in both themes) */
+  --cmd-bg: #0f1a2c;
+  --cmd-head-bg: #16243b;
+  --cmd-border: #0f1a2c;
+  --cmd-text: #e4eaf3;
+  --cmd-muted: #9fb0c9;
+  --cmd-var-bg: #3b3013;
+  --cmd-var-text: #ffd98a;
+
+  --code-bg: #edf1f3;
+  --kbd-bg: #ffffff;
+  --mark-bg: #c9eee7;
+  --scrim: rgb(12 20 34 / 0.55);
+  --toast-bg: #14223a;
+  --toast-text: #ffffff;
+
+  --sidebar-bg: #f6f8f9;
+  --topbar-bg: rgb(251 252 252 / 0.9);
+  --step-bg: #15294a;
+  --step-text: #ffffff;
+  --step-rail: #d5dde4;
+
+  --hero-bg: linear-gradient(135deg, #15294a 0%, #123a52 55%, #0d5552 100%);
+  --hero-glow-a: rgb(45 212 191 / 0.30);
+  --hero-glow-b: rgb(245 176 65 / 0.24);
+  --hero-text: #f5f8fc;
+  --hero-muted: #c3d0e0;
+  --hero-line: rgb(255 255 255 / 0.24);
+  --hero-glass: rgb(255 255 255 / 0.09);
+  --hero-glass-strong: rgb(255 255 255 / 0.16);
+
+  --dg-on: #ffffff;              /* text on filled diagram shapes */
+  --dg-accent-fill: #0b7a6e;     /* solid accent fill that keeps --dg-on at AA */
+
+  --shadow-1: 0 1px 2px rgb(16 24 40 / 0.06), 0 1px 3px rgb(16 24 40 / 0.10);
+  --shadow-2: 0 4px 8px -2px rgb(16 24 40 / 0.10), 0 2px 4px -2px rgb(16 24 40 / 0.06);
+  --shadow-3: 0 12px 24px -6px rgb(16 24 40 / 0.18), 0 4px 10px -4px rgb(16 24 40 / 0.08);
+  --shadow-say: 0 1px 0 rgb(227 154 27 / 0.25), 0 6px 18px -8px rgb(180 110 0 / 0.35);
+}
+
+/* ============ DARK ============ */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --theme-color: #0b1320;
+
+  --bg: #0b1320;
+  --surface: #111b2b;
+  --surface-alt: #172336;
+  --surface-sunken: #08101a;
+  --border: #223149;
+  --border-strong: #30435f;
+
+  --text: #e6ecf5;
+  --text-muted: #aab7cb;
+  --text-faint: #8795ac;
+
+  --primary: #2c4a73;
+  --primary-contrast: #ffffff;
+  --accent: #3cc4b0;
+  --accent-strong: #62d6c4;
+  --accent-contrast: #04211d;
+  --accent-tint: #0f2f2d;
+  --link: #5fd0bf;
+  --link-hover: #8be0d3;
+
+  --info: #7eaaf0;
+  --info-tint: #14243d;
+  --success: #5ccf86;
+  --success-tint: #11301f;
+  --warn: #f08a80;
+  --warn-tint: #3a1715;
+  --manual: #b79cf5;
+  --manual-tint: #251c3f;
+
+  --say-bg: #2b2210;
+  --say-head-bg: #33280f;
+  --say-border: #6e5418;
+  --say-bar: #f0b43c;
+  --say-ink: #f6c86a;
+  --say-btn-bg: #3d3014;
+  --var-bg: #4d3a12;
+  --var-border: #c89530;
+  --var-text: #ffe2a6;
+  --var-filled-bg: #0f3b36;
+  --var-filled-border: #3cc4b0;
+  --var-filled-text: #bff1e8;
+
+  --cmd-bg: #070d17;
+  --cmd-head-bg: #0d1522;
+  --cmd-border: #22314a;
+  --cmd-text: #e4eaf3;
+  --cmd-muted: #93a3bb;
+  --cmd-var-bg: #3b3013;
+  --cmd-var-text: #ffd98a;
+
+  --code-bg: #1a2639;
+  --kbd-bg: #172336;
+  --mark-bg: #16433f;
+  --scrim: rgb(2 6 14 / 0.72);
+  --toast-bg: #e6ecf5;
+  --toast-text: #0b1320;
+
+  --sidebar-bg: #0e1726;
+  --topbar-bg: rgb(11 19 32 / 0.88);
+  --step-bg: #2c4a73;
+  --step-text: #ffffff;
+  --step-rail: #26364f;
+
+  --hero-bg: linear-gradient(135deg, #13233d 0%, #0f2c3d 55%, #0c3a3a 100%);
+  --hero-glow-a: rgb(45 212 191 / 0.20);
+  --hero-glow-b: rgb(245 176 65 / 0.14);
+  --hero-text: #f5f8fc;
+  --hero-muted: #b9c7da;
+  --hero-line: rgb(255 255 255 / 0.18);
+  --hero-glass: rgb(255 255 255 / 0.06);
+  --hero-glass-strong: rgb(255 255 255 / 0.12);
+
+  --dg-on: #ffffff;
+  --dg-accent-fill: #0e7b6f;
+
+  --shadow-1: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-2: 0 4px 8px -2px rgb(0 0 0 / 0.5);
+  --shadow-3: 0 12px 24px -6px rgb(0 0 0 / 0.6);
+  --shadow-say: 0 1px 0 rgb(240 180 60 / 0.12), 0 6px 18px -8px rgb(0 0 0 / 0.6);
+}
+
+/* ---- generated by build.mjs: the dark block again, for readers with
+   JavaScript off (no data-theme attribute) and a dark system setting ---- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+  color-scheme: dark;
+  --theme-color: #0b1320;
+
+  --bg: #0b1320;
+  --surface: #111b2b;
+  --surface-alt: #172336;
+  --surface-sunken: #08101a;
+  --border: #223149;
+  --border-strong: #30435f;
+
+  --text: #e6ecf5;
+  --text-muted: #aab7cb;
+  --text-faint: #8795ac;
+
+  --primary: #2c4a73;
+  --primary-contrast: #ffffff;
+  --accent: #3cc4b0;
+  --accent-strong: #62d6c4;
+  --accent-contrast: #04211d;
+  --accent-tint: #0f2f2d;
+  --link: #5fd0bf;
+  --link-hover: #8be0d3;
+
+  --info: #7eaaf0;
+  --info-tint: #14243d;
+  --success: #5ccf86;
+  --success-tint: #11301f;
+  --warn: #f08a80;
+  --warn-tint: #3a1715;
+  --manual: #b79cf5;
+  --manual-tint: #251c3f;
+
+  --say-bg: #2b2210;
+  --say-head-bg: #33280f;
+  --say-border: #6e5418;
+  --say-bar: #f0b43c;
+  --say-ink: #f6c86a;
+  --say-btn-bg: #3d3014;
+  --var-bg: #4d3a12;
+  --var-border: #c89530;
+  --var-text: #ffe2a6;
+  --var-filled-bg: #0f3b36;
+  --var-filled-border: #3cc4b0;
+  --var-filled-text: #bff1e8;
+
+  --cmd-bg: #070d17;
+  --cmd-head-bg: #0d1522;
+  --cmd-border: #22314a;
+  --cmd-text: #e4eaf3;
+  --cmd-muted: #93a3bb;
+  --cmd-var-bg: #3b3013;
+  --cmd-var-text: #ffd98a;
+
+  --code-bg: #1a2639;
+  --kbd-bg: #172336;
+  --mark-bg: #16433f;
+  --scrim: rgb(2 6 14 / 0.72);
+  --toast-bg: #e6ecf5;
+  --toast-text: #0b1320;
+
+  --sidebar-bg: #0e1726;
+  --topbar-bg: rgb(11 19 32 / 0.88);
+  --step-bg: #2c4a73;
+  --step-text: #ffffff;
+  --step-rail: #26364f;
+
+  --hero-bg: linear-gradient(135deg, #13233d 0%, #0f2c3d 55%, #0c3a3a 100%);
+  --hero-glow-a: rgb(45 212 191 / 0.20);
+  --hero-glow-b: rgb(245 176 65 / 0.14);
+  --hero-text: #f5f8fc;
+  --hero-muted: #b9c7da;
+  --hero-line: rgb(255 255 255 / 0.18);
+  --hero-glass: rgb(255 255 255 / 0.06);
+  --hero-glass-strong: rgb(255 255 255 / 0.12);
+
+  --dg-on: #ffffff;
+  --dg-accent-fill: #0e7b6f;
+
+  --shadow-1: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-2: 0 4px 8px -2px rgb(0 0 0 / 0.5);
+  --shadow-3: 0 12px 24px -6px rgb(0 0 0 / 0.6);
+  --shadow-say: 0 1px 0 rgb(240 180 60 / 0.12), 0 6px 18px -8px rgb(0 0 0 / 0.6);
+}
+}

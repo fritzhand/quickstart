@@ -1,0 +1,140 @@
+<!--meta
+{
+  "title": "Glossary",
+  "eyebrow": "Reference",
+  "lede": "The words this guide uses, in plain English. Each one links to the page where you'll use it.",
+  "time": "5 min",
+  "track": "all"
+}
+-->
+<h2>The agent</h2>
+<dl>
+  <dt id="agent">Agent</dt>
+  <dd>An AI program that works on your files for you: it reads them, edits them and runs commands, then tells you what it did. In this guide the agent is Claude Code or Codex. See <a href="how-it-works.html">The big picture</a>.</dd>
+
+  <dt id="claude-code">Claude Code</dt>
+  <dd>Anthropic's coding agent. You can use it in the Claude app, in a browser, on your phone or on your desktop, or as an extension inside VS Code. It needs a paid Claude plan. See <a href="choose-setup.html">App or VS Code?</a></dd>
+
+  <dt id="codex">Codex</dt>
+  <dd>OpenAI's coding agent. This guide uses its VS Code extension, which needs ChatGPT Plus or higher. See <a href="install-vscode.html">VS Code + your agent</a>.</dd>
+
+  <dt id="prompt">Prompt</dt>
+  <dd>What you type or say to the agent. A good one says what you want, where, and what done looks like. See <a href="talk-to-it.html">How to talk to the agent</a>.</dd>
+
+  <dt id="session">Session</dt>
+  <dd>One conversation with the agent. A new session doesn't carry over your earlier conversations, so standing rules go in <code>CLAUDE.md</code>. See <a href="how-it-works.html">The big picture</a>.</dd>
+
+  <dt id="dictation">Dictation</dt>
+  <dd>Speaking instead of typing. Your phone, Mac or Windows computer turns what you say into text in the message box. See <a href="talk-to-it.html">How to talk to the agent</a>.</dd>
+
+  <dt id="placeholder">Placeholder</dt>
+  <dd>A highlighted part of a prompt, like <var data-k="user">your-username</var>, that stands for your own details. Save your details in this guide and it fills them in for you. See <a href="github-account.html">Create your GitHub account</a>.</dd>
+
+  <dt id="claude-md">CLAUDE.md</dt>
+  <dd>A plain text file at the root, or top folder, of your repo that holds standing rules, such as who to commit as. Claude reads it at the start of every session. Codex reads a file called <code>AGENTS.md</code> instead. See <a href="prompts.html">Prompt cheat sheet</a>.</dd>
+
+  <dt id="claude-github-app">Claude GitHub App</dt>
+  <dd>A GitHub add-on that gives Claude in the app access to the repos you choose. Claude needs it to work in a private repo. See <a href="claude-app.html">Claude Code in the app</a>.</dd>
+</dl>
+
+<h2>Git and GitHub</h2>
+<dl>
+  <dt id="github">GitHub</dt>
+  <dd>A website that stores your repos and their history, and can publish them as websites. A free account is all you need. See <a href="github-account.html">Create your GitHub account</a>.</dd>
+
+  <dt id="git">Git</dt>
+  <dd>The tool that records every saved version of your files and sends them to GitHub. The agent runs it for you. See <a href="install-tools.html">Git, Node &amp; GitHub CLI</a>.</dd>
+
+  <dt id="repository">Repository (repo)</dt>
+  <dd>Your project's folder on GitHub, plus the history of every saved change. Your site lives in one repo. See <a href="repos.html">Repos: public or private</a>.</dd>
+
+  <dt id="public-private">Public and private</dt>
+  <dd>Who can see a repo. Anyone can see a public repo, including its history. Only you and people you invite can see a private one. On a free account, GitHub Pages works only from public repos.</dd>
+
+  <dt id="readme">README</dt>
+  <dd>The file GitHub shows on a repo's front page, usually <code>README.md</code>. It says what the repo is.</dd>
+
+  <dt id="commit">Commit</dt>
+  <dd>A save point for the whole project, with a short note that says what changed. You can go back to any commit. See <a href="save-and-push.html">Commit &amp; push</a>.</dd>
+
+  <dt id="author">Author</dt>
+  <dd>The name and email recorded on each commit. It decides who gets the credit on GitHub. See <a href="commit-as-you.html">Commit as yourself</a>.</dd>
+
+  <dt id="noreply-email">Noreply email</dt>
+  <dd>A private address GitHub gives you, ending in <code>@users.noreply.github.com</code>. Use it as your commit email: it credits you without putting your real email in public. See <a href="github-account.html">Create your GitHub account</a>.</dd>
+
+  <dt id="push">Push</dt>
+  <dd>Sends your commits up to GitHub. Until you push, they exist only in the working copy. A force-push overwrites what's on GitHub, so avoid it. See <a href="save-and-push.html">Commit &amp; push</a>.</dd>
+
+  <dt id="pull">Pull</dt>
+  <dd>Brings changes down from GitHub into your working copy, such as edits you made on another device. See <a href="save-and-push.html">Commit &amp; push</a>.</dd>
+
+  <dt id="clone">Clone</dt>
+  <dd>A working copy of a repo, on your computer or in the cloud. It stays linked to the repo, so the agent can push changes back. See <a href="clone-fork.html">Clone, fork or copy</a>.</dd>
+
+  <dt id="working-copy">Working copy</dt>
+  <dd>The copy of your repo that the agent edits: a folder on your computer on the VS Code path, or a fresh copy in the cloud on the app path. See <a href="how-it-works.html">The big picture</a>.</dd>
+
+  <dt id="fork">Fork</dt>
+  <dd>Your own copy of someone else's repo, on GitHub, still linked to the original. A fork of a public repo stays public, and commits in it don't count on your GitHub profile. See <a href="clone-fork.html">Clone, fork or copy</a>.</dd>
+
+  <dt id="template">Template</dt>
+  <dd>A repo set up so that its <span class="ui">Use this template</span> button makes you a fresh repo, with no link back. The starters in this guide aren't set up as templates, so you fork them or make a fresh copy. See <a href="clone-fork.html">Clone, fork or copy</a>.</dd>
+
+  <dt id="branch">Branch</dt>
+  <dd>A parallel line of work in the same repo. Changes on a branch don't touch the main line until they're merged. See <a href="main-branch.html">The main branch</a>.</dd>
+
+  <dt id="main-branch">main</dt>
+  <dd>The main branch of your repo. GitHub Pages publishes your site from it, so your site changes only when <code>main</code> changes. In the app, Claude works on its own <code>claude/…</code> branch first. See <a href="main-branch.html">The main branch</a>.</dd>
+
+  <dt id="pull-request">Pull request (PR)</dt>
+  <dd>A request to merge the changes on one branch into another. GitHub shows the changes so you can look before you click <span class="ui">Merge pull request</span>. See <a href="main-branch.html">The main branch</a>.</dd>
+
+  <dt id="merge">Merge</dt>
+  <dd>Combining the changes from one branch into another, such as a <code>claude/…</code> branch into <code>main</code>. See <a href="main-branch.html">The main branch</a>.</dd>
+
+  <dt id="merge-conflict">Merge conflict</dt>
+  <dd>Two changes touched the same lines, and Git can't tell which to keep. Ask the agent to explain it before you choose. See <a href="save-and-push.html">Commit &amp; push</a>.</dd>
+
+  <dt id="revert">Revert</dt>
+  <dd>Undoing a commit by adding a new commit that reverses it, so the record stays. See <a href="save-and-push.html">Commit &amp; push</a>.</dd>
+</dl>
+
+<h2>Your computer</h2>
+<dl>
+  <dt id="vs-code">VS Code</dt>
+  <dd>A free code editor from Microsoft. On the VS Code path, your agent runs inside it. See <a href="install-vscode.html">VS Code + your agent</a>.</dd>
+
+  <dt id="extension">Extension</dt>
+  <dd>An add-on that gives VS Code a new feature. The Claude Code and Codex extensions put the agent in a panel inside VS Code. See <a href="install-vscode.html">VS Code + your agent</a>.</dd>
+
+  <dt id="terminal">Terminal</dt>
+  <dd>A window where you type commands instead of clicking. In VS Code, open it with <span class="ui">View</span> → <span class="ui">Terminal</span>. You'll rarely need it, because the agent runs commands for you.</dd>
+
+  <dt id="trusted-folder">Trusted folder (Workspace Trust)</dt>
+  <dd>VS Code asks whether you trust the authors of the files in a folder. Say no, and it opens the folder in Restricted Mode, with AI agents and the terminal turned off. Trust only folders you made or cloned from someone you trust. See <a href="trusted-folder.html">Trusted folders</a>.</dd>
+
+  <dt id="github-cli">GitHub CLI (gh)</dt>
+  <dd>A GitHub tool the agent runs to do GitHub chores for you, such as creating or forking a repo and turning on GitHub Pages. You sign it in once with <code>gh auth login</code>. See <a href="install-tools.html">Git, Node &amp; GitHub CLI</a>.</dd>
+
+  <dt id="nodejs">Node.js</dt>
+  <dd>A free program that runs JavaScript on your computer. Some starters need it for their build step. The agents themselves don't. See <a href="install-tools.html">Git, Node &amp; GitHub CLI</a>.</dd>
+
+  <dt id="execution-policy">Execution policy</dt>
+  <dd>The Windows PowerShell setting that decides whether scripts may run. Its starting value blocks the scripts Node's tools use. See <a href="windows-scripts.html">Windows: allow scripts</a>.</dd>
+</dl>
+
+<h2>Publishing</h2>
+<dl>
+  <dt id="github-pages">GitHub Pages</dt>
+  <dd>GitHub's free website hosting. It publishes one branch and one folder of your repo at <code>https://<var data-k="user">your-username</var>.github.io/<var data-k="repo">your-repo</var>/</code>. See <a href="github-pages.html">Turn on GitHub Pages</a>.</dd>
+
+  <dt id="index-html">index.html</dt>
+  <dd>The page a site opens with. GitHub Pages needs it named in lowercase, in the folder it publishes from. See <a href="github-pages.html">Turn on GitHub Pages</a>.</dd>
+
+  <dt id="build-step">Build step</dt>
+  <dd>A command that turns a site's source files into its finished pages, such as <code>node build.mjs</code>. history-of-tampa has none. startup-india-guide builds its pages into a <code>docs</code> folder. See <a href="starters.html">Pick a starter</a>.</dd>
+
+  <dt id="actions">Actions tab</dt>
+  <dd>The tab on your repo where GitHub lists its automatic jobs. Each time your site publishes, a run called <span class="ui">pages build and deployment</span> appears there, and a green check means it's done. See <a href="github-pages.html">Turn on GitHub Pages</a>.</dd>
+</dl>

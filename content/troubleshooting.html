@@ -1,0 +1,198 @@
+<!--meta
+{
+  "title": "Troubleshooting",
+  "eyebrow": "Reference",
+  "lede": "Find what you're seeing, then say the fix to the agent. Most problems take one prompt. Click things yourself only where a step says so.",
+  "time": "2 min",
+  "track": "all"
+}
+-->
+<h2>Try this first</h2>
+<p>For any error, copy the whole message, not a summary of it, and paste it back:</p>
+<pre class="say">Here's the error: <var>paste the exact error</var>. Explain what went wrong in plain English and fix it.</pre>
+
+<h2>Setup</h2>
+<details class="fix">
+  <summary>It says git, node or gh is "not recognized" or "not found", but I just installed it</summary>
+  <p>Close every VS Code window and open VS Code again. It only finds new tools when it starts. On Windows, restart the computer if that doesn't help. Then say:</p>
+  <pre class="say">Show me the versions of git, node and gh, and confirm gh is logged in.</pre>
+</details>
+<details class="fix">
+  <summary>It says "running scripts is disabled on this system"</summary>
+  <pre class="say">Allow PowerShell scripts for my user account only using Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser, then check it with Get-ExecutionPolicy -List.</pre>
+  <p>Windows only. <a href="windows-scripts.html">Windows: allow scripts</a> explains it and shows how to run it yourself.</p>
+</details>
+<details class="fix">
+  <summary>VS Code says Restricted Mode, or the agent doesn't work in my folder</summary>
+  <p>Do this yourself, because agents are turned off until you trust the folder. Open the Command Palette (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>, or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> on Mac), run <span class="ui">Workspaces: Manage Workspace Trust</span> and trust the folder. Trust only folders you made or cloned from someone you trust. See <a href="trusted-folder.html">Trusted folders</a>.</p>
+</details>
+<details class="fix">
+  <summary>Sign-in fails, or says my plan doesn't include it</summary>
+  <p>Claude Code needs Claude Pro, Max, Team or Enterprise. The free Claude plan doesn't include it. Codex needs ChatGPT Plus or higher. Check your plan, then sign in again.</p>
+</details>
+
+<h2>GitHub and pushing</h2>
+<details class="fix">
+  <summary>The push was rejected</summary>
+  <pre class="say">Pull first, then push again. Don't force-push.</pre>
+  <p>Someone, maybe you on another device, pushed first. A force-push would overwrite their changes on GitHub.</p>
+</details>
+<details class="fix">
+  <summary>Git asks for my password or a token when it pushes</summary>
+  <pre class="say">Git is asking me for a password to push. Check whether the GitHub CLI is logged in and set up to sign Git in to GitHub, and tell me exactly what I need to do.</pre>
+  <p>Don't type your GitHub password there. GitHub no longer accepts passwords for Git, and you don't need a token. Run <code>gh auth login</code> yourself and say yes when it offers to use your GitHub login for Git, as shown in <a href="install-tools.html">Git, Node &amp; GitHub CLI</a>. On Windows, Git for Windows can also sign you in through your browser.</p>
+</details>
+<details class="fix">
+  <summary>My commits say "Claude" instead of my name</summary>
+  <pre class="say">For this repo, set git user.name to "<var data-k="name">Your Name</var>" and user.email to "<var data-k="email">your-noreply-email</var>", and commit as me from now on.</pre>
+  <p>Then put the rule in <code>CLAUDE.md</code> so the next session follows it too. Older commits keep their author. See <a href="commit-as-you.html">Commit as yourself</a>.</p>
+</details>
+<details class="fix">
+  <summary>My commits don't show on my GitHub profile</summary>
+  <pre class="say">Show me the author name, email and branch of my last 5 commits.</pre>
+  <p>A commit counts only if its email is your noreply address or another email on your account, the repo isn't a fork, and the commit is on <code>main</code>. Then allow up to 24 hours. Commits in a fork never count, so make a fresh copy instead: <a href="clone-fork.html">Clone, fork or copy</a>.</p>
+</details>
+<details class="fix">
+  <summary>I committed a password, key or token</summary>
+  <p>First, on the site that issued it, change the password, or cancel the key and make a new one. Deleting the file isn't enough, because the history keeps it. Then:</p>
+  <pre class="say">Remove <var>the file with the secret</var> from the repo and add it to .gitignore so it can't be committed again. Then commit and push to main.</pre>
+  <p>GitHub's guide <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository">Removing sensitive data from a repository</a> covers clearing it from the history.</p>
+</details>
+
+<h2>The agent</h2>
+<details class="fix">
+  <summary>The agent changed the wrong repo</summary>
+  <pre class="say">Undo your changes in <var>the other repo</var>. Work only in <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>. Treat the other repos as read-only reference.</pre>
+  <p>A repo that isn't yours stays safe on GitHub, because the agent can't push to it. Start every session that has more than one repo with that last sentence. See <a href="multiple-repos.html">Many repos, one to work in</a>.</p>
+</details>
+<details class="fix">
+  <summary>The agent made up a fact or a number</summary>
+  <pre class="say">Check every fact, date and number on the site against research/notes.md. Remove anything that has no working source link, or mark it TBD. List what you changed.</pre>
+  <p>Then add the "never invent facts" rule to your <code>CLAUDE.md</code>, as in the <a href="prompts.html">Prompt cheat sheet</a>.</p>
+</details>
+<details class="fix">
+  <summary>The agent is going in circles</summary>
+  <p>Stop it. Start a new session (in VS Code, a new conversation), so the confusion doesn't carry over. Give it one clear goal and the exact error:</p>
+  <pre class="say">Here's what I want: <var>what done looks like</var>. Here's the exact error: <var>paste the exact error</var>. Tell me what you think is wrong and your plan. Don't change anything until I say go.</pre>
+  <p>Still stuck? Ask for choices: "Give me two or three ways to fix this, with the pros and cons of each in plain English. Don't change anything until I choose."</p>
+</details>
+
+<h2>The app</h2>
+<details class="fix">
+  <summary>My repo isn't in the repository selector</summary>
+  <p>Do this yourself on GitHub, because it's a permission on your account. A private repo appears only once the Claude GitHub App is installed on it, and a fork or new repo may need adding too. Click your profile picture, then <span class="ui">Settings</span> → <span class="ui">Applications</span> → <span class="ui">Installed GitHub Apps</span>. Click <span class="ui">Configure</span> next to Claude, select the repo and click <span class="ui">Save</span>. Then start a new session and pick the repo.</p>
+</details>
+<details class="fix">
+  <summary>Claude says it can't push</summary>
+  <pre class="say">Work only in <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>. Treat the other repos as read-only reference.</pre>
+  <p>Claude can't push to a repo that isn't yours, such as the starter. If it's already in your repo, install the Claude GitHub App on it (above) and ask again.</p>
+</details>
+<details class="fix">
+  <summary>Claude can't push to main</summary>
+  <pre class="say">Push your branch, then open a pull request into main and merge it.</pre>
+  <p>See <a href="main-branch.html">The main branch</a>.</p>
+</details>
+<details class="fix">
+  <summary>Claude can't open websites for research</summary>
+  <p>The cloud machine may block most websites. Paste your research prompt into a regular Claude chat with web search on, then bring the answer back to your session:</p>
+  <pre class="say">Put these research results in research/notes.md exactly as written, then commit and push to main: <var>paste the results</var></pre>
+</details>
+
+<h2>GitHub Pages</h2>
+<figure class="diagram">
+  <svg class="dg" viewBox="0 0 480 450" role="img" aria-labelledby="troubleshooting-change-title troubleshooting-change-desc">
+    <title id="troubleshooting-change-title">Where did my change go?</title>
+    <desc id="troubleshooting-change-desc">Four checks, top to bottom, each with a fix to the right when the answer is no. First: is the change committed, saved in the history? If not, ask the agent to commit and push to main. Second: is it pushed, so the commit is on GitHub? If not, ask it to push to main. Third: is it on main, not a claude branch? If not, get it onto main by merging or pushing to main. Fourth: has Pages finished, with a green check in the Actions tab? If not, wait up to 10 minutes, then reload. When all four are yes, the change is live on your site. If it still looks old, open it in a private window.</desc>
+    <defs>
+      <marker id="troubleshooting-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
+        <path class="dg-arrowhead" d="M0 0L10 5L0 10z"/>
+      </marker>
+      <marker id="troubleshooting-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
+        <path class="dg-arrowhead-accent" d="M0 0L10 5L0 10z"/>
+      </marker>
+    </defs>
+
+    <rect class="dg-box" x="16" y="8" width="204" height="60" rx="10"/>
+    <text class="dg-text-strong" x="118" y="34" text-anchor="middle">1. Committed?</text>
+    <text class="dg-text-sm" x="118" y="55" text-anchor="middle">saved in the history</text>
+    <line class="dg-line-accent" x1="220" y1="38" x2="258" y2="38" marker-end="url(#troubleshooting-arrow-accent)"/>
+    <text class="dg-text-sm" x="239" y="30" text-anchor="middle">no</text>
+    <rect class="dg-box-accent" x="260" y="8" width="204" height="60" rx="10"/>
+    <text class="dg-text-strong" x="362" y="34" text-anchor="middle">Ask it to commit</text>
+    <text class="dg-text-sm" x="362" y="55" text-anchor="middle">and push to main</text>
+    <line class="dg-line" x1="118" y1="68" x2="118" y2="98" marker-end="url(#troubleshooting-arrow)"/>
+    <text class="dg-text-sm" x="128" y="88">yes</text>
+
+    <rect class="dg-box" x="16" y="100" width="204" height="60" rx="10"/>
+    <text class="dg-text-strong" x="118" y="126" text-anchor="middle">2. Pushed?</text>
+    <text class="dg-text-sm" x="118" y="147" text-anchor="middle">the commit is on GitHub</text>
+    <line class="dg-line-accent" x1="220" y1="130" x2="258" y2="130" marker-end="url(#troubleshooting-arrow-accent)"/>
+    <text class="dg-text-sm" x="239" y="122" text-anchor="middle">no</text>
+    <rect class="dg-box-accent" x="260" y="100" width="204" height="60" rx="10"/>
+    <text class="dg-text-strong" x="362" y="126" text-anchor="middle">Ask it to push</text>
+    <text class="dg-text-sm" x="362" y="147" text-anchor="middle">to main on GitHub</text>
+    <line class="dg-line" x1="118" y1="160" x2="118" y2="190" marker-end="url(#troubleshooting-arrow)"/>
+    <text class="dg-text-sm" x="128" y="180">yes</text>
+
+    <rect class="dg-box" x="16" y="192" width="204" height="60" rx="10"/>
+    <text class="dg-text-strong" x="118" y="218" text-anchor="middle">3. On main?</text>
+    <text class="dg-text-sm" x="118" y="239" text-anchor="middle">not a claude/… branch</text>
+    <line class="dg-line-accent" x1="220" y1="222" x2="258" y2="222" marker-end="url(#troubleshooting-arrow-accent)"/>
+    <text class="dg-text-sm" x="239" y="214" text-anchor="middle">no</text>
+    <rect class="dg-box-accent" x="260" y="192" width="204" height="60" rx="10"/>
+    <text class="dg-text-strong" x="362" y="218" text-anchor="middle">Get it onto main</text>
+    <text class="dg-text-sm" x="362" y="239" text-anchor="middle">merge it, or push to main</text>
+    <line class="dg-line" x1="118" y1="252" x2="118" y2="282" marker-end="url(#troubleshooting-arrow)"/>
+    <text class="dg-text-sm" x="128" y="272">yes</text>
+
+    <rect class="dg-box" x="16" y="284" width="204" height="60" rx="10"/>
+    <text class="dg-text-strong" x="118" y="310" text-anchor="middle">4. Pages finished?</text>
+    <text class="dg-text-sm" x="118" y="331" text-anchor="middle">green check in Actions</text>
+    <line class="dg-line-accent" x1="220" y1="314" x2="258" y2="314" marker-end="url(#troubleshooting-arrow-accent)"/>
+    <text class="dg-text-sm" x="239" y="306" text-anchor="middle">no</text>
+    <rect class="dg-box-accent" x="260" y="284" width="204" height="60" rx="10"/>
+    <text class="dg-text-strong" x="362" y="310" text-anchor="middle">Wait, then reload</text>
+    <text class="dg-text-sm" x="362" y="331" text-anchor="middle">up to 10 minutes</text>
+    <line class="dg-line" x1="118" y1="344" x2="118" y2="374" marker-end="url(#troubleshooting-arrow)"/>
+    <text class="dg-text-sm" x="128" y="364">yes</text>
+
+    <rect class="dg-box-primary" x="16" y="376" width="448" height="66" rx="12"/>
+    <text class="dg-text-strong dg-text-on" x="240" y="404" text-anchor="middle">Live on your site</text>
+    <text class="dg-text-sm dg-text-on" x="240" y="426" text-anchor="middle">Still old? Open it in a private window.</text>
+  </svg>
+  <figcaption>Work down the checks. The first "no" is where your change is stuck.</figcaption>
+</figure>
+<details class="fix">
+  <summary>My change isn't on the live site</summary>
+  <pre class="say">Is my last commit pushed to main on GitHub? If not, push it to main.</pre>
+  <p>On the app path, the work may still be on Claude's <code>claude/…</code> branch. Say "Which branch is my work on? Get it onto main and push main." Then wait for the green check in your repo's <span class="ui">Actions</span> tab, up to 10 minutes, and open the address in a private or incognito window, which skips the copy your browser saved.</p>
+</details>
+<details class="fix">
+  <summary>I get a 404 page</summary>
+  <pre class="say">My site at https://<var data-k="user">your-username</var>.github.io/<var data-k="repo">your-repo</var>/ shows a 404. Check that index.html, in lowercase, is in the folder GitHub Pages publishes from on main, tell me which branch and folder Pages should use, and fix anything in the repo.</pre>
+  <p>Then check <span class="ui">Settings</span> → <span class="ui">Pages</span> yourself: branch <code>main</code>, and the folder that holds <code>index.html</code>, <code>/ (root)</code> or <code>/docs</code>. Type the address in lowercase, and give it the full 10 minutes.</p>
+</details>
+<details class="fix">
+  <summary>I can't turn on Pages for my repo</summary>
+  <pre class="say">Make <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> public.</pre>
+  <p>On a free GitHub account, Pages works only from public repos.</p>
+</details>
+<details class="fix">
+  <summary>My fork doesn't publish, or its workflows don't run</summary>
+  <p>Open the fork's <span class="ui">Actions</span> tab. If a banner there asks you to enable workflows, enable them yourself. GitHub doesn't run workflows in a fork until you do. Then:</p>
+  <pre class="say">Update PROGRESS.md, then commit and push to main.</pre>
+</details>
+
+<h2>The site looks wrong</h2>
+<details class="fix">
+  <summary>No styling, or broken images</summary>
+  <pre class="say">Some styles or images don't load on my live site. Make every link to CSS, JavaScript and image files relative, not starting with / and not pointing to another site's address. Check that each file name matches its link exactly, including capital letters. Then commit and push to main.</pre>
+  <p>Web addresses are case-sensitive, so a link to <code>Photo.jpg</code> won't find <code>photo.jpg</code> online, even if it worked on your computer.</p>
+</details>
+<details class="fix">
+  <summary>The site looks broken after a change</summary>
+  <pre class="say">The page now <var>describe what looks wrong</var>. Compare my repo with fritzhand/history-of-tampa, find what broke and fix it.</pre>
+  <p>Or go back one step: "Revert the last commit and push to main."</p>
+</details>
+
+<aside class="callout tip" data-title="Not listed here?">Each page has its own fixes under <em>If it goes wrong</em>. The <a href="prompts.html">Prompt cheat sheet</a> collects the prompts you'll use most.</aside>

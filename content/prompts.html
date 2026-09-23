@@ -1,0 +1,103 @@
+<!--meta
+{
+  "title": "Prompt cheat sheet",
+  "eyebrow": "Reference",
+  "lede": "The prompts you'll use most, in one place and grouped by what you're doing. Copy one, fill in the highlighted parts, and paste or dictate it to the agent.",
+  "time": "2 min",
+  "track": "all"
+}
+-->
+<p>Tap <span class="ui">Add your details</span> under any prompt once, and the highlighted parts fill in with your username, repo, name and email. Each prompt links to the page that explains it.</p>
+
+<h2>Start a session</h2>
+<pre class="say" data-label="First look, changes nothing">Explain what this repo is and how its website is built, in plain English. Don't change anything.</pre>
+<p>Explained in <a href="claude-app.html">Claude Code in the app</a>.</p>
+<pre class="say" data-label="See where the agent is working">Which folder are you working in? List what's in it, and don't change anything.</pre>
+<p>Explained in <a href="trusted-folder.html">Trusted folders</a>.</p>
+<pre class="say" data-label="Pick up where you left off">Read PROGRESS.md and continue from what's next.</pre>
+<p>Explained in <a href="make-your-version.html">Make your own version</a>.</p>
+
+<h2>Set the rules</h2>
+<pre class="say" data-label="Name the one repo to change">Work only in <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>. Treat the other repos as read-only reference.</pre>
+<p>Say it first in any session that has more than one repo. Explained in <a href="multiple-repos.html">Many repos, one to work in</a>.</p>
+<pre class="say" data-label="Commit as yourself (add to any prompt)">Commit as <var data-k="name">Your Name</var> &lt;<var data-k="email">your-noreply-email</var>&gt;.</pre>
+<pre class="say" data-label="Commit as yourself, this session (app path)">For this repo, set git user.name to "<var data-k="name">Your Name</var>" and user.email to "<var data-k="email">your-noreply-email</var>", and commit as me from now on.</pre>
+<pre class="say" data-label="Commit as yourself, this computer (VS Code path)">Set my global git name to "<var data-k="name">Your Name</var>" and email to "<var data-k="email">your-noreply-email</var>".</pre>
+<p>Explained in <a href="commit-as-you.html">Commit as yourself</a>.</p>
+<pre class="say" data-label="All the rules at once">Work only in <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>. Treat the other repos as read-only reference. Commit as <var data-k="name">Your Name</var> &lt;<var data-k="email">your-noreply-email</var>&gt;. Push finished work straight to main. Only use facts you can cite with a link, and mark anything you can't verify as TBD. Write these rules into a CLAUDE.md file at the root of my repo so every session follows them. Then commit and push to main.</pre>
+<p>Explained in <a href="make-your-version.html">Make your own version</a>.</p>
+
+<h2>Starter CLAUDE.md</h2>
+<p>A <code>CLAUDE.md</code> file at the root of your repo holds standing rules. Claude reads it at the start of every session, so you don't have to repeat yourself. Send this once in each repo:</p>
+<pre class="say" data-label="Create a starter CLAUDE.md">Create a CLAUDE.md file at the root of this repo (or add to it if it exists) with these rules, then commit and push to main:
+- Work only in <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>. Treat the other repos as read-only reference.
+- Always commit as <var data-k="name">Your Name</var> &lt;<var data-k="email">your-noreply-email</var>&gt;.
+- When a piece of work is finished, commit and push to main.
+- Never invent facts. Give a working link for every fact, date and number, and mark anything you can't verify as TBD.
+- Keep PROGRESS.md updated with what's done and what's next.
+- Ask me before deleting any file.</pre>
+<p>Using Codex? Say AGENTS.md instead of CLAUDE.md. Explained in <a href="commit-as-you.html">Commit as yourself</a> and <a href="how-it-works.html">The big picture</a>.</p>
+
+<h2>Get a project</h2>
+<pre class="say" data-label="Look at a starter first">Look at fritzhand/history-of-tampa and tell me, in plain English, which files I'd change to make a history of my own city, and what I should delete first.</pre>
+<p>Explained in <a href="starters.html">Pick a starter</a>.</p>
+<pre class="say" data-label="Fork a starter">Fork fritzhand/history-of-tampa into my account and name the fork <var data-k="repo">your-repo</var>.</pre>
+<pre class="say" data-label="Fresh copy of a starter (app path)">Work only in <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>. Treat the other repos as read-only reference. Copy every file from fritzhand/history-of-tampa into my repo (not the .git folder), commit and push to main.</pre>
+<pre class="say" data-label="Fresh copy of a starter (VS Code path)">Create a new public GitHub repository called <var data-k="repo">your-repo</var> and clone it here. Copy every file from https://github.com/fritzhand/history-of-tampa into it (not the .git folder), commit and push to main.</pre>
+<pre class="say" data-label="Clone your repo (VS Code path)">Clone https://github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> into this folder and open it.</pre>
+<p>Explained in <a href="clone-fork.html">Clone, fork or copy</a>.</p>
+<pre class="say" data-label="Create an empty repo (app path)">Create a new public GitHub repository called <var data-k="repo">your-repo</var> in my account, with a README. Then give me its link.</pre>
+<pre class="say" data-label="Create an empty repo (VS Code path)">Create a new public GitHub repository called <var data-k="repo">your-repo</var> with a README, clone it here, and open it.</pre>
+<pre class="say" data-label="Make a repo public">Make <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> public.</pre>
+<p>Explained in <a href="repos.html">Repos: public or private</a>.</p>
+
+<h2>Change your site</h2>
+<pre class="say" data-label="Research before writing">Research the history of St. Petersburg, Florida, for this site. Use real sources, such as city, county and state archives, universities, the Census Bureau and newspapers, and give a working link for every fact, date and number. Wikipedia can point you to sources but isn't one. List images only if they're public domain or openly licensed, with a credit line. Write everything to research/notes.md and mark anything you couldn't verify as TBD. Never invent a number, date or link. Don't change the site yet.</pre>
+<p>Explained in <a href="make-your-version.html">Make your own version</a>.</p>
+<pre class="say" data-label="Make a change: what, where, done">In <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>, change the site title to "A History of St. Petersburg" and rewrite the opening section about St. Petersburg, Florida. Cite a link for every fact you add. Done means the opening section no longer mentions Tampa.</pre>
+<pre class="say" data-label="Keep facts honest (add to any prompt)">Only use facts you can cite with a link. Mark anything you can't verify as TBD.</pre>
+<p>Explained in <a href="talk-to-it.html">How to talk to the agent</a>.</p>
+<pre class="say" data-label="Add a section">Add a section about <var>the topic</var> after <var>the section it should follow</var>. Research it first, give a working link for every fact, and mark anything you can't verify as TBD.</pre>
+<pre class="say" data-label="Add an image, with credit">Add a photo of <var>the subject</var> to <var>the section</var>. Use only an image that's public domain or openly licensed, show its credit line under it, and tell me where you found it.</pre>
+<pre class="say" data-label="Swap the colors">Change the site's colors to <var>deep blue and sand</var>. Keep the text easy to read in both light and dark mode.</pre>
+<pre class="say" data-label="Fix broken links">Check every link on the site, fix or remove the broken ones, and list what you changed.</pre>
+<p>Explained in <a href="update-and-share.html">Update &amp; share</a>.</p>
+
+<h2>Everyday</h2>
+<pre class="say" data-label="Plan before a big change">Plan this first. Don't change anything until I say go.</pre>
+<pre class="say" data-label="Check the work">Show me what you changed in plain English.</pre>
+<pre class="say" data-label="Undo a change you haven't saved">Undo that last change.</pre>
+<p>Explained in <a href="talk-to-it.html">How to talk to the agent</a>.</p>
+<pre class="say" data-label="Save it to GitHub">Commit and push to main.</pre>
+<pre class="say" data-label="Undo something already pushed">Revert the last commit and push to main.</pre>
+<pre class="say" data-label="See the history">Show me the last 5 commits in plain English.</pre>
+<pre class="say" data-label="Get changes made somewhere else">Pull the latest changes from GitHub first.</pre>
+<p>Explained in <a href="save-and-push.html">Commit &amp; push</a>.</p>
+<pre class="say" data-label="End the session">Update PROGRESS.md with what's done and what's next, then commit and push to main.</pre>
+<p>Explained in <a href="make-your-version.html">Make your own version</a>.</p>
+
+<h2>Publish</h2>
+<pre class="say" data-label="Turn on GitHub Pages (VS Code path)">Turn on GitHub Pages for <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> from the main branch, root folder (or /docs if the site lives in docs/), using the GitHub CLI, then tell me the URL.</pre>
+<p>On the app path you switch Pages on yourself, once. Explained in <a href="github-pages.html">Turn on GitHub Pages</a>.</p>
+<pre class="say" data-label="Check before you push (app path)">Before you push, check my site for missing files, broken image paths and JavaScript errors, and tell me what you find.</pre>
+<pre class="say" data-label="Preview on your computer (VS Code path)">Start a local preview of my site and give me the link.</pre>
+<pre class="say" data-label="Is my change live?">Is my last commit pushed to main on GitHub? If not, push it to main.</pre>
+<pre class="say" data-label="Set up the link preview (optional)">Set up the link preview for my site: its title, a one-line description and a 1200×630 share image showing the site's title, all pointing to https://<var data-k="user">your-username</var>.github.io/<var data-k="repo">your-repo</var>/. If you can't make an image, remove the image tags instead. Then commit and push to main.</pre>
+<p>Explained in <a href="update-and-share.html">Update &amp; share</a>.</p>
+<pre class="say" data-label="Get work off a claude/… branch">Which branch is my work on? Get it onto main and push main.</pre>
+<pre class="say" data-label="Merge through a pull request">Open a pull request into main and merge it.</pre>
+<p>Explained in <a href="main-branch.html">The main branch</a>.</p>
+
+<h2>When stuck</h2>
+<pre class="say" data-label="Paste the error">Here's the error: <var>paste the exact error</var>. Explain what went wrong in plain English and fix it.</pre>
+<p>Explained in <a href="talk-to-it.html">How to talk to the agent</a>.</p>
+<pre class="say" data-label="Explain what happened">Explain what you just did and why, in plain English. Don't change anything.</pre>
+<pre class="say" data-label="Ask for options">Give me two or three ways to fix this, with the pros and cons of each in plain English. Don't change anything until I choose.</pre>
+<pre class="say" data-label="Start over with a clear goal">Here's what I want: <var>what done looks like</var>. Here's the exact error: <var>paste the exact error</var>. Tell me what you think is wrong and your plan. Don't change anything until I say go.</pre>
+<p>Send that last one in a new session. Explained in <a href="troubleshooting.html">Troubleshooting</a>.</p>
+<pre class="say" data-label="Check which repo it changed">Which repo are you working in, and which files did you change?</pre>
+<p>Explained in <a href="multiple-repos.html">Many repos, one to work in</a>.</p>
+<p>A rejected push, a merge conflict, a 404 page or a site with no styling each has its own fix in <a href="troubleshooting.html">Troubleshooting</a>.</p>
+
+<h2>Set up your computer</h2>
+<p>On the VS Code path you set up your computer once, at the start. Those prompts are on <a href="install-vscode.html">VS Code + your agent</a>, <a href="install-tools.html">Git, Node &amp; GitHub CLI</a> and <a href="windows-scripts.html">Windows: allow scripts</a>.</p>

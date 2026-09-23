@@ -1,0 +1,73 @@
+<!--meta
+{
+  "title": "About this guide",
+  "eyebrow": "Reference",
+  "lede": "Who made this guide, why, and how it's built. It's a GitHub repo published with GitHub Pages, the same way your site will be.",
+  "time": "2 min",
+  "track": "all"
+}
+-->
+<h2>Who made it</h2>
+<p>Jeremy Fritzhand, <a href="https://github.com/fritzhand">fritzhand on GitHub</a>. He also made the starter sites the guide points to.</p>
+
+<h2>Why it exists</h2>
+<p>It's the shortest path from no GitHub account to a published website, made by telling an AI agent what you want. It teaches only what you need for that one goal. There are no servers, databases or frameworks here. You type or dictate, and the agent does the work.</p>
+
+<h2>How it's built</h2>
+<p>This site is itself a repo, <a href="https://github.com/fritzhand/quickstart">fritzhand/quickstart</a>, published with GitHub Pages from <code>main</code> and the <code>/docs</code> folder. It was made with Claude Code, by the same steps the guide teaches.</p>
+<ul>
+  <li>Each page is one HTML file in the <code>content</code> folder.</li>
+  <li><code>content/nav.json</code> sets the sidebar and the page order.</li>
+  <li><code>node build.mjs</code> turns them into the finished site in <code>docs</code>. It needs Node.js and nothing else.</li>
+</ul>
+<p>Want a guide like this one about your own topic? Fork it:</p>
+<pre class="say">Fork fritzhand/quickstart into my account and name the fork <var data-k="repo">your-repo</var>.</pre>
+<p>Then point it at your own address:</p>
+<pre class="say">Work only in <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>. Treat the other repos as read-only reference. In site.config.json, set siteName to "<var>My Guide</var>", siteBase to https://<var data-k="user">your-username</var>.github.io/<var data-k="repo">your-repo</var>/, pathPrefix to /<var data-k="repo">your-repo</var>/ and repo to https://github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>, and set the author to my name, <var data-k="name">Your Name</var>, with https://github.com/<var data-k="user">your-username</var>. Run node build.mjs until it finishes without errors, then commit and push to main.</pre>
+<p>Its <code>CLAUDE.md</code> explains the page format to the agent, and after each change the agent rebuilds the <code>docs</code> folder. Publish from <code>main</code> and <code>/docs</code>, as in <a href="github-pages.html">Turn on GitHub Pages</a>.</p>
+
+<h2>The examples</h2>
+<div class="cards">
+  <a class="card" href="https://fritzhand.github.io/history-of-tampa/"><span class="card-kicker">Starter · easiest</span><strong>history-of-tampa</strong><span>A scrolling history of downtown Tampa. Plain files, no build step.</span></a>
+  <a class="card" href="https://fritzhand.github.io/history-of-indigo/"><span class="card-kicker">Made from history-of-tampa</span><strong>history-of-indigo</strong><span>The same engine, pointed at a topic instead of a place.</span></a>
+  <a class="card" href="https://fritzhand.github.io/startup-india-guide/"><span class="card-kicker">Starter · harder</span><strong>startup-india-guide</strong><span>A sidebar guide built from data files. This guide is built the same way.</span></a>
+  <a class="card" href="https://map.embarccollective.com/"><span class="card-kicker">Showcase only</span><strong>Florida Startup Ecosystem Map</strong><span>Made from startup-india-guide. Its repo is private.</span></a>
+</div>
+
+<h2>Official docs</h2>
+<p>For anything this guide leaves out, go to the source.</p>
+<h3>Claude Code</h3>
+<ul>
+  <li><a href="https://code.claude.com/docs">Claude Code docs</a></li>
+  <li><a href="https://code.claude.com/docs/en/web-quickstart">Get started with Claude Code in the cloud</a></li>
+  <li><a href="https://code.claude.com/docs/en/claude-code-on-the-web">Use Claude Code in the cloud</a></li>
+  <li><a href="https://code.claude.com/docs/en/vs-code">Use Claude Code in VS Code</a></li>
+  <li><a href="https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code">Claude Code for VS Code</a> (the extension's page)</li>
+  <li><a href="https://code.claude.com/docs/en/memory">How Claude remembers your project</a> (CLAUDE.md)</li>
+</ul>
+<h3>Codex</h3>
+<ul>
+  <li><a href="https://learn.chatgpt.com/docs/codex/ide">Codex IDE extension</a></li>
+  <li><a href="https://marketplace.visualstudio.com/items?itemName=openai.chatgpt">Codex – OpenAI's coding agent</a> (the extension's page)</li>
+</ul>
+<h3>GitHub</h3>
+<ul>
+  <li><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site">Creating a GitHub Pages site</a></li>
+  <li><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/troubleshooting-404-errors-for-github-pages-sites">Troubleshooting 404 errors for GitHub Pages sites</a></li>
+  <li><a href="https://docs.github.com/en/pull-requests/how-tos/work-with-forks/fork-a-repo">Fork a repository</a></li>
+  <li><a href="https://docs.github.com/en/account-and-profile/how-tos/email-preferences/setting-your-commit-email-address">Setting your commit email address</a></li>
+  <li><a href="https://docs.github.com/en/account-and-profile/how-tos/contribution-settings/troubleshooting-missing-contributions">Troubleshooting missing contributions</a></li>
+  <li><a href="https://cli.github.com">GitHub CLI</a></li>
+</ul>
+<h3>Your computer</h3>
+<ul>
+  <li><a href="https://code.visualstudio.com">Visual Studio Code</a> and its <a href="https://code.visualstudio.com/docs/editing/workspaces/workspace-trust">Workspace Trust</a> page</li>
+  <li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-5.1">about_Execution_Policies</a> (Microsoft, for Windows)</li>
+  <li><a href="https://nodejs.org">Node.js</a></li>
+  <li><a href="https://git-scm.com">Git</a></li>
+</ul>
+
+<aside class="callout note" data-title="Apps change">Buttons and menus move, and products rename things. If a label on your screen doesn't match this guide, trust your screen: the steps stay the same. This guide was last checked on September 23, 2026.</aside>
+
+<h2>License</h2>
+<p>MIT. You may copy, change and share this guide, including for your own site, as long as you keep the <code>LICENSE</code> file with its copyright notice. The license is in the repo: <a href="https://github.com/fritzhand/quickstart/blob/main/LICENSE">LICENSE</a>.</p>

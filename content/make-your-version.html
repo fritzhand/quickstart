@@ -1,0 +1,106 @@
+<!--meta
+{
+  "title": "Make your own version",
+  "eyebrow": "Step 4 · Make it yours",
+  "lede": "Turn the Tampa starter into a history of your own city, one prompt at a time. The example is St. Petersburg, Florida, in a repo called history-of-st-pete.",
+  "time": "About 1 hour",
+  "track": "all"
+}
+-->
+<p>Do the steps in order. Read what the agent says back after each one before you send the next.</p>
+
+<ol class="steps">
+  <li>
+    <h3>Get your copy</h3>
+    <pre class="say">Fork fritzhand/history-of-tampa into my account and name the fork <var data-k="repo">your-repo</var>.</pre>
+    <aside class="callout manual" data-title="If the agent can't fork it">Open <a href="https://github.com/fritzhand/history-of-tampa">https://github.com/fritzhand/history-of-tampa</a> and click <span class="ui">Fork</span> in the top-right corner. Type <var data-k="repo">your-repo</var> as the repository name, in lowercase, and click <span class="ui">Create fork</span>.</aside>
+    <p>Want your commits to count on your GitHub profile? Make a fresh copy instead, with a session that holds both repos. <a href="clone-fork.html">Clone, fork or copy</a> shows how.</p>
+  </li>
+  <li>
+    <h3>Start a session in your repo and set the rules</h3>
+    <div class="tabs" data-group="where">
+      <section data-tab="app" data-label="App path">
+        <p>Start a new session. Pick <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> in the repository selector, and add <code>fritzhand/history-of-tampa</code> as a reference, as shown in <a href="multiple-repos.html">Many repos, one to work in</a>. Fork not in the list? Add it to the Claude GitHub App, as shown in <a href="claude-app.html">Claude Code in the app</a>.</p>
+      </section>
+      <section data-tab="vscode" data-label="VS Code path">
+        <p>Open your projects folder in VS Code, then say:</p>
+        <pre class="say">Clone https://github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> into this folder and open it.</pre>
+      </section>
+    </div>
+    <p>Then send the rules as your first message:</p>
+    <pre class="say">Work only in <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>. Treat the other repos as read-only reference. Commit as <var data-k="name">Your Name</var> &lt;<var data-k="email">your-noreply-email</var>&gt;. Push finished work straight to main. Only use facts you can cite with a link, and mark anything you can't verify as TBD. Write these rules into a CLAUDE.md file at the root of my repo so every session follows them. Then commit and push to main.</pre>
+    <p>Using Codex? Say AGENTS.md instead of CLAUDE.md.</p>
+  </li>
+  <li>
+    <h3>Clean out the original owner's things</h3>
+    <p>The starter still carries its author's analytics tag, photo, name and links. Left in, the tag would send your visitors' data to the original author.</p>
+    <pre class="say">In index.html, remove the Google Analytics tag. Delete assets/jeremy.jpg and the author photo and name blocks in the byline, the About section and the credit footer. Delete the files I won't use: ybor.html, js/ybor-data.js, the assets/linkedin and assets/linkedin-ybor folders, and the LinkedIn tools in tools/. Remove any links to the deleted pages. Replace every https://fritzhand.github.io/history-of-tampa/ address with https://<var data-k="user">your-username</var>.github.io/<var data-k="repo">your-repo</var>/ and point the Repository links to my repo. Then list what you removed.</pre>
+  </li>
+  <li>
+    <h3>Research first, then build</h3>
+    <p>Get the facts before the agent writes a word of your site. That keeps invented numbers out.</p>
+    <pre class="say">Research the history of St. Petersburg, Florida, for this site. Use real sources, such as city, county and state archives, universities, the Census Bureau and newspapers, and give a working link for every fact, date and number. Wikipedia can point you to sources but isn't one. List images only if they're public domain or openly licensed, with a credit line. Write everything to research/notes.md and mark anything you couldn't verify as TBD. Never invent a number, date or link. Don't change the site yet.</pre>
+    <p>Read <code>research/notes.md</code> yourself. You know your city: delete anything that looks wrong.</p>
+    <aside class="callout tip" data-title="If the agent can't open websites">
+      <p>On the app path, the cloud machine may block most websites. Paste the same research prompt into a regular Claude chat with web search on. Then bring the answer back to your session:</p>
+      <pre class="say">Put these research results in research/notes.md exactly as written, then commit and push to main: <var>paste the results</var></pre>
+    </aside>
+  </li>
+  <li>
+    <h3>Make the change</h3>
+    <p>This is the biggest edit, so ask for a plan first: add "Plan this first. Don't change anything until I say go."</p>
+    <pre class="say">Using only the facts in research/notes.md, rewrite js/data.js and the text in index.html for St. Petersburg, Florida. Keep the data file's format and variable name so the site still works. Remove any section I have no data for instead of leaving it empty. Keep a line in the footer that says "Forked from fritzhand/history-of-tampa" with a link to it. Then show me what you changed in plain English.</pre>
+  </li>
+  <li>
+    <h3>Check</h3>
+    <pre class="say">Search the whole repo, ignoring capitals, for leftover words from the original: Tampa, Ybor and fritzhand. Keep the "Forked from" credit, delete planning files that are only about Tampa, and fix everything else, including README.md. Run any checks this repo has, such as tools/validate-data.mjs, and fix what they report. Then summarize what changed in plain English.</pre>
+  </li>
+  <li>
+    <h3>Commit and push to main, then publish</h3>
+    <pre class="say">Commit and push to main.</pre>
+    <p>Now switch on your site: <a href="github-pages.html">Turn on GitHub Pages</a>, from <code>main</code> and <code>/ (root)</code>.</p>
+  </li>
+</ol>
+
+<aside class="callout tip" data-title="Keep a PROGRESS.md">
+  <p>Each session starts fresh. End every session with:</p>
+  <pre class="say">Update PROGRESS.md with what's done and what's next, then commit and push to main.</pre>
+  <p>Start the next one with "Read PROGRESS.md and continue from what's next."</p>
+</aside>
+
+<aside class="callout check" data-title="Check it worked">Open <code>https://github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var></code>. The README describes your city, <code>CLAUDE.md</code> holds your rules, and the newest commit on <code>main</code> shows your name, not Claude's.</aside>
+
+<aside class="callout note" data-title="Starting from startup-india-guide instead?">
+  <p>Use <code>fritzhand/startup-india-guide</code> in steps 1 and 2. Swap step 3 for this prompt:</p>
+  <pre class="say">Work only in <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>. Treat the other repos as read-only reference. In site.config.json, set siteName to "<var>My Guide</var>", siteBase to https://<var data-k="user">your-username</var>.github.io/<var data-k="repo">your-repo</var>/, pathPrefix to /<var data-k="repo">your-repo</var>/ and repo to https://github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>, and delete analyticsId. Delete the .github/workflows folder and scripts/fetch-india-news.py; they run a daily news bot and a deploy I don't need. Replace the author footer in build.mjs with my name, <var data-k="name">Your Name</var>, and delete site/jeremy.png. Run node build.mjs until it finishes without errors, then commit and push to main.</pre>
+  <p>Steps 4 to 6 work the same way, but the content lives in the <code>data/</code> folder, and in step 6 you search for India and fritzhand. Publish from <code>main</code> and <code>/docs</code>. Much of <code>build.mjs</code> is written for India, so rewriting it for your topic takes several sessions. Ask for a plan first.</p>
+</aside>
+
+<h2>If it goes wrong</h2>
+<details class="fix">
+  <summary>The site looks broken after a change</summary>
+  <p>Describe what you see and let the agent compare it with the original:</p>
+  <pre class="say">The page now <var>describe what looks wrong</var>. Compare my repo with fritzhand/history-of-tampa, find what broke and fix it.</pre>
+  <p>Or go back one step: "Revert the last commit and push to main."</p>
+</details>
+<details class="fix">
+  <summary>A number or source looks made up</summary>
+  <pre class="say">Check every figure in js/data.js against research/notes.md. Remove anything that has no working source link, or mark it TBD. List what you changed.</pre>
+</details>
+
+<details class="more">
+  <summary>What the agent runs for you</summary>
+  <pre><code># Fork and clone (GitHub CLI)
+gh repo fork fritzhand/history-of-tampa --clone --fork-name <var data-k="repo">your-repo</var>
+
+# Find leftover words from the original
+grep -rniE "tampa|ybor|fritzhand" --exclude-dir=.git .
+
+# The starter's own data check (needs Node)
+node tools/validate-data.mjs
+
+# Save and publish
+git add .
+git commit -m "Rewrite the site for St. Petersburg"
+git push origin main</code></pre>
+</details>

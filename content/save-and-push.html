@@ -1,0 +1,113 @@
+<!--meta
+{
+  "title": "Commit & push",
+  "eyebrow": "Step 3 · Just enough Git",
+  "lede": "A commit is a save point with a short note. A push sends your save points to GitHub, and that's what updates your live site.",
+  "time": "5 min",
+  "track": "all"
+}
+-->
+<ul>
+  <li><strong>Commit:</strong> a save point for the whole project, with a note that says what changed. You can go back to any commit.</li>
+  <li><strong>Push:</strong> sends your commits to GitHub. Until then, they exist only in the working copy.</li>
+  <li><strong>Pull:</strong> brings down changes made somewhere else, such as on GitHub's website or from your other device.</li>
+</ul>
+<p>Saving a file is not a commit. The agent saves files as it works, but nothing is in the history until it commits, and nothing is on GitHub until it pushes.</p>
+
+<figure class="diagram">
+  <svg class="dg" viewBox="0 0 480 472" role="img" aria-labelledby="save-and-push-flow-title save-and-push-flow-desc">
+    <title id="save-and-push-flow-title">From an edit to your live site</title>
+    <desc id="save-and-push-flow-desc">Inside the working copy, on your computer or in the cloud, the agent edits and saves files, which are not yet in the history. An arrow labeled commit leads to a save point with the note Add St. Pete timeline, and a second commit arrow leads to another save point, Fix a date. An arrow labeled push leads out of the working copy to your repo on GitHub. From there an arrow labeled Pages rebuilds leads to your live site at your-username.github.io/your-repo. A dashed arrow labeled pull runs from GitHub back up to the working copy.</desc>
+    <defs>
+      <marker id="save-and-push-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
+        <path class="dg-arrowhead" d="M0 0L10 5L0 10z"/>
+      </marker>
+      <marker id="save-and-push-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
+        <path class="dg-arrowhead-accent" d="M0 0L10 5L0 10z"/>
+      </marker>
+    </defs>
+
+    <rect class="dg-box-dashed" x="8" y="8" width="464" height="240" rx="14"/>
+    <text class="dg-label" x="24" y="30">Working copy · computer or cloud</text>
+
+    <rect class="dg-box" x="32" y="44" width="336" height="58" rx="10"/>
+    <text class="dg-text-strong" x="200" y="68" text-anchor="middle">Edit files</text>
+    <text class="dg-text-sm" x="200" y="90" text-anchor="middle">saved, but not in the history yet</text>
+
+    <line class="dg-line" x1="200" y1="102" x2="200" y2="126" marker-end="url(#save-and-push-arrow)"/>
+    <text class="dg-text-sm" x="212" y="119">commit</text>
+
+    <rect class="dg-box-soft" x="32" y="128" width="336" height="42" rx="10"/>
+    <circle class="dg-fill-accent" cx="54" cy="149" r="7"/>
+    <text class="dg-text" x="72" y="154">Save point: "Add St. Pete timeline"</text>
+
+    <line class="dg-line" x1="200" y1="170" x2="200" y2="190" marker-end="url(#save-and-push-arrow)"/>
+    <text class="dg-text-sm" x="212" y="185">commit</text>
+
+    <rect class="dg-box-soft" x="32" y="192" width="336" height="42" rx="10"/>
+    <circle class="dg-fill-accent" cx="54" cy="213" r="7"/>
+    <text class="dg-text" x="72" y="218">Save point: "Fix a date"</text>
+
+    <line class="dg-line-accent" x1="200" y1="234" x2="200" y2="294" marker-end="url(#save-and-push-arrow-accent)"/>
+    <text class="dg-label" x="212" y="272">Push</text>
+
+    <rect class="dg-box" x="32" y="296" width="336" height="62" rx="10"/>
+    <text class="dg-label" x="200" y="320" text-anchor="middle">On GitHub</text>
+    <text class="dg-text-strong" x="200" y="344" text-anchor="middle">your-username/your-repo</text>
+
+    <line class="dg-line" x1="200" y1="358" x2="200" y2="398" marker-end="url(#save-and-push-arrow)"/>
+    <text class="dg-text-sm" x="212" y="383">Pages rebuilds</text>
+
+    <rect class="dg-box-primary" x="32" y="400" width="336" height="62" rx="10"/>
+    <text class="dg-text-strong dg-text-on" x="200" y="425" text-anchor="middle">Your live site</text>
+    <text class="dg-text-sm dg-text-on" x="200" y="447" text-anchor="middle">your-username.github.io/your-repo</text>
+
+    <path class="dg-line-dashed" d="M368 327 H428 V73 H371" marker-end="url(#save-and-push-arrow)"/>
+    <text class="dg-text-sm" x="420" y="190" text-anchor="end">pull</text>
+  </svg>
+  <figcaption>Commits stay in the working copy until a push sends them to GitHub. Once GitHub Pages is on, a push to main rebuilds your site.</figcaption>
+</figure>
+
+<h2>Save your work</h2>
+<pre class="say">Commit and push to main.</pre>
+<p>The agent writes a short note for the commit that says what changed.</p>
+<aside class="callout warn" data-title="Read before you say yes">The agent may ask before it pushes. Check the repo and branch it names: <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>, and <code>main</code> or, on the app path, Claude's own <code>claude/…</code> branch. <a href="main-branch.html">The main branch</a> explains the difference.</aside>
+
+<h2>Look back and undo</h2>
+<p>See what's been saved:</p>
+<pre class="say">Show me the last 5 commits in plain English.</pre>
+<p>Undo a commit you already pushed. A revert adds a new commit that reverses the old one, so the record stays:</p>
+<pre class="say">Revert the last commit and push to main.</pre>
+<p>Changed something on GitHub's website, or on your other device? Start with:</p>
+<pre class="say">Pull the latest changes from GitHub first.</pre>
+
+<aside class="callout check" data-title="Check it worked">Open <code>https://github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>/commits/main</code>. Your newest commit is at the top, with the message the agent wrote. Once Pages is on, your site shows the change within about 10 minutes.</aside>
+
+<h2>If it goes wrong</h2>
+<details class="fix">
+  <summary>The push was rejected because GitHub has changes I don't have</summary>
+  <p>Someone, maybe you on another device, pushed first. Bring those changes down, then push again:</p>
+  <pre class="say">Pull first, then push again. Don't force-push.</pre>
+  <p>A force-push would overwrite the changes on GitHub.</p>
+</details>
+<details class="fix">
+  <summary>The agent committed, but my site didn't change</summary>
+  <p>The commit may not be pushed yet, or it went to a branch other than <code>main</code>. Ask:</p>
+  <pre class="say">Is my last commit pushed to main on GitHub? If not, push it to main.</pre>
+</details>
+<details class="fix">
+  <summary>It says there's a merge conflict</summary>
+  <p>Two changes touched the same lines. Let the agent explain it before anything is overwritten:</p>
+  <pre class="say">Explain the conflict in plain English and suggest which version to keep. Don't change anything until I choose.</pre>
+</details>
+
+<details class="more">
+  <summary>What the agent runs for you</summary>
+  <pre><code>git status                        # what changed since the last commit
+git add .
+git commit -m "Add St. Pete timeline"
+git push origin main
+git log --oneline -5              # the last 5 commits
+git revert HEAD                   # a new commit that undoes the last one
+git pull                          # bring down changes from GitHub</code></pre>
+</details>

@@ -1,0 +1,82 @@
+<!--meta
+{
+  "title": "Repos: public or private",
+  "eyebrow": "Step 3 · Just enough Git",
+  "lede": "A repo (repository) is your project's folder on GitHub, plus the full history of every saved change. Your site gets one repo. Decide who can see it before you put anything in it.",
+  "time": "5 min",
+  "track": "all"
+}
+-->
+<aside class="callout tip" data-title="Forking a starter?">A fork makes the repo for you. Read "Public or private" below, then skip to <a href="clone-fork.html">Clone, fork or copy</a>.</aside>
+
+<h2>Public or private</h2>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th></th><th>Public</th><th>Private</th></tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row">Who can see it</th><td>Anyone on the internet, including every past version of every file</td><td>Only you and people you invite</td></tr>
+      <tr><th scope="row">GitHub Pages on a free account</th><td>Yes</td><td>No. It needs a paid GitHub plan, and the site itself is public anyway.</td></tr>
+      <tr><th scope="row">Pick it for</th><td>A website you're publishing, like the one in this guide</td><td>Notes or work you don't want strangers to read</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>For this guide, choose <strong>public</strong>.</p>
+
+<aside class="callout warn" data-title="Decide before your first push">Git keeps every version. If you push a password, a key or someone's private details to a public repo, deleting the file later doesn't remove it: it's still in the history for anyone to find. Never put them in a repo.</aside>
+
+<h2>Create your repo</h2>
+<p>Pick a name in lowercase with hyphens, such as <code>history-of-st-pete</code>. It becomes part of your site's address, <code>https://<var data-k="user">your-username</var>.github.io/<var data-k="repo">your-repo</var>/</code>, and web addresses are case-sensitive.</p>
+
+<div class="tabs" data-group="where">
+  <section data-tab="app" data-label="App path">
+    <ol class="steps">
+      <li>
+        <h3>Ask Claude to create it</h3>
+        <pre class="say">Create a new public GitHub repository called <var data-k="repo">your-repo</var> in my account, with a README. Then give me its link.</pre>
+      </li>
+      <li>
+        <h3>Open it in a new session</h3>
+        <p>Start a new session and pick <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> in the repository selector below the message box. If it isn't in the list, add it to the Claude GitHub App, as shown in <a href="claude-app.html">Claude Code in the app</a>.</p>
+      </li>
+    </ol>
+  </section>
+  <section data-tab="vscode" data-label="VS Code path">
+    <p>Open your projects folder in VS Code. The agent creates the repo with the GitHub CLI you signed in to in <a href="install-tools.html">Git, Node &amp; GitHub CLI</a>.</p>
+    <pre class="say">Create a new public GitHub repository called <var data-k="repo">your-repo</var> with a README, clone it here, and open it.</pre>
+  </section>
+</div>
+
+<aside class="callout manual" data-title="If the agent can't create it">
+  <p>It takes a minute on GitHub:</p>
+  <ol>
+    <li>Go to <a href="https://github.com/new">https://github.com/new</a>.</li>
+    <li>Type the name in lowercase with hyphens.</li>
+    <li>Choose <span class="ui">Public</span>.</li>
+    <li>Turn on the option to add a README.</li>
+    <li>Click <span class="ui">Create repository</span>.</li>
+  </ol>
+  <p>Then, on the app path, pick the repo in a new session. On the VS Code path, say "Clone https://github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> into this folder and open it."</p>
+</aside>
+
+<aside class="callout check" data-title="Check it worked">Open <code>https://github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var></code>. You see your repo's page with a README file and a <span class="ui">Public</span> label next to its name.</aside>
+
+<h2>If it goes wrong</h2>
+<details class="fix">
+  <summary>I made it private by mistake</summary>
+  <pre class="say">Make <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> public.</pre>
+  <p>Or do it yourself on GitHub: open the repo's <span class="ui">Settings</span>, find the <span class="ui">Danger Zone</span> section and click <span class="ui">Change visibility</span>.</p>
+</details>
+<details class="fix">
+  <summary>I pushed a password or key to a public repo</summary>
+  <p>Deleting the file isn't enough, because the history keeps it. Change the password, or cancel the key and make a new one, on the site that issued it. Do that first. Then ask the agent to remove the file.</p>
+</details>
+
+<details class="more">
+  <summary>What the agent runs for you</summary>
+  <p>On the VS Code path, with the GitHub CLI:</p>
+  <pre><code>gh repo create <var data-k="repo">your-repo</var> --public --add-readme --clone
+cd <var data-k="repo">your-repo</var></code></pre>
+  <p>On the app path, Claude may use its built-in GitHub tools instead of a command.</p>
+</details>

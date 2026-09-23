@@ -1,0 +1,52 @@
+<!--meta
+{
+  "title": "Windows: allow scripts",
+  "eyebrow": "Step 2 · Set up your agent",
+  "lede": "Windows blocks PowerShell scripts until you allow them, and Node's tools need them. One setting fixes it for your account. On a Mac? Skip this page.",
+  "time": "3 min",
+  "track": "vscode"
+}
+-->
+<h2>What you'd see</h2>
+<p>You or the agent run <code>npm</code>, Node's tool installer, in the VS Code terminal, and get an error like this:</p>
+<pre><code>npm : File C:\Program Files\nodejs\npm.ps1 cannot be loaded because running scripts is disabled on this system.</code></pre>
+<p>The file named can also be <code>codex.ps1</code> or <code>claude.ps1</code>. It's the same problem.</p>
+<p><strong>Why:</strong> on Windows, VS Code's terminal runs Windows PowerShell. Its starting policy, called Restricted, runs single commands but no scripts. <code>npm</code> and the tools it installs start through small <code>.ps1</code> script files, so PowerShell refuses them.</p>
+
+<h2>Fix it</h2>
+<pre class="say">Allow PowerShell scripts for my user account only using Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser, then check it with Get-ExecutionPolicy -List.</pre>
+<p>Read the command in the permission prompt, then allow it. It doesn't need admin rights, and it works right away.</p>
+
+<aside class="callout manual" data-title="If the agent can't">Open the terminal with <span class="ui">View</span> → <span class="ui">Terminal</span>, paste this and press <kbd>Enter</kbd>. If PowerShell asks you to confirm, type <kbd>Y</kbd> and press <kbd>Enter</kbd>.
+<pre class="cmd" data-shell="PowerShell"><code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code></pre>
+</aside>
+
+<aside class="callout check" data-title="Check it worked">In the list from <code>Get-ExecutionPolicy -List</code>, the <code>CurrentUser</code> line says <code>RemoteSigned</code>. Run the command that failed again. It works now.</aside>
+
+<h2>What this changes</h2>
+<ul>
+  <li><strong>Scripts on your computer can run.</strong> Scripts downloaded from the internet still need a signature from a trusted publisher.</li>
+  <li><strong>It applies only to your Windows account.</strong> That's why it doesn't need admin rights.</li>
+  <li><strong>It stays set</strong> until you change it.</li>
+</ul>
+<p>Microsoft explains the settings in <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-5.1">about_Execution_Policies</a>.</p>
+
+<h2>If it goes wrong</h2>
+<details class="fix">
+  <summary>It says my setting is overridden by a policy, or nothing changed</summary>
+  <p>On a work or school laptop, your IT department may set this policy for you, and theirs wins. Ask IT to allow it. Don't try to get around it.</p>
+</details>
+
+<details class="more">
+  <summary>What the agent runs for you</summary>
+  <pre><code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Get-ExecutionPolicy -List</code></pre>
+  <p>The list looks something like this. The line that matters is <code>CurrentUser</code>:</p>
+  <pre><code>        Scope ExecutionPolicy
+        ----- ---------------
+MachinePolicy       Undefined
+   UserPolicy       Undefined
+      Process       Undefined
+  CurrentUser    RemoteSigned
+ LocalMachine       Undefined</code></pre>
+</details>

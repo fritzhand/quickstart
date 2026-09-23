@@ -1,0 +1,54 @@
+<!--meta
+{
+  "title": "Create your GitHub account",
+  "eyebrow": "Step 1 · GitHub",
+  "lede": "GitHub holds your site's files and publishes the site. Creating the account is one of the few steps no agent can do for you.",
+  "time": "10 min",
+  "track": "all"
+}
+-->
+<p>A free account is all you need. The agent will do the rest of the GitHub work once it's connected to your account.</p>
+
+<aside class="callout manual" data-title="Do this yourself">An agent can't sign up for you: the account belongs to you and is tied to your email address.</aside>
+
+<ol class="steps">
+  <li>
+    <h3>Sign up</h3>
+    <p>Go to <a href="https://github.com/signup">https://github.com/signup</a> and follow the prompts. You can also sign up with your Google or Apple account.</p>
+  </li>
+  <li>
+    <h3>Choose a short username</h3>
+    <p>Your username becomes part of your site's address: <code>https://<var data-k="user">your-username</var>.github.io/</code>. Keep it short and lowercase, since you'll share it in every link. Changing it later breaks old links, so pick one you'll keep.</p>
+  </li>
+  <li>
+    <h3>Verify your email</h3>
+    <p>GitHub asks you to verify your email address during sign-up. Do it right away. Until you do, you can't create or fork a repository, which this guide needs.</p>
+  </li>
+  <li>
+    <h3>Turn on two-factor authentication</h3>
+    <p>Recommended. It stops anyone who learns your password from getting in. Click your profile picture, then <span class="ui">Settings</span> → <span class="ui">Password and authentication</span> → <span class="ui">Enable two-factor authentication</span>. Use an authenticator app on your phone. When GitHub shows your recovery codes, download them and keep them somewhere safe.</p>
+  </li>
+  <li>
+    <h3>Keep your email private and copy your noreply address</h3>
+    <p>Click your profile picture, then <span class="ui">Settings</span> → <span class="ui">Emails</span>. Tick <span class="ui">Keep my email addresses private</span>. GitHub then shows a private address that looks like this:</p>
+    <p><code><var>ID</var>+<var data-k="user">your-username</var>@users.noreply.github.com</code></p>
+    <p>Copy it. You'll give it to the agent so your commits are credited to you, without putting your real email in your site's public history. <a href="commit-as-you.html">Commit as yourself</a> shows how.</p>
+  </li>
+  <li>
+    <h3>Save your details in this guide</h3>
+    <p>Save your details here once; every prompt in this guide fills them in.</p>
+    <div data-personalize></div>
+  </li>
+</ol>
+
+<aside class="callout check" data-title="Check it worked">Open <code>https://github.com/<var data-k="user">your-username</var></code>. You see your profile page. Your noreply address is copied somewhere you can find it again.</aside>
+
+<h2>If it goes wrong</h2>
+<details class="fix">
+  <summary>The username I want is taken</summary>
+  <p>Add a number or a hyphen, or try another spelling. Keep it lowercase.</p>
+</details>
+<details class="fix">
+  <summary>GitHub won't let me create or fork a repository</summary>
+  <p>Your email probably isn't verified yet. Open <span class="ui">Settings</span> → <span class="ui">Emails</span> and click <span class="ui">Resend verification email</span> under your address. Then click the link in the email GitHub sends. Check your spam folder if it doesn't arrive. Throwaway email addresses can't be verified, so use a real one.</p>
+</details>

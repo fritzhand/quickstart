@@ -1,0 +1,84 @@
+<!--meta
+{
+  "title": "VS Code + your agent",
+  "eyebrow": "Step 2 · Set up your agent",
+  "lede": "Install VS Code, open a folder for your projects and add the Claude Code or Codex extension. These are the only installs you do by hand. After this page, you ask the agent.",
+  "time": "15 min",
+  "track": "vscode"
+}
+-->
+<aside class="callout manual" data-title="Do this yourself">The agent runs inside VS Code, so it can't install VS Code or itself. Signing in to your account is yours to do, too.</aside>
+
+<ol class="steps">
+  <li>
+    <h3>Install VS Code</h3>
+    <p>Download it from <a href="https://code.visualstudio.com">https://code.visualstudio.com</a>. It's free.</p>
+    <div class="tabs" data-group="os">
+      <section data-tab="mac" data-label="Mac">
+        <p>Open the downloaded <code>.dmg</code> file and drag <span class="ui">Visual Studio Code</span> into the <span class="ui">Applications</span> folder. Then open it from <span class="ui">Applications</span>.</p>
+      </section>
+      <section data-tab="windows" data-label="Windows">
+        <p>Run the installer you downloaded. It's the User Setup, which doesn't need admin rights. Keep the defaults and click through to the end.</p>
+      </section>
+    </div>
+  </li>
+  <li>
+    <h3>Open a folder for your projects</h3>
+    <p>In VS Code, choose <span class="ui">File</span> → <span class="ui">Open Folder…</span>. Go to your <span class="ui">Documents</span> folder and use the window's new-folder button to make a folder called <code>Projects</code>. Select it and open it. Each site you make will get its own folder inside <code>Projects</code>.</p>
+    <p>If VS Code asks <span class="ui">Do you trust the authors of the files in this folder?</span>, click <span class="ui">Yes, I trust the authors</span>. You made this folder, so it's safe. <a href="trusted-folder.html">Trusted folders</a> explains why this question matters.</p>
+  </li>
+  <li>
+    <h3>Add your agent</h3>
+    <div class="tabs" data-group="agent">
+      <section data-tab="claude" data-label="Claude Code">
+        <p>You need a paid Claude plan: Pro, Max, Team or Enterprise.</p>
+        <ol>
+          <li>Open the Extensions view: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>X</kbd> on Windows, <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>X</kbd> on Mac.</li>
+          <li>Search for <strong>Claude Code</strong>. Pick the one published by <strong>Anthropic</strong> and click <span class="ui">Install</span>.</li>
+          <li>Click the Spark icon in the Activity Bar, the strip of icons down the left edge, to open Claude.</li>
+          <li>The first time, a sign-in screen appears. Click <span class="ui">Sign in</span> and approve in the browser window that opens.</li>
+        </ol>
+      </section>
+      <section data-tab="codex" data-label="Codex">
+        <p>You need ChatGPT Plus or higher.</p>
+        <ol>
+          <li>Open the Extensions view: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>X</kbd> on Windows, <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>X</kbd> on Mac.</li>
+          <li>Search for <strong>Codex</strong>. Pick <strong>Codex – OpenAI's coding agent</strong>, published by <strong>OpenAI</strong>, and click <span class="ui">Install</span>.</li>
+          <li>Click the Codex icon to open it. Don't see it? Open the Command Palette (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>, or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> on Mac) and run <span class="ui">Codex: Open Codex Sidebar</span>.</li>
+          <li>Choose <span class="ui">Sign in with ChatGPT</span> and finish in the browser.</li>
+        </ol>
+      </section>
+    </div>
+    <p>You don't need Node.js or anything else to run either extension.</p>
+  </li>
+  <li>
+    <h3>Say your first prompt</h3>
+    <p>In the agent's panel, start a new conversation. Type this into the message box, or dictate it:</p>
+    <pre class="say">Check which of these are installed on this computer: git, node, and the GitHub CLI (gh). Tell me what's missing, in plain English.</pre>
+    <p>The agent may ask permission to run a command. Read it, then allow it. These checks only look up version numbers.</p>
+  </li>
+</ol>
+
+<aside class="callout check" data-title="Check it worked">The agent answers in plain English with what's installed and what's missing. Keep that answer for the next page, <a href="install-tools.html">Git, Node &amp; GitHub CLI</a>, where the agent installs the missing tools.</aside>
+
+<h2>If it goes wrong</h2>
+<details class="fix">
+  <summary>I can't find the Spark icon</summary>
+  <p>Look in the Activity Bar down the left edge. It also appears at the top right of the editor, but only while a file is open. Still missing? A <span class="ui">Restricted Mode</span> notice means VS Code doesn't trust the folder, and the extension doesn't work there. Open the Command Palette, run <span class="ui">Workspaces: Manage Workspace Trust</span> and trust the folder. Otherwise, run <span class="ui">Developer: Reload Window</span> from the Command Palette.</p>
+</details>
+<details class="fix">
+  <summary>On my Mac, a window offers to install developer tools</summary>
+  <p>A fresh Mac may offer this when something asks for Git. It's Apple's Command Line Tools, which include Git. Click <span class="ui">Install</span>, wait for it to finish, then carry on.</p>
+</details>
+<details class="fix">
+  <summary>Sign-in fails, or says my plan doesn't include it</summary>
+  <p>Claude Code needs Claude Pro, Max, Team or Enterprise. The free Claude plan doesn't include it. Codex needs ChatGPT Plus or higher. Check your plan, then sign in again.</p>
+</details>
+
+<details class="more">
+  <summary>What the agent runs for you</summary>
+  <p>To answer your first prompt, the agent asks each tool for its version. A "not found" or "not recognized" error means the tool is missing.</p>
+  <pre><code>git --version
+node -v
+gh --version</code></pre>
+</details>

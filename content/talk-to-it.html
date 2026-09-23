@@ -1,0 +1,54 @@
+<!--meta
+{
+  "title": "How to talk to the agent",
+  "eyebrow": "Get oriented",
+  "lede": "Talk to the agent like a capable helper who can't see your screen: say what you want, where, and what done looks like. Then check its work.",
+  "time": "5 min",
+  "track": "all"
+}
+-->
+<h2>Say it instead of typing</h2>
+<p>Dictation is often faster than typing, and the agent doesn't need perfect sentences.</p>
+<ul>
+  <li><strong>Phone:</strong> tap the microphone on your keyboard and speak into the message box.</li>
+  <li><strong>Windows:</strong> click in the message box and press <kbd>Win</kbd> + <kbd>H</kbd> to start voice typing.</li>
+  <li><strong>Mac:</strong> turn on Dictation in <span class="ui">System Settings</span> → <span class="ui">Keyboard</span>. Then use the Dictation shortcut shown there, or <span class="ui">Edit</span> → <span class="ui">Start Dictation</span>.</li>
+</ul>
+<p>Read it back before you send. Dictation mishears names, repo names and email addresses.</p>
+
+<h2>The shape of a good prompt</h2>
+<p>Every good prompt answers three questions:</p>
+<ol>
+  <li><strong>What</strong> do you want?</li>
+  <li><strong>Where:</strong> which repo or folder?</li>
+  <li><strong>What does done look like?</strong></li>
+</ol>
+<p>"Make it about St. Pete" is too vague. This works:</p>
+<pre class="say">In <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>, change the site title to "A History of St. Petersburg" and rewrite the opening section about St. Petersburg, Florida. Cite a link for every fact you add. Done means the opening section no longer mentions Tampa.</pre>
+<p>If the session has more than one repo, add: "Work only in <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>. Treat the other repos as read-only reference."</p>
+
+<h2>Plan first on big changes</h2>
+<p>Before a change that touches many files, ask for a plan and approve it before any edits.</p>
+<pre class="say">Plan this first. Don't change anything until I say go.</pre>
+<p>Claude Code also has a Plan mode that does the same thing.</p>
+
+<h2>Check its work, and undo</h2>
+<p>After each change, ask for a summary you can actually read:</p>
+<pre class="say">Show me what you changed in plain English.</pre>
+<p>Don't like it? Ask the agent to undo it.</p>
+<pre class="say">Undo that last change.</pre>
+<p>Already committed and pushed? Git keeps every committed version, so you can still go back. Say "Revert the last commit and push to main."</p>
+
+<h2>When something breaks</h2>
+<p>Copy the whole error message, not a summary of it, and paste it back:</p>
+<pre class="say">Here's the error: <var>paste the exact error</var>. Explain what went wrong in plain English and fix it.</pre>
+
+<h2>Stay safe</h2>
+<ul>
+  <li><strong>Never paste passwords, tokens or keys</strong> into a prompt or a file. Anyone can see a public repo, including its history.</li>
+  <li><strong>Read permission prompts before you approve.</strong> Pushes, deletes and installs deserve a look. If you're not sure, say no and ask the agent what the step does.</li>
+  <li><strong>Don't let it invent facts.</strong> A history site is only as good as its sources. Add this to any prompt that writes content:</li>
+</ul>
+<pre class="say">Only use facts you can cite with a link. Mark anything you can't verify as TBD.</pre>
+
+<aside class="callout tip" data-title="Keep your favorites">The <a href="prompts.html">Prompt cheat sheet</a> collects the prompts you'll use most, ready to copy.</aside>

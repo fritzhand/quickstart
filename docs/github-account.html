@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en" class="no-js" data-root="" data-slug="github-account">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Create your GitHub account · Quickstart</title>
+<meta name="description" content="GitHub holds your site&#39;s files and publishes the site. Creating the account is one of the few steps no agent can do for you.">
+<link rel="canonical" href="https://fritzhand.github.io/quickstart/github-account.html">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#fbfcfc" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b1320" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Quickstart">
+<meta property="og:title" content="Create your GitHub account · Quickstart">
+<meta property="og:description" content="GitHub holds your site&#39;s files and publishes the site. Creating the account is one of the few steps no agent can do for you.">
+<meta property="og:url" content="https://fritzhand.github.io/quickstart/github-account.html">
+<meta property="og:image" content="https://fritzhand.github.io/quickstart/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Quickstart — Publish your first site with Claude Code">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&amp;family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap">
+<script>(function(){var d=document.documentElement,t,s={};d.className=d.className.replace(/\bno-js\b/,"js");
+try{t=localStorage.getItem("qs-theme")}catch(e){}
+if(t!=="light"&&t!=="dark")t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+d.setAttribute("data-theme",t);
+try{s=JSON.parse(localStorage.getItem("qs-tabs")||"{}")||{}}catch(e){}
+var g={"os":["mac","windows"],"agent":["claude","codex"],"where":["app","vscode"]},p=(navigator.userAgentData&&navigator.userAgentData.platform)||navigator.platform||navigator.userAgent||"",
+f={os:/win/i.test(p)?"windows":"mac",agent:"claude",where:"app"};
+for(var k in g)d.setAttribute("data-tab-"+k,g[k].indexOf(s[k])>-1?s[k]:(f[k]||g[k][0]));})();</script>
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="topbar">
+  <button class="icon-btn nav-toggle" id="qs-nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="qs-sidebar"><span class="hb" aria-hidden="true"><span></span><span></span><span></span></span></button>
+  <a class="brand" href="index.html">
+    <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path class="bm-chevron" d="m8 6 6 6-6 6"/><path class="bm-spark" d="M18.5 3.2l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z"/></svg></span>
+    <span class="brand-name">Quickstart</span>
+    <span class="brand-tag">Publish your first site with Claude Code</span>
+  </a>
+  <span class="topbar-spacer"></span>
+  <button class="searchbtn" type="button" data-search-open aria-label="Search the guide" aria-keyshortcuts="Control+K Meta+K /"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><span class="searchbtn-label">Search the guide…</span><kbd class="k-hint" data-k-hint>Ctrl K</kbd></button>
+  <button class="icon-btn pz-open" type="button" data-personalize-open aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg><span class="pz-open-label">Personalize</span><span class="pz-dot" aria-hidden="true"></span></button>
+  <button class="icon-btn theme-toggle" id="qs-theme" type="button" aria-label="Switch theme"><span class="i-sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4"/></svg></span><span class="i-moon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span></button>
+  <a class="icon-btn gh-link" href="https://github.com/fritzhand/quickstart" target="_blank" rel="noopener" aria-label="Source on GitHub (opens in a new tab)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a>
+</header>
+<div class="scrim" id="qs-scrim"></div>
+<div class="layout">
+<nav class="sidebar" id="qs-sidebar" aria-label="Guide">
+  <div class="sb-progress" data-sb-progress>
+    <div class="sb-progress-row"><span class="sb-progress-label">Your progress</span><span class="sb-progress-count"><span data-p-done>0</span> of 24 done</span></div>
+    <div class="bar" role="progressbar" aria-label="Pages done" aria-valuemin="0" aria-valuemax="24" aria-valuenow="0"><span></span></div>
+  </div>
+  <div class="sb-group"><p class="sb-title">Get oriented</p><ul>
+    <li><a class="nav-link" href="index.html" data-slug="index"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 8 2a6 6 0 0 0 3-.7V14a6 6 0 0 1-3 .7c-3 0-5-2-8-2a6 6 0 0 0-4 1.4"/></svg></span><span class="nav-t">Start here</span><span class="nav-done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only nav-done-sr"> (done)</span></a></li>
+    <li><a class="nav-link" href="how-it-works.html" data-slug="how-it-works"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Zm0 0v14m6-12v14"/></svg></span><span class="nav-t">The big picture</span><span class="nav-done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only nav-done-sr"> (done)</span></a></li>
+    <li><a class="nav-link" href="talk-to-it.html" data-slug="talk-to-it"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10v1a7 7 0 0 1-14 0v-1M12 18v4"/></svg></span><span class="nav-t">How to talk to the agent</span><span class="nav-done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only nav-done-sr"> (done)</span></a></li>
+  </ul></div>
+  <div class="sb-group"><p class="sb-title">Step 1 · GitHub</p><ul>
+    <li><a class="nav-link" href="github-account.html" data-slug="github-account" aria-current="page"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></span><span class="nav-t">Create your GitHub account</span><span class="nav-done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only nav-done-sr"> (done)</span></a></li>
+  </ul></div>
+  <div class="sb-group"><p class="sb-title">Step 2 · Set up your agent</p><ul>
+    <li><a class="nav-link" href="choose-setup.html" data-slug="choose-setup"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 3h5v5M8 3H3v5"/><path d="M12 22v-8.3a4 4 0 0 0-1.17-2.87L3 3m12 6 6-6"/></svg></span><span class="nav-t">App or VS Code?</span><span class="nav-done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only nav-done-sr"> (done)</span></a></li>
+    <li><a class="nav-link" href="claude-app.html" data-slug="claude-app"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></span><span class="nav-t">Claude Code in the app</span><span class="nav-done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only nav-done-sr"> (done)</span></a></li>
+    <li><a class="nav-link" href="multiple-repos.html" data-slug="multiple-repos"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 2 9 5-9 5-9-5 9-5Zm-9 10 9 5 9-5M3 17l9 5 9-5"/></svg></span><span class="nav-t">Many repos, one to work in</span><span class="nav-done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only nav-done-sr"> (done)</span></a></li>
+    <li><a class="nav-link" href="install-vscode.html" data-slug="install-vscode"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></span><span class="nav-t">VS Code + your agent</span><span class="nav-done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only nav-done-sr"> (done)</span></a></li>
+    <li><a class="nav-link" href="install-tools.html" data-slug="install-tools"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></svg></span><span class="nav-t">Git, Node &amp; GitHub CLI</span><span class="nav-done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only nav-done-sr"> (done)</span></a></li>
+    <li><a class="nav-link" href="windows-scripts.html" data-slug="windows-scripts"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="nav-t">Windows: allow scripts</span><span class="nav-done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only nav-done-sr"> (done)</span></a></li>
+    <li><a class="nav-link" href="trusted-folder.html" data-slug="trusted-folder"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="14" y="17" width="8" height="5" rx="1"/><path d="M10 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v2.5"/><path d="M20 17v-2a2 2 0 1 0-4 0v2"/></svg></span><span class="nav-t">Trusted folders</span><span class="nav-done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only nav-done-sr"> (done)</span></a></li>
+  </ul></div>
+  <div class="sb-group"><p class="sb-title">Step 3 · Just enough Git</p><ul>
+    <li><a class="nav-link" href="repos.html" data-slug="repos"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5M12 22V12"/></svg></span><span class="nav-t">Repos: public or private</span><span class="nav-done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only nav-done-sr"> (done)</span></a></li>
+    <li><a class="nav-link" href="clone-fork.html" data-slug="clone-fork"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9m6 3v3"/></svg></span><span class="nav-t">Clone, fork or copy</span><span class="nav-done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only nav-done-sr"> (done)</span></a></li>
+    <li><a class="nav-link" href="save-and-push.html" data-slug="save-and-push"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5m5-5v12"/></svg></span><span class="nav-t">Commit &amp; push</span><span class="nav-done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only nav-done-sr"> (done)</span></a></li>
+    <li><a class="nav-link" href="main-branch.html" data-slug="main-branch"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3v12"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></span><span class="nav-t">The main branch</span><span class="nav-done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only nav-done-sr"> (done)</span></a></li>
+    <li><a class="nav-link" href="commit-as-you.html" data-slug="commit-as-you"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></svg></span><span class="nav-t">Commit as yourself</span><span class="nav-done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only nav-done-sr"> (done)</span></a></li>
+  </ul></div>
+  <div class="sb-group"><p class="sb-title">Step 4 · Make it yours</p><ul>
+    <li><a class="nav-link" href="starters.html" data-slug="starters"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span><span class="nav-t">Pick a starter</span><span class="nav-done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only nav-done-sr"> (done)</span></a></li>
+    <li><a class="nav-link" href="make-your-version.html" data-slug="make-your-version"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5Z"/><path d="m15 5 4 4"/></svg></span><span class="nav-t">Make your own version</span><span class="nav-done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only nav-done-sr"> (done)</span></a></li>
+  </ul></div>
+  <div class="sb-group"><p class="sb-title">Step 5 · Publish</p><ul>
+    <li><a class="nav-link" href="github-pages.html" data-slug="github-pages"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20Z"/></svg></span><span class="nav-t">Turn on GitHub Pages</span><span class="nav-done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only nav-done-sr"> (done)</span></a></li>
+    <li><a class="nav-link" href="update-and-share.html" data-slug="update-and-share"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg></span><span class="nav-t">Update &amp; share</span><span class="nav-done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only nav-done-sr"> (done)</span></a></li>
+  </ul></div>
+  <div class="sb-group"><p class="sb-title">Reference</p><ul>
+    <li><a class="nav-link" href="prompts.html" data-slug="prompts"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></span><span class="nav-t">Prompt cheat sheet</span><span class="nav-done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only nav-done-sr"> (done)</span></a></li>
+    <li><a class="nav-link" href="troubleshooting.html" data-slug="troubleshooting"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="m4.93 4.93 4.24 4.24m5.66 0 4.24-4.24m0 14.14-4.24-4.24m-5.66 0-4.24 4.24"/></svg></span><span class="nav-t">Troubleshooting</span><span class="nav-done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only nav-done-sr"> (done)</span></a></li>
+    <li><a class="nav-link" href="glossary.html" data-slug="glossary"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15Z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></span><span class="nav-t">Glossary</span><span class="nav-done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only nav-done-sr"> (done)</span></a></li>
+    <li><a class="nav-link" href="about.html" data-slug="about"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg></span><span class="nav-t">About this guide</span><span class="nav-done" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only nav-done-sr"> (done)</span></a></li>
+  </ul></div>
+</nav>
+<main id="main" class="content" tabindex="-1">
+  <div class="page-grid">
+    <article class="page">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span class="sep" aria-hidden="true">/</span><span>Step 1 · GitHub</span><span class="sep" aria-hidden="true">/</span><span aria-current="page">Create your GitHub account</span></nav>
+<header class="page-head">
+  <p class="eyebrow">Step 1 · GitHub</p>
+  <h1>Create your GitHub account</h1>
+  <p class="lede">GitHub holds your site&#39;s files and publishes the site. Creating the account is one of the few steps no agent can do for you.</p>
+  <div class="chips"><span class="chip chip-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span><span class="sr-only">Time: </span>10 min</span></span></div>
+  
+</header>
+      <div class="prose">
+<p>A free account is all you need. The agent will do the rest of the GitHub work once it's connected to your account.</p>
+
+<aside class="callout manual" data-title="Do this yourself" role="note"><p class="callout-head"><span class="callout-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 4.1 12 6M5.1 8l-2.9-.8M6 12l-1.9 2M7.2 2.2 8 5.1"/><path d="M9.04 9.69a.5.5 0 0 1 .65-.65l11 4.5a.5.5 0 0 1-.07.95l-4.35 1.04a1 1 0 0 0-.74.74l-1.04 4.35a.5.5 0 0 1-.95.07Z"/></svg></span><span class="callout-title">Do this yourself</span></p><div class="callout-body">An agent can't sign up for you: the account belongs to you and is tied to your email address.</div></aside>
+
+<ol class="steps">
+  <li>
+    <h3 id="sign-up">Sign up<a class="h-anchor" href="#sign-up" aria-label="Link to this section: Sign up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h3>
+    <p>Go to <a href="https://github.com/signup" target="_blank" rel="noopener">https://github.com/signup<span class="ext-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6m0-6L10 14M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></span><span class="sr-only"> (opens in a new tab)</span></a> and follow the prompts. You can also sign up with your Google or Apple account.</p>
+  </li>
+  <li>
+    <h3 id="choose-a-short-username">Choose a short username<a class="h-anchor" href="#choose-a-short-username" aria-label="Link to this section: Choose a short username"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h3>
+    <p>Your username becomes part of your site's address: <code>https://<var data-k="user">your-username</var>.github.io/</code>. Keep it short and lowercase, since you'll share it in every link. Changing it later breaks old links, so pick one you'll keep.</p>
+  </li>
+  <li>
+    <h3 id="verify-your-email">Verify your email<a class="h-anchor" href="#verify-your-email" aria-label="Link to this section: Verify your email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h3>
+    <p>GitHub asks you to verify your email address during sign-up. Do it right away. Until you do, you can't create or fork a repository, which this guide needs.</p>
+  </li>
+  <li>
+    <h3 id="turn-on-two-factor-authentication">Turn on two-factor authentication<a class="h-anchor" href="#turn-on-two-factor-authentication" aria-label="Link to this section: Turn on two-factor authentication"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h3>
+    <p>Recommended. It stops anyone who learns your password from getting in. Click your profile picture, then <span class="ui">Settings</span> → <span class="ui">Password and authentication</span> → <span class="ui">Enable two-factor authentication</span>. Use an authenticator app on your phone. When GitHub shows your recovery codes, download them and keep them somewhere safe.</p>
+  </li>
+  <li>
+    <h3 id="keep-your-email-private-and-copy-your-noreply-address">Keep your email private and copy your noreply address<a class="h-anchor" href="#keep-your-email-private-and-copy-your-noreply-address" aria-label="Link to this section: Keep your email private and copy your noreply address"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h3>
+    <p>Click your profile picture, then <span class="ui">Settings</span> → <span class="ui">Emails</span>. Tick <span class="ui">Keep my email addresses private</span>. GitHub then shows a private address that looks like this:</p>
+    <p><code><var>ID</var>+<var data-k="user">your-username</var>@users.noreply.github.com</code></p>
+    <p>Copy it. You'll give it to the agent so your commits are credited to you, without putting your real email in your site's public history. <a href="commit-as-you.html">Commit as yourself</a> shows how.</p>
+  </li>
+  <li>
+    <h3 id="save-your-details-in-this-guide">Save your details in this guide<a class="h-anchor" href="#save-your-details-in-this-guide" aria-label="Link to this section: Save your details in this guide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h3>
+    <p>Save your details here once; every prompt in this guide fills them in.</p>
+    <div data-personalize><form class="pz-form" data-pz-form novalidate>
+    <div class="pz-grid">
+    <div class="pz-field">
+      <label for="qs-pz0-user">GitHub username</label>
+      <input id="qs-pz0-user" name="user" type="text" placeholder="your-username" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="qs-pz0-user-hint">
+      <p class="pz-hint" id="qs-pz0-user-hint">The name in your GitHub profile address, github.com/<b>your-username</b>.</p>
+    </div>
+    <div class="pz-field">
+      <label for="qs-pz0-repo">Repo name for your site</label>
+      <input id="qs-pz0-repo" name="repo" type="text" placeholder="my-site" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="qs-pz0-repo-hint">
+      <p class="pz-hint" id="qs-pz0-repo-hint">What you want to call the repository that holds your website.</p>
+    </div>
+    <div class="pz-field">
+      <label for="qs-pz0-name">Your name</label>
+      <input id="qs-pz0-name" name="name" type="text" placeholder="Your Name" autocomplete="off" autocapitalize="off" spellcheck="false" autocomplete="name" aria-describedby="qs-pz0-name-hint">
+      <p class="pz-hint" id="qs-pz0-name-hint">Shown as the author of your commits.</p>
+    </div>
+    <div class="pz-field">
+      <label for="qs-pz0-email">GitHub noreply email</label>
+      <input id="qs-pz0-email" name="email" type="text" placeholder="12345678+your-username@users.noreply.github.com" autocomplete="off" autocapitalize="off" spellcheck="false" inputmode="email" aria-describedby="qs-pz0-email-hint">
+      <p class="pz-hint" id="qs-pz0-email-hint">On GitHub, open <span class="ui">Settings</span> → <span class="ui">Emails</span> and check <span class="ui">Keep my email addresses private</span>. GitHub then shows your address ending in <code>@users.noreply.github.com</code>.</p>
+    </div>
+    </div>
+    <p class="pz-warn" data-pz-warn hidden>That doesn’t look like a GitHub noreply address. It should end in <code>@users.noreply.github.com</code>.</p>
+    <div class="pz-actions">
+      <button type="submit" class="btn btn-primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Save</button>
+      <button type="button" class="btn btn-secondary" data-pz-clear>Clear</button>
+      <span class="pz-status" data-pz-status role="status">Saved only in this browser.</span>
+    </div>
+  </form></div>
+  </li>
+</ol>
+
+<aside class="callout check" data-title="Check it worked" role="note"><p class="callout-head"><span class="callout-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span><span class="callout-title">Check it worked</span></p><div class="callout-body">Open <code>https://github.com/<var data-k="user">your-username</var></code>. You see your profile page. Your noreply address is copied somewhere you can find it again.</div></aside>
+
+<h2 id="if-it-goes-wrong">If it goes wrong<a class="h-anchor" href="#if-it-goes-wrong" aria-label="Link to this section: If it goes wrong"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h2>
+<details class="fix">
+  <summary><span class="sum-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></svg></span><span class="sum-t">The username I want is taken</span><span class="sum-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg></span></summary>
+  <p>Add a number or a hyphen, or try another spelling. Keep it lowercase.</p>
+</details>
+<details class="fix">
+  <summary><span class="sum-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></svg></span><span class="sum-t">GitHub won't let me create or fork a repository</span><span class="sum-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg></span></summary>
+  <p>Your email probably isn't verified yet. Open <span class="ui">Settings</span> → <span class="ui">Emails</span> and click <span class="ui">Resend verification email</span> under your address. Then click the link in the email GitHub sends. Check your spam folder if it doesn't arrive. Throwaway email addresses can't be verified, so use a real one.</p>
+</details>
+      </div>
+<div class="done-row">
+  <button type="button" class="done-toggle" data-done-toggle aria-pressed="false">
+    <span class="done-ic" aria-hidden="true"><svg class="i-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/></svg><svg class="i-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span>
+    <span class="done-label">Mark this page as done</span>
+  </button>
+  <p class="done-hint">Saved only in this browser.</p>
+</div><nav class="pagenav" aria-label="Previous and next page"><a class="prev" href="talk-to-it.html" rel="prev"><span class="dir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5m7 7-7-7 7-7"/></svg>Previous</span><span class="t">How to talk to the agent</span></a><a class="next" href="choose-setup.html" rel="next"><span class="dir">Next<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></span><span class="t">App or VS Code?</span></a></nav>
+    </article>
+
+  </div>
+</main>
+</div>
+<footer class="footer"><div class="footer-inner">
+  <p class="footer-by">A guide by <a href="https://github.com/fritzhand" target="_blank" rel="noopener">Jeremy Fritzhand</a></p>
+  <p class="footer-links">
+    <a href="https://github.com/fritzhand/quickstart" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>Source on GitHub</a>
+    <span>Built with Claude Code</span>
+    <span>Last built September 23, 2026</span>
+  </p>
+</div></footer>
+
+<div class="modal search-modal" id="qs-search" hidden>
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-panel search-panel" role="dialog" aria-modal="true" aria-label="Search the guide">
+    <div class="search-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><input id="qs-search-input" type="search" placeholder="Search the guide…" autocomplete="off" autocapitalize="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="qs-search-results" aria-autocomplete="list"><button type="button" class="icon-btn search-close" data-close aria-label="Close search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+    <div class="sr-only" id="qs-search-status" role="status" aria-live="polite"></div>
+    <div class="results" id="qs-search-results" role="listbox" aria-label="Search results"></div>
+    <div class="search-foot"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>↵</kbd> open</span><span><kbd>esc</kbd> close</span></div>
+  </div>
+</div>
+
+<div class="modal pz-modal" id="qs-pz" hidden>
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-panel pz-panel" role="dialog" aria-modal="true" aria-labelledby="qs-pz-title">
+    <div class="pz-head"><h2 id="qs-pz-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>Your details</h2><button type="button" class="icon-btn" data-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+    <p class="pz-intro">Fill these in once. Every prompt in the guide updates to use them, so you can copy and paste without editing.</p>
+    <form class="pz-form" data-pz-form novalidate>
+    <div class="pz-grid">
+    <div class="pz-field">
+      <label for="qs-pzm-user">GitHub username</label>
+      <input id="qs-pzm-user" name="user" type="text" placeholder="your-username" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="qs-pzm-user-hint">
+      <p class="pz-hint" id="qs-pzm-user-hint">The name in your GitHub profile address, github.com/<b>your-username</b>.</p>
+    </div>
+    <div class="pz-field">
+      <label for="qs-pzm-repo">Repo name for your site</label>
+      <input id="qs-pzm-repo" name="repo" type="text" placeholder="my-site" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="qs-pzm-repo-hint">
+      <p class="pz-hint" id="qs-pzm-repo-hint">What you want to call the repository that holds your website.</p>
+    </div>
+    <div class="pz-field">
+      <label for="qs-pzm-name">Your name</label>
+      <input id="qs-pzm-name" name="name" type="text" placeholder="Your Name" autocomplete="off" autocapitalize="off" spellcheck="false" autocomplete="name" aria-describedby="qs-pzm-name-hint">
+      <p class="pz-hint" id="qs-pzm-name-hint">Shown as the author of your commits.</p>
+    </div>
+    <div class="pz-field">
+      <label for="qs-pzm-email">GitHub noreply email</label>
+      <input id="qs-pzm-email" name="email" type="text" placeholder="12345678+your-username@users.noreply.github.com" autocomplete="off" autocapitalize="off" spellcheck="false" inputmode="email" aria-describedby="qs-pzm-email-hint">
+      <p class="pz-hint" id="qs-pzm-email-hint">On GitHub, open <span class="ui">Settings</span> → <span class="ui">Emails</span> and check <span class="ui">Keep my email addresses private</span>. GitHub then shows your address ending in <code>@users.noreply.github.com</code>.</p>
+    </div>
+    </div>
+    <p class="pz-warn" data-pz-warn hidden>That doesn’t look like a GitHub noreply address. It should end in <code>@users.noreply.github.com</code>.</p>
+    <div class="pz-actions">
+      <button type="submit" class="btn btn-primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Save</button>
+      <button type="button" class="btn btn-secondary" data-pz-clear>Clear</button>
+      <span class="pz-status" data-pz-status role="status">Saved only in this browser.</span>
+    </div>
+  </form>
+  </div>
+</div>
+<div class="toast" id="qs-toast" role="status" aria-live="polite"></div>
+<script src="assets/site.js" defer></script>
+</body>
+</html>

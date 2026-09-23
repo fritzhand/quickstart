@@ -1,0 +1,61 @@
+<!--meta
+{
+  "title": "Pick a starter",
+  "eyebrow": "Step 4 · Make it yours",
+  "lede": "Don't start from a blank page. Copy a real, working site and have the agent rewrite it for your topic. Pick the starter that matches the kind of site you want.",
+  "time": "5 min",
+  "track": "all"
+}
+-->
+<h2>The two starters</h2>
+<div class="cards">
+  <a class="card" href="https://fritzhand.github.io/history-of-tampa/"><span class="card-kicker">Starter · easiest</span><strong>history-of-tampa</strong><span>200 years of downtown Tampa as one scrolling page, with a map, charts and archival photos. Plain files, no build step.</span></a>
+  <a class="card" href="https://fritzhand.github.io/startup-india-guide/"><span class="card-kicker">Starter · harder</span><strong>startup-india-guide</strong><span>India's government startup schemes as a searchable guide with a sidebar, built from data files.</span></a>
+</div>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th></th><th>history-of-tampa</th><th>startup-india-guide</th></tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row">Build step?</th><td>No</td><td>Yes: <code>node build.mjs</code>, run by the agent</td></tr>
+      <tr><th scope="row">Pages folder</th><td><code>/ (root)</code></td><td><code>/docs</code></td></tr>
+      <tr><th scope="row">Good for</th><td>A place or a topic over time</td><td>A guide or a directory</td></tr>
+      <tr><th scope="row">Extra setup</th><td>None</td><td>Node, on the VS Code path only</td></tr>
+      <tr><th scope="row">Repo</th><td><a href="https://github.com/fritzhand/history-of-tampa">On GitHub</a></td><td><a href="https://github.com/fritzhand/startup-india-guide">On GitHub</a></td></tr>
+    </tbody>
+  </table>
+</div>
+<p>First time? Pick history-of-tampa. This guide's running example turns it into a history of St. Petersburg, Florida.</p>
+
+<h2>What people made from them</h2>
+<div class="cards">
+  <a class="card" href="https://fritzhand.github.io/history-of-indigo/"><span class="card-kicker">From history-of-tampa</span><strong>Indigo: The Blue That Dyed the World</strong><span>The same engine, pointed at a topic instead of a place: the history of a dye, on a world map.</span></a>
+  <a class="card" href="https://map.embarccollective.com/"><span class="card-kicker">From startup-india-guide · showcase only</span><strong>Florida Startup Ecosystem Map</strong><span>A source-linked map of Florida's startup ecosystem. Its repo is private, so you can look but not fork it.</span></a>
+</div>
+<p>Want a sidebar guide like the one you're reading? This guide is built the same way as startup-india-guide and published from <code>main</code>, <code>/docs</code>. Its repo is <a href="https://github.com/fritzhand/quickstart">fritzhand/quickstart</a>.</p>
+
+<h2>Look before you choose</h2>
+<p>Have the agent walk you through a starter before you copy it. On the app path, add the starter to a session as a reference repo (<a href="multiple-repos.html">Many repos, one to work in</a>).</p>
+<pre class="say">Look at fritzhand/history-of-tampa and tell me, in plain English, which files I'd change to make a history of my own city, and what I should delete first.</pre>
+<p>Swap in <code>fritzhand/startup-india-guide</code> to ask about the other starter.</p>
+
+<h2>Licensing in plain words</h2>
+<p>You may reuse both starters. Each comes with a few conditions.</p>
+<h3>history-of-tampa (and history-of-indigo)</h3>
+<ul>
+  <li><strong>Code:</strong> CC0. Free to reuse for anything, no credit required.</li>
+  <li><strong>Compiled data</strong> in <code>js/data.js</code>: CC BY 4.0. Reuse it only with credit. You'll replace it with your own research anyway.</li>
+  <li><strong>Author photo</strong> (<code>assets/jeremy.jpg</code>): all rights reserved. Delete it.</li>
+  <li><strong>Images</strong> the site shows: each carries its own license, listed in <code>CONTENT_LICENSE.md</code>. Keep the credit line for any image you keep.</li>
+</ul>
+<h3>startup-india-guide</h3>
+<ul>
+  <li><strong>Code:</strong> MIT. Free to reuse and change, but keep the <code>LICENSE</code> file with its copyright notice.</li>
+  <li><strong>Author photo</strong> (<code>site/jeremy.png</code>): no license given. Delete it.</li>
+</ul>
+
+<aside class="callout tip" data-title="Always keep a credit">Keep a line such as "Forked from fritzhand/history-of-tampa", with a link, in your site's footer and README. It's a courtesy for the code, and it's how you credit any data or images you keep.</aside>
+
+<aside class="callout check" data-title="Check it worked">You know which starter you'll use and which Pages folder it publishes from: <code>/ (root)</code> for history-of-tampa, <code>/docs</code> for startup-india-guide. Next: <a href="make-your-version.html">Make your own version</a>.</aside>

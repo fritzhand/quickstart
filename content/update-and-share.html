@@ -1,0 +1,96 @@
+<!--meta
+{
+  "title": "Update & share",
+  "eyebrow": "Step 5 · Publish",
+  "lede": "Your site is live. From now on, every change is the same short loop: ask, check, push. Then send people the link.",
+  "time": "5 min",
+  "track": "all"
+}
+-->
+<h2>The everyday loop</h2>
+<ol class="steps">
+  <li>
+    <h3>Ask</h3>
+    <p>Start a session in your repo and say what you want changed. Your <code>CLAUDE.md</code> rules come along every time.</p>
+  </li>
+  <li>
+    <h3>Check</h3>
+    <pre class="say">Show me what you changed in plain English.</pre>
+    <p>For a bigger change, preview it first (below).</p>
+  </li>
+  <li>
+    <h3>Save it</h3>
+    <pre class="say">Commit and push to main.</pre>
+  </li>
+  <li>
+    <h3>See it live</h3>
+    <p>Your site updates within about 10 minutes. Reload it to see the change.</p>
+  </li>
+</ol>
+
+<h2>Things to ask for</h2>
+<pre class="say" data-label="Change some text">Change the subtitle on the home page to "<var>your new subtitle</var>".</pre>
+<pre class="say" data-label="Add a section">Add a section about <var>the topic</var> after <var>the section it should follow</var>. Research it first, give a working link for every fact, and mark anything you can't verify as TBD.</pre>
+<pre class="say" data-label="Swap the colors">Change the site's colors to <var>deep blue and sand</var>. Keep the text easy to read in both light and dark mode.</pre>
+<pre class="say" data-label="Add an image, with credit">Add a photo of <var>the subject</var> to <var>the section</var>. Use only an image that's public domain or openly licensed, show its credit line under it, and tell me where you found it.</pre>
+<pre class="say" data-label="Fix broken links">Check every link on the site, fix or remove the broken ones, and list what you changed.</pre>
+
+<h2>Preview before you push</h2>
+<div class="tabs" data-group="where">
+  <section data-tab="app" data-label="App path">
+    <p>Claude's cloud machine has no screen you can see, and it may not be able to load what your page pulls from other websites, such as maps and fonts. Ask it for a quick check instead:</p>
+    <pre class="say">Before you push, check my site for missing files, broken image paths and JavaScript errors, and tell me what you find.</pre>
+    <p>Then push and look at the live site. Don't like it? Say "Revert the last commit and push to main."</p>
+  </section>
+  <section data-tab="vscode" data-label="VS Code path">
+    <pre class="say">Start a local preview of my site and give me the link.</pre>
+    <p>Open the link in your browser. It starts with <code>http://localhost</code> and works only on your computer. If your site has a build step, the agent runs it first. When you're done, say "Stop the preview."</p>
+  </section>
+</div>
+
+<h2>Share it</h2>
+<p>Your address is <code>https://<var data-k="user">your-username</var>.github.io/<var data-k="repo">your-repo</var>/</code>. Copy it exactly, in lowercase.</p>
+<p>Optional: when you paste the link into a message or a social post, many apps show a preview card with a title and a picture. The starter's card still describes the original site until you change it:</p>
+<pre class="say">Set up the link preview for my site: its title, a one-line description and a 1200×630 share image showing the site's title, all pointing to https://<var data-k="user">your-username</var>.github.io/<var data-k="repo">your-repo</var>/. If you can't make an image, remove the image tags instead. Then commit and push to main.</pre>
+
+<h2>You did it</h2>
+<ul class="checklist">
+  <li>A GitHub account (<a href="github-account.html">Step 1</a>)</li>
+  <li>An agent set up, on the app path or the VS Code path (<a href="choose-setup.html">Step 2</a>)</li>
+  <li>Your own repo, forked or copied from a starter (<a href="clone-fork.html">Clone, fork or copy</a>)</li>
+  <li>Commits authored as you, not Claude (<a href="commit-as-you.html">Commit as yourself</a>)</li>
+  <li>Your work pushed to main (<a href="save-and-push.html">Commit &amp; push</a>)</li>
+  <li>GitHub Pages switched on (<a href="github-pages.html">Turn on GitHub Pages</a>)</li>
+  <li>Your site live at your own address</li>
+  <li>The link shared with someone</li>
+</ul>
+
+<aside class="callout check" data-title="Check it worked">Someone else opens your link on their own phone or computer and sees your site.</aside>
+
+<h2>What next</h2>
+<ul>
+  <li><strong>Make another one.</strong> Pick a new city or topic and start again from <a href="starters.html">Pick a starter</a>. Your first site now works as a starter too.</li>
+  <li><strong>Keep PROGRESS.md up to date.</strong> End each session with "Update PROGRESS.md with what's done and what's next, then commit and push to main."</li>
+  <li><strong>Add a custom domain, later.</strong> If you own a domain name, GitHub Pages can serve your site from it. See GitHub's guide, <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages">About custom domains and GitHub Pages</a>.</li>
+  <li><strong>Keep your favorite prompts handy</strong> in the <a href="prompts.html">Prompt cheat sheet</a>.</li>
+</ul>
+
+<h2>If it goes wrong</h2>
+<details class="fix">
+  <summary>My change isn't on the live site</summary>
+  <pre class="say">Is my last commit pushed to main on GitHub? If not, push it to main.</pre>
+  <p>Then give it 10 minutes and open the address in a private or incognito window. <a href="github-pages.html">Turn on GitHub Pages</a> has more fixes.</p>
+</details>
+
+<details class="more">
+  <summary>What the agent runs for you</summary>
+  <pre><code># A local preview of a site with no build step
+python3 -m http.server 8080          # then open http://localhost:8080
+
+# Another way, if Node is installed
+npx serve .
+
+# A site with a build step, like startup-india-guide
+node build.mjs
+python3 -m http.server 8000 -d docs</code></pre>
+</details>

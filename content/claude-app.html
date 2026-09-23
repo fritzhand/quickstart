@@ -1,0 +1,90 @@
+<!--meta
+{
+  "title": "Claude Code in the app",
+  "eyebrow": "Step 2 · Set up your agent",
+  "lede": "Run Claude Code from a browser, your phone or the Claude desktop app. There's nothing to install: Claude works on a fresh copy of your repo in the cloud.",
+  "time": "10 min",
+  "track": "app"
+}
+-->
+<h2>Where to open it</h2>
+<ul>
+  <li><strong>Browser:</strong> go to <a href="https://claude.ai/code">https://claude.ai/code</a>.</li>
+  <li><strong>Phone or tablet:</strong> open the Claude app for iOS or Android and tap the <span class="ui">Code</span> tab.</li>
+  <li><strong>Desktop app:</strong> open the <span class="ui">Code</span> tab in the Claude desktop app (<a href="https://claude.com/download">https://claude.com/download</a>) and choose <span class="ui">Cloud</span> instead of <span class="ui">Local</span>.</li>
+</ul>
+<p>All three show the same sessions: start on your laptop, check in from your phone.</p>
+
+<h2>Set it up once</h2>
+<aside class="callout manual" data-title="Do this yourself">These steps are sign-ins and permissions on your own accounts, so only you can approve them.</aside>
+<ol class="steps">
+  <li>
+    <h3>Sign in</h3>
+    <p>Use your Claude account on a paid plan: Pro, Max, Team or Enterprise. The free plan doesn't include Claude Code.</p>
+  </li>
+  <li>
+    <h3>Connect GitHub</h3>
+    <p>Claude asks you to connect GitHub and opens GitHub's authorization page. Approve it, and GitHub sends you back. On a Team or Enterprise plan, an admin may need to turn on GitHub access first.</p>
+  </li>
+  <li>
+    <h3>Install the Claude GitHub App</h3>
+    <p>Onboarding may offer it; if you skipped it, open <a href="https://github.com/apps/claude/installations/new">https://github.com/apps/claude/installations/new</a>. Choose your account, pick <span class="ui">Only select repositories</span>, select your repos and click <span class="ui">Install</span>. Claude can read public repos without it, but needs it to work in a private repo. Install it on every repo you want Claude to push to.</p>
+  </li>
+  <li>
+    <h3>Keep the Default environment</h3>
+    <p>Pro and Max get an environment named <span class="ui">Default</span> automatically. On Team or Enterprise, keep what's filled in on the form and click <span class="ui">Create &amp; finish</span>.</p>
+  </li>
+</ol>
+
+<h2>Start your first session</h2>
+<ol class="steps">
+  <li>
+    <h3>Pick a repository</h3>
+    <p>Use the repository selector below the message box. Leave its branch selector on the default, usually <code>main</code>. No repo yet? Open <a href="https://claude.ai/code?repositories=fritzhand/history-of-tampa">https://claude.ai/code?repositories=fritzhand/history-of-tampa</a> to start with the Tampa starter selected. You'll make your own copy in Step 3.</p>
+  </li>
+  <li>
+    <h3>Choose a mode</h3>
+    <p>The mode menu next to the message box offers <span class="ui">Auto</span> (when available), <span class="ui">Accept edits</span> and <span class="ui">Plan</span>. Choose <span class="ui">Plan</span> to see the plan before anything changes.</p>
+  </li>
+  <li>
+    <h3>Ask something that changes nothing</h3>
+    <p>Type it, or dictate it with the microphone on your keyboard:</p>
+    <pre class="say">Explain what this repo is and how its website is built, in plain English. Don't change anything.</pre>
+  </li>
+</ol>
+
+<aside class="callout check" data-title="Check it worked">Claude answers in plain English and changes no files. The session appears in the sidebar at claude.ai/code and in the <span class="ui">Code</span> tab of the Claude mobile app.</aside>
+
+<h2>What happens when Claude works</h2>
+<ul>
+  <li><strong>It works on a copy.</strong> Claude clones your repo into a fresh cloud machine and works on a new branch named <code>claude/…</code>. When it reaches a stopping point, it pushes that branch to GitHub.</li>
+  <li><strong>Each session starts fresh.</strong> Put standing rules in a <code>CLAUDE.md</code> file in your repo. Claude reads it at the start of every session.</li>
+  <li><strong>It commits as Claude unless you say otherwise.</strong> <a href="commit-as-you.html">Commit as yourself</a> shows the rule to add.</li>
+</ul>
+<p>You decide when the work reaches <code>main</code>, the branch your live site is built from. When you're happy, say:</p>
+<pre class="say">Commit and push to main.</pre>
+<p>Or select <span class="ui">Create PR</span> at the top of the diff view and merge the pull request on GitHub. <a href="main-branch.html">The main branch</a> explains both.</p>
+
+<h2>If it goes wrong</h2>
+<details class="fix">
+  <summary>My repo isn't in the list</summary>
+  <p>A private repo appears only once the Claude GitHub App is installed on it, and a fork or new repo may need adding too. On GitHub, click your profile picture, then <span class="ui">Settings</span> → <span class="ui">Applications</span> → <span class="ui">Installed GitHub Apps</span>. Click <span class="ui">Configure</span> next to Claude, select the repo under <span class="ui">Repository access</span>, and click <span class="ui">Save</span>. Then start a new session and pick the repo.</p>
+</details>
+<details class="fix">
+  <summary>Claude says it can't push</summary>
+  <p>Install the Claude GitHub App on that repo (see above), then ask again. Claude also can't push to a repo that isn't yours, such as the original starter. Make your own copy first, in <a href="clone-fork.html">Clone, fork or copy</a>.</p>
+</details>
+
+<details class="more">
+  <summary>What the agent runs for you</summary>
+  <p>The cloud machine clones your repo, then Claude works on its own branch:</p>
+  <pre><code>git clone https://github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>.git
+git switch -c claude/<var>task-name</var>
+git add .
+git commit -m "<var>Describe the change</var>"
+git push -u origin claude/<var>task-name</var></code></pre>
+  <p>When you say "Commit and push to main", it moves the work onto <code>main</code> and pushes that instead:</p>
+  <pre><code>git switch main
+git merge claude/<var>task-name</var>
+git push origin main</code></pre>
+</details>

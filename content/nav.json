@@ -1,0 +1,63 @@
+{
+  "groups": [
+    {
+      "label": "Get oriented",
+      "items": [
+        { "slug": "index", "nav": "Start here", "icon": "flag" },
+        { "slug": "how-it-works", "nav": "The big picture", "icon": "map" },
+        { "slug": "talk-to-it", "nav": "How to talk to the agent", "icon": "mic" }
+      ]
+    },
+    {
+      "label": "Step 1 · GitHub",
+      "items": [
+        { "slug": "github-account", "nav": "Create your GitHub account", "icon": "github" }
+      ]
+    },
+    {
+      "label": "Step 2 · Set up your agent",
+      "items": [
+        { "slug": "choose-setup", "nav": "App or VS Code?", "icon": "split" },
+        { "slug": "claude-app", "nav": "Claude Code in the app", "icon": "smartphone" },
+        { "slug": "multiple-repos", "nav": "Many repos, one to work in", "icon": "layers" },
+        { "slug": "install-vscode", "nav": "VS Code + your agent", "icon": "monitor" },
+        { "slug": "install-tools", "nav": "Git, Node & GitHub CLI", "icon": "wrench" },
+        { "slug": "windows-scripts", "nav": "Windows: allow scripts", "icon": "shield" },
+        { "slug": "trusted-folder", "nav": "Trusted folders", "icon": "folder-lock" }
+      ]
+    },
+    {
+      "label": "Step 3 · Just enough Git",
+      "items": [
+        { "slug": "repos", "nav": "Repos: public or private", "icon": "box" },
+        { "slug": "clone-fork", "nav": "Clone, fork or copy", "icon": "git-fork" },
+        { "slug": "save-and-push", "nav": "Commit & push", "icon": "upload" },
+        { "slug": "main-branch", "nav": "The main branch", "icon": "git-branch" },
+        { "slug": "commit-as-you", "nav": "Commit as yourself", "icon": "user-check" }
+      ]
+    },
+    {
+      "label": "Step 4 · Make it yours",
+      "items": [
+        { "slug": "starters", "nav": "Pick a starter", "icon": "layout" },
+        { "slug": "make-your-version", "nav": "Make your own version", "icon": "pencil" }
+      ]
+    },
+    {
+      "label": "Step 5 · Publish",
+      "items": [
+        { "slug": "github-pages", "nav": "Turn on GitHub Pages", "icon": "globe" },
+        { "slug": "update-and-share", "nav": "Update & share", "icon": "share" }
+      ]
+    },
+    {
+      "label": "Reference",
+      "items": [
+        { "slug": "prompts", "nav": "Prompt cheat sheet", "icon": "clipboard" },
+        { "slug": "troubleshooting", "nav": "Troubleshooting", "icon": "life-buoy" },
+        { "slug": "glossary", "nav": "Glossary", "icon": "book" },
+        { "slug": "about", "nav": "About this guide", "icon": "info" }
+      ]
+    }
+  ]
+}

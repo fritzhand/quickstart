@@ -1,0 +1,11 @@
+{
+  "siteName": "Quickstart",
+  "siteTagline": "Publish your first site with Claude Code",
+  "siteBase": "https://fritzhand.github.io/quickstart/",
+  "pathPrefix": "/quickstart/",
+  "repo": "https://github.com/fritzhand/quickstart",
+  "author": {
+    "name": "Jeremy Fritzhand",
+    "github": "https://github.com/fritzhand"
+  }
+}

@@ -1,0 +1,144 @@
+<!--meta
+{
+  "title": "Clone, fork or copy",
+  "eyebrow": "Step 3 · Just enough Git",
+  "lede": "To make your own version of a starter, you fork it or copy it into a repo of your own. Cloning is how the agent gets a working copy of that repo to edit.",
+  "time": "5 min",
+  "track": "all"
+}
+-->
+<ul>
+  <li><strong>Fork:</strong> your own copy of someone else's repo, on GitHub. It stays linked to the original.</li>
+  <li><strong>Fresh copy:</strong> a brand-new repo of yours with the starter's files copied in. No link back, and its history starts fresh.</li>
+  <li><strong>Clone:</strong> a working copy of a repo, on your computer or in the cloud. It stays linked to the repo it came from, so the agent can push its changes back.</li>
+</ul>
+
+<figure class="diagram">
+  <svg class="dg" viewBox="0 0 480 404" role="img" aria-labelledby="clone-fork-ways-title clone-fork-ways-desc">
+    <title id="clone-fork-ways-title">Fork, fresh copy and clone</title>
+    <desc id="clone-fork-ways-desc">At the top is the original repo on GitHub, fritzhand/history-of-tampa. An arrow labeled fork leads down to your fork on GitHub, which stays linked to the original. A second arrow, labeled fresh copy, leads to your new repo on GitHub, with the files copied in and no link back. From either of your repos, arrows labeled clone lead down to one working copy, on your computer or in the cloud. It is linked to your GitHub repo, and the agent edits there.</desc>
+    <defs>
+      <marker id="clone-fork-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
+        <path class="dg-arrowhead" d="M0 0L10 5L0 10z"/>
+      </marker>
+      <marker id="clone-fork-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
+        <path class="dg-arrowhead-accent" d="M0 0L10 5L0 10z"/>
+      </marker>
+    </defs>
+
+    <rect class="dg-box" x="72" y="8" width="336" height="64" rx="12"/>
+    <text class="dg-label" x="240" y="32" text-anchor="middle">The original, on GitHub</text>
+    <text class="dg-text-strong" x="240" y="56" text-anchor="middle">fritzhand/history-of-tampa</text>
+
+    <line class="dg-line" x1="124" y1="72" x2="124" y2="146" marker-end="url(#clone-fork-arrow)"/>
+    <text class="dg-label" x="134" y="114">Fork</text>
+    <line class="dg-line" x1="356" y1="72" x2="356" y2="146" marker-end="url(#clone-fork-arrow)"/>
+    <text class="dg-label" x="346" y="114" text-anchor="end">Fresh copy</text>
+
+    <rect class="dg-box-soft" x="16" y="148" width="216" height="96" rx="12"/>
+    <text class="dg-text-strong" x="124" y="176" text-anchor="middle">Your fork</text>
+    <text class="dg-text-sm" x="124" y="200" text-anchor="middle">on GitHub, still linked</text>
+    <text class="dg-text-sm" x="124" y="220" text-anchor="middle">to the original</text>
+
+    <rect class="dg-box-soft" x="248" y="148" width="216" height="96" rx="12"/>
+    <text class="dg-text-strong" x="356" y="176" text-anchor="middle">Your new repo</text>
+    <text class="dg-text-sm" x="356" y="200" text-anchor="middle">on GitHub, files copied in</text>
+    <text class="dg-text-sm" x="356" y="220" text-anchor="middle">no link back</text>
+
+    <line class="dg-line-accent" x1="124" y1="244" x2="124" y2="306" marker-end="url(#clone-fork-arrow-accent)"/>
+    <line class="dg-line-accent" x1="356" y1="244" x2="356" y2="306" marker-end="url(#clone-fork-arrow-accent)"/>
+    <text class="dg-label" x="240" y="280" text-anchor="middle">Clone either one</text>
+
+    <rect class="dg-box-primary" x="16" y="308" width="448" height="88" rx="12"/>
+    <text class="dg-text-strong dg-text-on" x="240" y="336" text-anchor="middle">Working copy</text>
+    <text class="dg-text-on" x="240" y="360" text-anchor="middle">on your computer or in the cloud</text>
+    <text class="dg-text-on" x="240" y="382" text-anchor="middle">linked to your GitHub repo · the agent edits here</text>
+  </svg>
+  <figcaption>Fork or copy the starter once to get a repo of your own. The agent then works in a clone of that repo.</figcaption>
+</figure>
+
+<h2>Which one to use</h2>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th></th><th>Good</th><th>Watch out</th></tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row">Fork</th><td>Fastest: one prompt or one click.</td><td>A fork of a public repo is always public; you can't make it private. Commits in a fork don't count on your GitHub profile.</td></tr>
+      <tr><th scope="row">Fresh copy</th><td>How the real examples were made: history-of-indigo from history-of-tampa, and the Florida ecosystem map from startup-india-guide. You choose public or private, and your commits count on your profile.</td><td>A few more steps, which the agent does for you.</td></tr>
+      <tr><th scope="row">Clone</th><td>Gives the agent a copy of your repo to edit.</td><td>On the app path the app clones for you, so you rarely ask for it.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>A fork is fine for a first site. Make a fresh copy if you want your work to show on your GitHub profile.</p>
+
+<h2>Fork a starter</h2>
+<pre class="say">Fork fritzhand/history-of-tampa into my account and name the fork <var data-k="repo">your-repo</var>.</pre>
+<p>On the VS Code path, add "Then clone it here and open it." On the app path, start a new session and pick your fork in the repository selector.</p>
+<aside class="callout manual" data-title="If the agent can't fork it">Open <a href="https://github.com/fritzhand/history-of-tampa">https://github.com/fritzhand/history-of-tampa</a> and click <span class="ui">Fork</span> in the top-right corner. Type <var data-k="repo">your-repo</var> as the repository name, leave the other options as they are, and click <span class="ui">Create fork</span>.</aside>
+
+<h2>Make a fresh copy</h2>
+<div class="tabs" data-group="where">
+  <section data-tab="app" data-label="App path">
+    <ol class="steps">
+      <li>
+        <h3>Create an empty repo</h3>
+        <p>Follow <a href="repos.html">Repos: public or private</a>.</p>
+      </li>
+      <li>
+        <h3>Start a session with both repos</h3>
+        <p>Select your repo and <code>fritzhand/history-of-tampa</code>, as shown in <a href="multiple-repos.html">Many repos, one to work in</a>.</p>
+      </li>
+      <li>
+        <h3>Ask for the copy</h3>
+        <pre class="say">Work only in <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>. Treat the other repos as read-only reference. Copy every file from fritzhand/history-of-tampa into my repo (not the .git folder), commit and push to main.</pre>
+      </li>
+    </ol>
+  </section>
+  <section data-tab="vscode" data-label="VS Code path">
+    <p>Open your projects folder in VS Code, then say:</p>
+    <pre class="say">Create a new public GitHub repository called <var data-k="repo">your-repo</var> and clone it here. Copy every file from https://github.com/fritzhand/history-of-tampa into it (not the .git folder), commit and push to main.</pre>
+  </section>
+</div>
+
+<h2>Clone your repo</h2>
+<div class="tabs" data-group="where">
+  <section data-tab="app" data-label="App path">
+    <p>Nothing to do. Each session clones the repos you pick onto a fresh cloud machine.</p>
+  </section>
+  <section data-tab="vscode" data-label="VS Code path">
+    <p>Open the folder where you keep projects, then say:</p>
+    <pre class="say">Clone https://github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> into this folder and open it.</pre>
+    <p>Clone your own repo, not the original. The agent can't push to a repo that isn't yours.</p>
+  </section>
+</div>
+
+<aside class="callout check" data-title="Check it worked">Open <code>https://github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var></code>. It shows the starter's files. A fork also says "forked from fritzhand/history-of-tampa" under its name.</aside>
+
+<h2>If it goes wrong</h2>
+<details class="fix">
+  <summary>The agent says it can't push</summary>
+  <p>It's probably working in the original starter, which isn't yours. Tell it which repo to use:</p>
+  <pre class="say">Work only in <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>. Treat the other repos as read-only reference.</pre>
+  <p>On the app path, also check that the Claude GitHub App is installed on your repo. See <a href="claude-app.html">Claude Code in the app</a>.</p>
+</details>
+<details class="fix">
+  <summary>I forked, but I want my commits to count</summary>
+  <p>Make a fresh copy under a new name, as above, and use that one from now on. You can delete the fork later.</p>
+</details>
+
+<details class="more">
+  <summary>What the agent runs for you</summary>
+  <pre><code># Fork, and clone the fork (GitHub CLI)
+gh repo fork fritzhand/history-of-tampa --clone --fork-name <var data-k="repo">your-repo</var>
+
+# Fresh copy: both repos side by side, copy everything except .git
+rsync -a --exclude .git history-of-tampa/ <var data-k="repo">your-repo</var>/
+cd <var data-k="repo">your-repo</var>
+git add .
+git commit -m "Copy the history-of-tampa starter"
+git push origin main
+
+# Clone
+git clone https://github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>.git</code></pre>
+</details>
