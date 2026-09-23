@@ -344,7 +344,12 @@ body.nav-open .hb span:nth-child(3) { transform: translateY(-6px) rotate(-45deg)
 .prose li > :is(ul, ol) { margin-top: 6px; }
 .prose li > p + p { margin-top: 8px; }
 .prose hr { border: 0; border-top: 1px solid var(--border); margin: 36px 0; }
-.prose blockquote { border-left: 3px solid var(--border-strong); padding-left: 16px; color: var(--text-muted); }
+.prose blockquote {
+  border-left: 3px solid var(--accent); padding: 14px 18px;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  background: var(--surface-alt); color: var(--text); font-style: italic;
+}
+.prose blockquote > * + * { margin-top: 10px; }
 .prose dl dt { font-weight: 700; margin-top: 14px; }
 .prose dl dd { margin-top: 2px; color: var(--text-muted); }
 .prose > p:first-child { font-size: 1.04rem; }
@@ -862,5 +867,6 @@ html.modal-open { overflow: hidden; }
 }
 
 /* ---------------- small inline bits ---------------- */
+.ext-nw { white-space: nowrap; }
 .ext-ic { display: inline-block; vertical-align: -0.08em; margin-left: 0.18em; }
 .ext-ic svg { width: 0.8em; height: 0.8em; display: inline-block; }

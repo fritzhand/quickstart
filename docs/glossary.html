@@ -137,7 +137,7 @@ for(var k in g)d.setAttribute("data-tab-"+k,g[k].indexOf(s[k])>-1?s[k]:(f[k]||g[
   <dd>A plain text file at the root, or top folder, of your repo that holds standing rules, such as who to commit as. Claude reads it at the start of every session. Codex reads a file called <code>AGENTS.md</code> instead. See <a href="prompts.html">Prompt cheat sheet</a>.</dd>
 
   <dt id="claude-github-app">Claude GitHub App</dt>
-  <dd>A GitHub add-on that gives Claude in the app access to the repos you choose. Claude needs it to work in a private repo. See <a href="claude-app.html">Claude Code in the app</a>.</dd>
+  <dd>A GitHub add-on that gives Claude in the app access to the repos you choose. Claude can read public repos without it, but needs it to change a repo, public or private. See <a href="claude-app.html">Claude Code in the app</a>.</dd>
 </dl>
 
 <h2 id="git-and-github">Git and GitHub<a class="h-anchor" href="#git-and-github" aria-label="Link to this section: Git and GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></a></h2>
@@ -212,10 +212,10 @@ for(var k in g)d.setAttribute("data-tab-"+k,g[k].indexOf(s[k])>-1?s[k]:(f[k]||g[
   <dd>A window where you type commands instead of clicking. In VS Code, open it with <span class="ui">View</span> → <span class="ui">Terminal</span>. You'll rarely need it, because the agent runs commands for you.</dd>
 
   <dt id="trusted-folder">Trusted folder (Workspace Trust)</dt>
-  <dd>VS Code asks whether you trust the authors of the files in a folder. Say no, and it opens the folder in Restricted Mode, with AI agents and the terminal turned off. Trust only folders you made or cloned from someone you trust. See <a href="trusted-folder.html">Trusted folders</a>.</dd>
+  <dd>VS Code opens a folder you haven't trusted in Restricted Mode, with AI agents and the terminal turned off, and a banner across the top says so. Click <span class="ui">Manage</span> in the banner, then <span class="ui">Trust</span>. Trust only folders you made or cloned from someone you trust. See <a href="trusted-folder.html">Trusted folders</a>.</dd>
 
   <dt id="github-cli">GitHub CLI (gh)</dt>
-  <dd>A GitHub tool the agent runs on the VS Code path to do GitHub chores for you, such as creating or forking a repo. It can also switch on GitHub Pages, as an optional shortcut. You sign it in once with <code>gh auth login</code>. See <a href="install-tools.html">Git, Node &amp; GitHub CLI</a>.</dd>
+  <dd>A GitHub tool the agent runs on the VS Code path to create or fork a repo for you. It also signs Git in to GitHub, so pushes work, and it can switch on GitHub Pages as an optional shortcut. You sign it in once with <code>gh auth login</code>. See <a href="install-tools.html">Git, Node &amp; GitHub CLI</a>.</dd>
 
   <dt id="nodejs">Node.js</dt>
   <dd>A free program that runs JavaScript on your computer. Some starters need it for their build step. The agents themselves don't. See <a href="install-tools.html">Git, Node &amp; GitHub CLI</a>.</dd>

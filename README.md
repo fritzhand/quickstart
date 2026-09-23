@@ -9,9 +9,9 @@ where the agent has no access, such as signing in or switching on GitHub Pages i
 ## The five steps
 
 1. **GitHub.** Create a free GitHub account.
-2. **Set up your agent.** Either the app path (Claude Code at claude.ai/code in a browser, with
-   nothing to install, or in the Claude mobile or desktop app) or the VS Code path (VS Code with the
-   Claude Code or Codex extension).
+2. **Set up your agent.** Either the app path (Claude Code at claude.ai/code in a browser, or in the
+   Claude mobile or desktop app; Claude works on a fresh copy of your repo in the cloud, so you install
+   no developer tools) or the VS Code path (VS Code with the Claude Code or Codex extension).
 3. **Just enough Git.** Repos, forks, commits, pushes and the `main` branch, mostly done by prompt.
 4. **Make it yours.** Pick a starter and have the agent rewrite it:
    [`fritzhand/history-of-tampa`](https://github.com/fritzhand/history-of-tampa), one long scrolling

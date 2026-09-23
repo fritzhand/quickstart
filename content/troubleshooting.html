@@ -19,12 +19,12 @@
 </details>
 <details class="fix">
   <summary>It says "running scripts is disabled on this system"</summary>
-  <pre class="say">Allow PowerShell scripts for my user account only using Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser, then check it with Get-ExecutionPolicy -List.</pre>
+  <pre class="say">Allow PowerShell scripts for my user account only using Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force, then check it with Get-ExecutionPolicy -List.</pre>
   <p>Windows only. <a href="windows-scripts.html">Windows: allow scripts</a> explains it and shows how to run it yourself.</p>
 </details>
 <details class="fix">
   <summary>VS Code says Restricted Mode, or the agent doesn't work in my folder</summary>
-  <p>Do this yourself, because agents are turned off until you trust the folder. Open the Command Palette (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>, or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> on Mac), run <span class="ui">Workspaces: Manage Workspace Trust</span> and trust the folder. Trust only folders you made or cloned from someone you trust. See <a href="trusted-folder.html">Trusted folders</a>.</p>
+  <p>Do this yourself, because agents are turned off until you trust the folder. Click <span class="ui">Manage</span> in the <span class="ui">Restricted Mode</span> banner, then <span class="ui">Trust</span>. Or open the Command Palette (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>, or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> on Mac), run <span class="ui">Workspaces: Manage Workspace Trust</span> and trust the folder. Trust only folders you made or cloned from someone you trust. See <a href="trusted-folder.html">Trusted folders</a>.</p>
 </details>
 <details class="fix">
   <summary>Sign-in fails, or says my plan doesn't include it</summary>
@@ -85,12 +85,12 @@
 <h2>The app</h2>
 <details class="fix">
   <summary>My repo isn't in the repository selector</summary>
-  <p>Do this yourself on GitHub, because it's a permission on your account. A private repo appears only once the Claude GitHub App is installed on it, and a fork or new repo may need adding too. Click your profile picture, then <span class="ui">Settings</span> → <span class="ui">Applications</span> → <span class="ui">Installed GitHub Apps</span>. Click <span class="ui">Configure</span> next to Claude, select the repo and click <span class="ui">Save</span>. Then start a new session and pick the repo.</p>
+  <p>Do this yourself on GitHub, because it's a permission on your account. Claude needs the Claude GitHub App on your repo, public or private. If you chose <span class="ui">Only select repositories</span>, each new repo or fork needs adding. Click your profile picture, then <span class="ui">Settings</span> → <span class="ui">Applications</span> → <span class="ui">Installed GitHub Apps</span>. Click <span class="ui">Configure</span> next to Claude, select the repo and click <span class="ui">Save</span>. Then start a new session and pick the repo.</p>
   <p>Claude isn't listed there? Install it: open <a href="https://github.com/apps/claude/installations/new">https://github.com/apps/claude/installations/new</a>, choose your account, pick <span class="ui">All repositories</span> (or <span class="ui">Only select repositories</span> and your repo) and click <span class="ui">Install</span>.</p>
 </details>
 <details class="fix">
   <summary>Claude says it can't create or fork a repo</summary>
-  <p>Do this yourself on GitHub, because a session can reach only the repos you picked. New repo: go to <a href="https://github.com/new">https://github.com/new</a>, type <var data-k="repo">your-repo</var>, choose <span class="ui">Public</span>, turn on the option to add a README and click <span class="ui">Create repository</span>. Fork: open the starter, click <span class="ui">Fork</span>, type <var data-k="repo">your-repo</var> as the name and click <span class="ui">Create fork</span>. Then start a new session and pick the new repo in the repository selector. See <a href="clone-fork.html">Clone, fork or copy</a>.</p>
+  <p>Do this yourself on GitHub, because a session can reach only the repos you picked. New repo: go to <a href="https://github.com/new">https://github.com/new</a>, type <var data-k="repo">your-repo</var>, choose <span class="ui">Public</span>, turn on the option to add a README and click <span class="ui">Create repository</span>. Fork: open the starter, click <span class="ui">Fork</span>, type <var data-k="repo">your-repo</var> as the repository name and click <span class="ui">Create fork</span>. Then start a new session and pick the new repo in the repository selector. See <a href="clone-fork.html">Clone, fork or copy</a>.</p>
 </details>
 <details class="fix">
   <summary>Claude says it can't push</summary>
@@ -99,7 +99,7 @@
 </details>
 <details class="fix">
   <summary>Claude can't push to main</summary>
-  <pre class="say">Push your branch, then open a pull request into main and merge it.</pre>
+  <pre class="say">Push your branch, then open a pull request from it into main of <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> (my repo, not the original) and merge it.</pre>
   <p>See <a href="main-branch.html">The main branch</a>.</p>
 </details>
 <details class="fix">

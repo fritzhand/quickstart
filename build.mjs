@@ -275,8 +275,14 @@ function textOf(n) {
   for (const k of n.kids) s += k.t === "text" ? decode(k.raw) : k.t === "el" ? textOf(k) : "";
   return s;
 }
+/* The last word of an external link, glued to its icon. A long word (a URL) keeps only its
+   last few characters glued, so it can still wrap instead of overflowing a phone screen. */
+function nwTail(w) {
+  const k = w.length <= 16 ? 0 : Math.max(w.length - 8, w.lastIndexOf(";") + 1);
+  return w.slice(0, k) + `<span class="ext-nw">` + w.slice(k);
+}
 function serialize(n) {
-  if (n.t === "text" || n.t === "comment") return n.raw;
+  if (n.t === "text" || n.t === "comment") return n.nwTail ? n.raw.replace(/\S+$/, nwTail) : n.raw;
   let inner = n.kids.map(serialize).join("");
   if (n.inner) inner = n.inner(inner);
   if (n.t === "root") return inner;
@@ -463,7 +469,11 @@ function processPage(p) {
           if (!hasA(n, "target")) setA(n, "target", "_blank");
           if (!/noopener/.test(getA(n, "rel") || "")) setA(n, "rel", [getA(n, "rel"), "noopener"].filter(Boolean).join(" "));
           const bare = cls.includes("card") || cls.includes("btn");
-          n.post = (bare ? "" : `<span class="ext-ic" aria-hidden="true">${icon("external")}</span>`) + `<span class="sr-only"> (opens in a new tab)</span>` + n.post;
+          /* Keep the icon on the same line as the link's last word, so it never wraps alone. */
+          const last = n.kids[n.kids.length - 1];
+          const tail = !bare && last && last.t === "text" && /\S$/.test(last.raw);
+          if (tail) last.nwTail = true;
+          n.post = (bare ? "" : `<span class="ext-ic" aria-hidden="true">${icon("external")}</span>` + (tail ? "</span>" : "")) + `<span class="sr-only"> (opens in a new tab)</span>` + n.post;
         }
       }
     }

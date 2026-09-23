@@ -76,7 +76,7 @@
 <p>The steps below use <code>fritzhand/history-of-tampa</code>, one long scrolling story that works for any history subject. For a multi-page site with a sidebar, on any subject, swap in <code>fritzhand/startup-india-guide</code>. <a href="starters.html">Pick a starter</a> compares them.</p>
 
 <h2>Fork a starter</h2>
-<p>Do this once. If you fork here, skip "Get your copy" in <a href="make-your-version.html">Make your own version</a>.</p>
+<p>Do this once. It covers step 1 of the step-by-step route in <a href="make-your-version.html#step-by-step">Make your own version</a>. That page's faster <a href="make-your-version.html#one-prompt">one-prompt route</a> starts from an empty repo instead, so don't fork if you plan to use it.</p>
 <div class="tabs" data-group="where">
   <section data-tab="app" data-label="App path">
     <ol class="steps">
@@ -92,7 +92,7 @@
   </section>
   <section data-tab="vscode" data-label="VS Code path">
     <p>Open your <code>Projects</code> folder in VS Code, then say:</p>
-    <pre class="say">Fork fritzhand/history-of-tampa into my account and name the fork <var data-k="repo">your-repo</var>. Then clone it here.</pre>
+    <pre class="say">Fork fritzhand/history-of-tampa into my account, with only the main branch, and name the fork <var data-k="repo">your-repo</var>. If you can't choose the fork's name, stop and tell me. Don't fork it under another name. Then clone it here.</pre>
     <p>Then open it yourself: <span class="ui">File</span> → <span class="ui">Open Folder…</span>, choose <code>Projects/<var data-k="repo">your-repo</var></code>, and start a new conversation there. Now the agent works in your repo and reads its <code>CLAUDE.md</code> or <code>AGENTS.md</code> when it starts.</p>
     <aside class="callout manual" data-title="If the agent can't fork it">Open <a href="https://github.com/fritzhand/history-of-tampa">https://github.com/fritzhand/history-of-tampa</a>, click <span class="ui">Fork</span>, type <var data-k="repo">your-repo</var> as the repository name and click <span class="ui">Create fork</span>. Then say "Clone https://github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> into this folder." and open it as above.</aside>
   </section>
@@ -148,8 +148,8 @@
 
 <details class="more">
   <summary>What the agent runs for you</summary>
-  <pre><code># Fork, and clone the fork (GitHub CLI)
-gh repo fork fritzhand/history-of-tampa --clone --fork-name <var data-k="repo">your-repo</var>
+  <pre><code># Fork with only the main branch, and clone the fork (GitHub CLI)
+gh repo fork fritzhand/history-of-tampa --clone --default-branch-only --fork-name <var data-k="repo">your-repo</var>
 
 # Fresh copy: make your repo, clone the starter next to it,
 # then copy the starter's files without its .git folder

@@ -15,7 +15,7 @@
 <ol class="steps">
   <li>
     <h3>Make an empty repo for your subject</h3>
-    <p>Name it for your subject, in lowercase with hyphens, for example <code>history-of-coffee</code>. Make it public so GitHub Pages can publish it for free. <a href="repos.html">Repos: public or private</a> has the prompt, plus the button to use if the agent can't create it.</p>
+    <p>Name it for your subject, in lowercase with hyphens, for example <code>history-of-coffee</code>. Make it public so GitHub Pages can publish it for free. Follow "Create a new repo" in <a href="repos.html">Repos: public or private</a>: on the app path you click to create it on GitHub, and on the VS Code path the agent creates it. Already forked the starter in <a href="clone-fork.html">Clone, fork or copy</a>? This route needs an empty repo, so make a new one under another name, or use the <a href="#step-by-step">step-by-step route</a> below with your fork.</p>
   </li>
   <li>
     <h3>Start a session with your repo and the starter</h3>
@@ -24,7 +24,7 @@
         <p>In the repository selector, pick <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> and add <code>fritzhand/history-of-tampa</code>. For a topic that spans the world, add <code>fritzhand/history-of-indigo</code> as a second example. See <a href="multiple-repos.html">Many repos, one to work in</a>.</p>
       </section>
       <section data-tab="vscode" data-label="VS Code path">
-        <p>Open your projects folder in VS Code, then say:</p>
+        <p>Open your <code>Projects</code> folder in VS Code and start a new conversation. Then say:</p>
         <pre class="say">Clone fritzhand/history-of-tampa and <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> into this folder.</pre>
       </section>
     </div>
@@ -41,7 +41,7 @@
     <p>Then <a href="github-pages.html">turn on GitHub Pages</a> from <code>main</code> and <code>/ (root)</code>.</p>
   </li>
 </ol>
-<p>For a <a href="#minisite">minisite with a sidebar</a>, send the same kind of message, naming startup-india-guide instead:</p>
+<p>For a <a href="#minisite">minisite with a sidebar</a>, use <code>fritzhand/startup-india-guide</code> as the starter in step 2, and send this instead:</p>
 <pre class="say" data-label="One prompt: a minisite">Work only in <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var>. Treat the other repos as read-only reference. We want to do deep research and then publish a multi-page minisite in the same format as fritzhand/startup-india-guide in my repo, with the same sidebar, search and page layout, and publish it to a GitHub Page. It should cover <var>the programs, funders, coworking spaces and events for new founders in my city</var>. Give a working link for every entry and mark anything you can't verify as TBD. Don't copy the .github folder, the original author's photo and name, or the analytics ID. Commit as <var data-k="name">Your Name</var> &lt;<var data-k="email">your-noreply-email</var>&gt;. Commit and push to main.</pre>
 <p>That starter builds its pages into a <code>docs</code> folder, so publish from <code>main</code> and <code>/docs</code>.</p>
 
@@ -52,10 +52,18 @@
 <ol class="steps">
   <li>
     <h3>Have your copy</h3>
-    <p>Already forked or copied the starter in <a href="clone-fork.html">Clone, fork or copy</a>? Skip to step 2. If not, fork it now. On the app path, send this in a session that has <code>fritzhand/history-of-tampa</code> selected.</p>
-    <pre class="say">Fork fritzhand/history-of-tampa into my account, with only the main branch, and name the fork <var data-k="repo">your-repo</var>. If you can't choose the fork's name, stop and tell me. Don't fork it under another name.</pre>
-    <aside class="callout manual" data-title="If the agent can't fork it">Open <a href="https://github.com/fritzhand/history-of-tampa">https://github.com/fritzhand/history-of-tampa</a> and click <span class="ui">Fork</span> in the top-right corner. Type <var data-k="repo">your-repo</var> as the repository name, in lowercase, and click <span class="ui">Create fork</span>. Already forked under the wrong name? On your fork, click <span class="ui">Settings</span>, type the new name in <span class="ui">Repository name</span> and click <span class="ui">Rename</span>.</aside>
-    <p>Want your commits to count on your GitHub profile? Make a fresh copy instead, with a session that holds both repos. <a href="clone-fork.html">Clone, fork or copy</a> shows how.</p>
+    <p>Already forked or copied the starter in <a href="clone-fork.html">Clone, fork or copy</a>? Skip to step 2. If not, fork it now.</p>
+    <div class="tabs" data-group="where">
+      <section data-tab="app" data-label="App path">
+        <p>Cloud sessions work only with repos that already exist, so this click is yours. Open <a href="https://github.com/fritzhand/history-of-tampa">https://github.com/fritzhand/history-of-tampa</a> and click <span class="ui">Fork</span> in the top-right corner. Type <var data-k="repo">your-repo</var> as the repository name, in lowercase, leave the other options as they are, and click <span class="ui">Create fork</span>.</p>
+      </section>
+      <section data-tab="vscode" data-label="VS Code path">
+        <p>Open your <code>Projects</code> folder in VS Code, then say:</p>
+        <pre class="say">Fork fritzhand/history-of-tampa into my account, with only the main branch, and name the fork <var data-k="repo">your-repo</var>. If you can't choose the fork's name, stop and tell me. Don't fork it under another name. Then clone it here.</pre>
+        <aside class="callout manual" data-title="If the agent can't fork it">Open <a href="https://github.com/fritzhand/history-of-tampa">https://github.com/fritzhand/history-of-tampa</a>, click <span class="ui">Fork</span>, type <var data-k="repo">your-repo</var> as the repository name, in lowercase, and click <span class="ui">Create fork</span>.</aside>
+      </section>
+    </div>
+    <p>Forked under the wrong name? On your fork, click <span class="ui">Settings</span>, type the new name in <span class="ui">Repository name</span> and click <span class="ui">Rename</span>. Want your commits to count on your GitHub profile? Make a fresh copy instead. <a href="clone-fork.html">Clone, fork or copy</a> shows how.</p>
   </li>
   <li>
     <h3>Start a session in your repo and set the rules</h3>
@@ -64,8 +72,9 @@
         <p>Start a new session and pick <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> in the repository selector. Optional: add <code>fritzhand/history-of-tampa</code> as a read-only reference, as shown in <a href="multiple-repos.html">Many repos, one to work in</a>. Fork not in the list? Add it to the Claude GitHub App, as shown in <a href="claude-app.html">Claude Code in the app</a>.</p>
       </section>
       <section data-tab="vscode" data-label="VS Code path">
-        <p>Open your projects folder in VS Code, then say:</p>
-        <pre class="say">Clone https://github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> into this folder and open it.</pre>
+        <p>Open your <code>Projects</code> folder in VS Code. If your repo isn't in it yet, say:</p>
+        <pre class="say">Clone https://github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> into this folder.</pre>
+        <p>Then open it yourself: <span class="ui">File</span> → <span class="ui">Open Folder…</span>, choose <code>Projects/<var data-k="repo">your-repo</var></code>, and start a new conversation there.</p>
       </section>
     </div>
     <p>Then send the rules as your first message:</p>
@@ -105,8 +114,8 @@
 
 <aside class="callout tip" data-title="Keep a PROGRESS.md">
   <p>Each session starts fresh. End every session with:</p>
-  <pre class="say">Update PROGRESS.md with what's done and what's next, then commit and push to main.</pre>
-  <p>Start the next one with "Read PROGRESS.md and continue from what's next."</p>
+  <pre class="say">Update PROGRESS.md in <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> with what's done and what's next, then commit and push to main.</pre>
+  <p>Start the next one with "Read PROGRESS.md in <var data-k="user">your-username</var>/<var data-k="repo">your-repo</var> and continue from what's next."</p>
 </aside>
 
 <aside class="callout check" data-title="Check it worked">Open <code>https://github.com/<var data-k="user">your-username</var>/<var data-k="repo">your-repo</var></code>. The README describes your subject, <code>CLAUDE.md</code> holds your rules, and the newest commit on <code>main</code> shows your name, not Claude's.</aside>
@@ -116,8 +125,8 @@
 <ol class="steps">
   <li>
     <h3>Get your copy</h3>
-    <pre class="say">Fork fritzhand/startup-india-guide into my account, with only the main branch, and name the fork <var data-k="repo">your-repo</var>. If you can't choose the fork's name, stop and tell me. Don't fork it under another name.</pre>
-    <p>If the agent can't, use the <span class="ui">Fork</span> button on <a href="https://github.com/fritzhand/startup-india-guide">https://github.com/fritzhand/startup-india-guide</a>, as in step 1 above.</p>
+    <p>Fork <a href="https://github.com/fritzhand/startup-india-guide">https://github.com/fritzhand/startup-india-guide</a> as in step 1 above. On the app path, click <span class="ui">Fork</span> on GitHub yourself. On the VS Code path, say this in your <code>Projects</code> folder:</p>
+    <pre class="say">Fork fritzhand/startup-india-guide into my account, with only the main branch, and name the fork <var data-k="repo">your-repo</var>. If you can't choose the fork's name, stop and tell me. Don't fork it under another name. Then clone it here.</pre>
   </li>
   <li>
     <h3>Delete its workflows folder</h3>

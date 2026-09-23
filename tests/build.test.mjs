@@ -141,6 +141,8 @@ Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
     /* <pre> bodies are dedented and trimmed */
     assert.match(html, /<pre class="say" data-label="Say this in VS Code">Clone <var/);
     assert.match(html, /<code>Set-ExecutionPolicy -Scope CurrentUser RemoteSigned<\/code>/);
+    /* an external link's icon is glued to its last word, so it never wraps onto a line alone */
+    assert.match(html, /<span class="ext-nw">docs<span class="ext-ic"[^>]*>.*?<\/span><\/span><span class="sr-only">/);
     /* the search index splits text by heading */
     const entry = JSON.parse(read(dir, "docs/assets/search-index.json")).find((e) => e.u === `${PAGE}.html`);
     assert.ok(entry.s.some(([id, h]) => id === "say" && h === "Say"));
