@@ -1,2 +1,6 @@
 node_modules/
 .DS_Store
+
+# collateral: proofs and failed renders are for looking at, not for committing
+collateral/**/proof.png
+collateral/**/*.failed.png
